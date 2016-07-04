@@ -1,0 +1,40 @@
+My97DatePicker目录下各文件的作用:
+  1.1 My97DatePicker目录是一个整体,不可破坏里面的目录结构,也不可对里面的文件改名,可以改目录名
+  1.2 各目录及文件的用途:
+    WdatePicker.js 配置文件,在调用的地方仅需使用该文件,可多个共存,以xx_WdatePicker.js方式命名
+    calendar.js 日期库主文件,无需引入
+    目录lang 存放语言文件,你可以根据需要清理或添加语言文件
+    目录skin 存放皮肤的相关文件,你可以根据需要清理或添加皮肤文件包
+
+官方使用说明：http://www.my97.net/dp/demo/index.htm
+项目中的使用
+一，引入JS库和样式库：
+在模板页（_layout.cshtml）中已经引入，可以直接使用。
+二，具体使用
+<input  type="text" class="Wdate" onClick="WdatePicker()">
+其中class="Wdate"为日期样式；onClick="WdatePicker()"为点击显示日期框事件。
+三，常用功能
+1，起始日期：
+<input type="text" class="Wdate"  onFocus="WdatePicker({startDate:'2015-03-01'})"/>
+2，日期格式化
+<input type="text" class="Wdate"  onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
+3，选择年
+<input type="text"  class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy'})"/>
+4, 选择年月
+<input type="text"  class="Wdate" onfocus="WdatePicker({dateFmt:'yyyy-MM'})"/>
+5，时间范围
+<input class="Wdate" type="text" onfocus="WdatePicker({minDate:'%y-%M-01',maxDate:'%y-%M-%ld'})"/>：本月的第一天到本月的最后一天
+%y  当前年 
+%M  当前月 
+%d  当前日 
+%ld 本月最后一天 
+%H  当前时 
+%m  当前分 
+%s  当前秒 
+{} 运算表达式,如:{%d+1}:表示明天 
+#F{} {}之间是函数可写自定义JS代码 
+
+
+
+
+

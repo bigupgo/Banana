@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="msgbox.css" rel="stylesheet" />
+    <script src="../jquery-1.7.1.min.js"></script>
+    <script src="jQuery.qqmsg.js"></script>
+    <script type="text/javascript">
+        function Load() {
+            $.hLoading.show({ msg: '加载中。。。' });
+            // setTimeout(function () { $.hLoading.hide(); Success(); }, 500);
+            
+         }
+
+         function Success() {
+             $.hLoading.show({ type:'success',msg: '操作成功' });
+             setTimeout(function () { $.hLoading.hide(); }, 200);
+         }
+
+         function Fail() {
+             $.hLoading.show({ type:'fail',msg: '加载中。。。' });
+             setTimeout(function () { $.hLoading.hide(); }, 200);
+         }
+
+         function Hits() {
+             $.hLoading.show({ type: 'hits', msg: '加载中。。。' });
+             setTimeout(function () { $.hLoading.hide(); }, 200);
+         
+          }
+
+
+    </script>
+</head>
+<body>
+<input type="button" value="Loading" onclick="Load();" />
+<input type="button" value="Success" onclick="Success();"/>
+<input type="button" value="Fail" onclick="Fail();"/>
+<input type="button" value="Hits" onclick="Hits();"/>
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿@{
+    Layout = null;
+}
+@*
+    【首页面】的模板页
+    提供公共部分js、css的引入
+*@
+@using System.Web.Optimization
+@using Banana.Core.Common
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    @RenderSection("headfirst", false)
+    <link rel="stylesheet" href="@Url.Content("~/Scripts/Easyui/easyui/themes/"+ContextHelper.GetSkin()+"/easyui.css")" id="link-skin" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/Scripts/My97DatePicker/WdatePicker.js")
+    @Styles.Render("~/Scripts/My97DatePicker/skin/WdatePicker.css")
+    @Scripts.Render("~/bundles/util")
+    @Scripts.Render("~/Scripts/Easyui/easyui/jquery-easyui.js")
+    @Scripts.Render("~/bundles/lib")
+    @Scripts.Render("~/Scripts/Uploadify/js/swfobject.js")
+    @Scripts.Render("~/Scripts/Uploadify/js/uploadify/jquery.uploadify.min.js")
+    @Scripts.Render("~/Scripts/menu_JSON.js")
+    <script type="text/javascript">     
+        function URL(path) {
+            return '@Url.Content("~/")' + path.replace(/^\//, '');
+        };
+    </script>
+    @Scripts.Render("~/Scripts/Bus/Index/index.common.js")
+    @RenderSection("head", false)
+</head>
+@RenderBody()
+</html>

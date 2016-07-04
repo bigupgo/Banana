@@ -1,0 +1,33 @@
+﻿<form id="formSetShortcut" method="post">
+    <table style="width: 100%;">
+        <tr>
+            <td>页面名称：</td>
+            <td>
+                <div id="txtPageName"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>快捷菜单名称：</td>
+            <td>
+                <input id="txtShortCutName" class="easyui-validatebox"  maxlength="6"  data-options="required:true" /></td>
+        </tr>
+        <tr>
+            <td>快捷菜单排序：</td>
+            <td>
+                <input id="txtShortCutSort" class="easyui-numberbox" data-options="required:true,missingMessage:'请填写数字类型的排序号'" /></td>
+        </tr>
+        <tr>
+
+            <td colspan="2">
+                <table id="gridShortcut"></table>
+            </td>
+        </tr>
+    </table>
+
+    <div id="setShortcutMenu-toolbar">
+        <a id="setShortcutMenu-read" class="easyui-linkbutton" href="javascript:void(0);" plain="true"><i class="fa fa-refresh"></i>刷新</a>
+        <a id="setShortcutMenu-edit" class="easyui-linkbutton" href="javascript:void(0);" plain="true"><i class="fa fa-pencil"></i>编辑</a>
+        <a id="setShortcutMenu-remove" class="easyui-linkbutton" href="javascript:void(0);" plain="true"><i class="fa fa-trash"></i>删除</a>
+    </div>
+
+</form>

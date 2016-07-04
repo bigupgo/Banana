@@ -1,0 +1,16 @@
+﻿<form id="fm" method="post">
+    <dl class="pop-wrap">
+        <dt>原密码:</dt>
+        <dd>
+            <input type="password" name="oldPass" class="easyui-validatebox" required="true" missingMessage="原密码不能为空" />                
+        </dd>
+        <dt>新密码:</dt>
+        <dd>
+               <input type="password" id="txtNewPass" name="newPass" class="easyui-validatebox" required="true"  missingMessage="请输入新密码"/>
+        </dd>
+        <dt>新密码:</dt>
+        <dd>
+               <input type="password" name="newPass2" class="easyui-validatebox" required="true" missingMessage="请再次输入新密码确认" validtype="equalTo['#txtNewPass']" invalidmessage="两次输入密码不匹配" />
+        </dd>
+        </dl>
+</form>

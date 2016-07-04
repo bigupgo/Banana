@@ -1,0 +1,205 @@
+﻿@{
+    ViewBag.Title = "快速开发平台";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+@using System.Web.Optimization
+
+@section headfirst{
+    <link href="~/Scripts/Easyui/easyui/themes/icon.css" rel="stylesheet" />
+    <link href="~/Scripts/bootstrap-ace/css/ace.min.css" rel="stylesheet" />
+    <link href="~/Scripts/bootstrap-ace/css/ace-skins.min.css" rel="stylesheet" />
+    <link href="~/Scripts/bootstrap-ace/css/ace-responsive.min.css" rel="stylesheet" />
+    <link href="~/Content/Home/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+     @Styles.Render("~/Content/Home/css/index.css")
+    }
+ @section head
+ {
+     <script src="~/Scripts/bootstrap-ace/js/ace.min.js"></script>
+     <script src="~/Scripts/Plugin/jquery.base64.js"></script>
+     <script src="~/Scripts/Plugin/jQuery.md5.js"></script>
+     @Scripts.Render("~/Scripts/Bus/Index/index.js")
+ }
+<body class="easyui-layout">
+    <div class="header" data-options="region:'north',border:false">
+        <div class="header-top">
+            <div class="logo-wrap">
+                <div class="logo">
+                    <span class="sys-main-name">巡查系统</span>
+                    <span id="sysName" class="sys-sub-name"></span>
+                </div>
+            </div>
+            <div class="header-options">
+                <ul class="user-and-time">
+                    
+                    <li class="curt-user">
+                        <span class="user-txt">当前用户：</span>
+                        <a class="showbtns-link" href="javascript:void(0);">
+                            <i class="fa fa-user"></i>admin<i class="fa fa-angle-down"></i>
+                        </a>
+                        <a class="infor-link" href="javascript:void(0);" onclick="fnShowSelfInfo();">
+                            管理员
+                        </a>
+                    </li>
+                    <li class="show-btns">
+                        <a href="@Url.Content("~/Home/Index")" title="首页">
+                            <i class="fa fa-home"></i>
+                        </a>
+                        <a href="#" onclick="fnShowSearchDialog();" title="检索">
+                            <i class="fa fa-search"></i>
+                        </a>
+                        <a href="#" id="a_switchDept_v">
+                            <i class="fa fa-retweet" title="切换部门"></i>
+                        </a>
+                        
+                        <a href="#" id="link_msg_v" title="消息">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </li>
+                    <li class="realtime">
+                        <span id="sp-nowDate"></span>
+                        <span id="sp-nowTime"></span>
+                    </li>
+                </ul>
+                <ul class="header-btns">
+                    <li>
+                      
+                        <a href="@Url.Content("~/Home/Index")">
+                            <i class="fa fa-home"></i>
+                            <span class="header-btn-txt">首页</span>
+                        </a>
+                       
+                        <span>|</span>
+  
+                        <a href="javascript:void(0)" onclick="fnShowSysHelp()">
+                            <i class="fa fa-question-circle"></i>
+                            <span class="header-btn-txt">帮助</span>
+                        </a>
+                        <span>|</span>
+                        <a href="javascript:void(0)" onclick="fnLoginOut();">
+                            <i class="fa fa-sign-out"></i>
+                            <span class="header-btn-txt">退出</span>
+                        </a>
+                    </li>                 
+                </ul>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="main-nav-wrap">
+            <ul id="ul_FirstMenu" class="main-nav"></ul>
+        </div>      
+    </div>
+
+    <!--左侧菜单树-->
+    <div id="wrap_west" data-options="region:'west',
+        title:'&nbsp;',
+        split:true,
+        border:true,
+        headerCls:'wet-tree-header',
+        collapsed:true,
+        " style="width:200px;overflow: hidden">
+
+       <ul id="ul_menuTree" class="nav nav-list"></ul>
+    </div>
+
+    <!--中间 嵌套子页面内容-->
+    <div data-options="region:'center',border:false">
+        <div id="wrap-MainTabs" class="easyui-tabs"
+            data-options="
+            fit:true,
+            border:false,
+            onAdd:onAddTab,onClose:onTabColse,
+            onContextMenu:fnTabContextMenu,
+            onSelect:fnTabOnSelect,
+            tools:'#mainTabTool'">
+        </div>
+    </div>
+
+
+    <!--菜单检索 dialog-->
+    
+    <div id="wrap-search" class="easyui-dialog" style="width: 400px; height: 400px; text-align: center"
+        data-options="
+                    title:'菜单检索',
+                    closed:true,
+                    modal:true,
+                    onClose:function()
+                    {
+                        $('#txtSearchModule').searchbox('setValue','');
+                        $('#wrap-searchResult').tree('loadData',{});
+                    }
+        ">
+        <div class="index-sch">
+            <input id="txtSearchModule" class="easyui-searchbox"
+                data-options="searcher:fnSearchModule,prompt:'请输入导航菜单名称'" />
+        </div>
+        <div class="index-tree">
+            <div id="wrap-searchResult" class="easyui-tree"
+                data-options="
+                        lines:true,
+                        animate:true,
+                        onSelect:fnMenuTreeSelected">
+            </div>
+        </div>
+    </div>
+    
+    <!--tabs 右击菜单-->
+    <div id="tab-rightMenu" class="easyui-menu" style="width: 150px;">
+          <iframe frameborder= "0" scrolling="no" style="background:transparent; position: absolute; z-index: -1; width: 100%; height: 100%; top: 0; left:0;"></iframe>
+        <div id="refresh" iconCls="fa fa-refresh">刷新</div>
+        <div class="menu-sep"></div>
+        <div id="close" iconCls="fa fa-times">关闭</div>
+        <div id="closeall" iconCls="fa fa-times-circle">全部关闭</div>
+        <div id="closeother" iconCls="fa fa-times-circle-o">除此之外全部关闭</div>
+        <div class="menu-sep"></div>
+        <div id="closeright" iconCls="fa fa-share">右侧全部关闭</div>
+        <div id="closeleft" iconCls="fa fa-reply">左侧全部关闭</div>
+        <div class="menu-sep"></div>
+        <div id="exit">退出</div>
+    </div>
+
+    <!--tabs 工具栏(刷新、设置)-->
+    <div id="mainTabTool">
+  <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="fnReloadCenter();"><i class="fa fa-refresh"></i>刷新</a>
+        <a href="#" class="easyui-linkbutton" data-options="plain:true" onclick="fnSettingCenter(event);"><i class="fa fa-gear"></i>设置</a> </div>
+
+    <!--tabs 工具栏【设置】菜单-->
+    <div id="settingMenu" class="easyui-menu" style="width: 120px;">
+       <div onclick="fnFullScreen();" data-options="iconCls:'fa fa-arrows-alt'">全屏查看</div>
+        <div onclick="fnNewWindow();" data-options="iconCls:'fa fa-clipboard'">新窗口</div>
+        <div onclick="" data-options="iconCls:'fa fa-list-alt'">
+                 <span>主题样式</span>
+            <div>
+                <iframe frameborder= "0" scrolling="no" style="background-color:transparent; position: absolute; z-index: -1; width: 100%; height: 100%; top: 0; left:0;"></iframe> 
+                <div data-options="iconCls:'icon-default'" onclick="fnSwitchSkin('default')">Default</div>
+                <div data-options="iconCls:'icon-flat-blue'" onclick="fnSwitchSkin('flat-blue')">Flat-blue</div>
+                <div data-options="iconCls:'icon-red'" onclick="fnSwitchSkin('red')">Red</div>
+               
+                <div data-options="iconCls:'icon-black'" onclick="fnSwitchSkin('black')">Black</div>
+                <div data-options="iconCls:'icon-gray'" onclick="fnSwitchSkin('gray')">Gray</div>
+                <div data-options="iconCls:'icon-gray'" onclick="fnSwitchSkin('metro')">Metro</div>
+                <div data-options="iconCls:'icon-bootstrap'" onclick="fnSwitchSkin('bootstrap')">Bootstrap</div> </div>
+        </div>
+        <div class="menu-sep"></div>
+          <div onclick="fnLoginOut();" data-options="iconCls:'fa fa-sign-out'">退出系统</div>
+    </div>
+
+    <script type="text/javascript">
+        //时钟展示
+        ~function () {
+            var dNow = new Date();
+            var WEEK = new Array(7);
+            WEEK[0] = "日"; WEEK[1] = "一"; WEEK[2] = "二"; WEEK[3] = "三"; WEEK[4] = "四"; WEEK[5] = "五"; WEEK[6] = "六";
+            var temp = "";
+            temp += (dNow.getMonth() + 1) + "月" + dNow.getDate() + "日";
+            temp += " 星期" + WEEK[dNow.getDay()]
+            $('#sp-nowDate').html(temp);
+        }();
+        function fnTimeView() {
+            var dNow = new Date();
+            var timestr = dNow.toLocaleString();
+            timestr = timestr.substring(timestr.indexOf(" "));
+            $('#sp-nowTime').html(timestr);
+        };
+        setInterval(fnTimeView, 1000);
+    </script>
+</body>

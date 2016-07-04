@@ -1,0 +1,43 @@
+﻿@using System.Web.Optimization
+@*
+    【子页面】的模板页
+    提供公共部分js、css的引入
+*@
+@using Banana.Core.Common
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
+    <title>@ViewBag.Title</title>
+    @RenderSection("headfirst", false)
+    <link rel="stylesheet" href="@Url.Content("~/Scripts/Easyui/easyui/themes/"+ContextHelper.GetSkin()+"/easyui.css")" id="link-skin" />
+    @Styles.Render("~/Content/css")
+    <style type="text/css">
+     *{margin: 0;padding: 0; }
+     #toolbar fa{margin-right: 4px;}
+     .panel-body{ padding:0;}
+    </style>
+</head>
+<body>
+     @RenderBody()
+     @Scripts.Render("~/bundles/util")
+     @Scripts.Render("~/Scripts/Easyui/easyui/jquery-easyui.js")
+     @Scripts.Render("~/Scripts/My97DatePicker/WdatePicker.js")
+     @Styles.Render("~/Scripts/My97DatePicker/skin/WdatePicker.css")
+     @Scripts.Render("~/bundles/lib")
+    
+    @Scripts.Render("~/Scripts/toolbar.btn.style.js")
+
+    <script type="text/javascript">
+        $.ajaxSetup ({
+            cache: false
+        });
+        function URL(path) {
+            return '@Url.Content("~/")' + path.replace(/^\//, '');
+        };
+
+    </script>
+    @RenderSection("head", false)
+</body>
+</html>

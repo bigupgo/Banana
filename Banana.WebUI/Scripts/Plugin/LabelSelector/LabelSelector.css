@@ -1,0 +1,64 @@
+﻿/*StarQin 2014-08-11*/
+/*自定义标签选择器功能*/
+
+.SelectorDefault {
+    float: left;
+    margin:2px 4px 2px 1px;
+
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 12px;
+    min-width: 20px;
+    cursor: pointer;
+    color: black;
+}
+
+.SpanCloseParent {
+    margin-left: 5px;
+    position: relative;
+    right: -5px;
+    top: -2px;
+    font-size: 12px;
+    border: 0px dotted red;
+}
+
+
+/*无色*/
+.NoSelector {
+    color: black;
+    background-color: transparent;
+}
+/*灰色*/
+.GraySelector {
+    color: #999;
+    background-color: #F3F3F3;
+}
+/*蓝色*/
+.BlueSelector {
+    color: white;
+    background-color: #06F;
+}
+/*红色*/
+.RedSelector {
+    color: white;
+    background-color: red;
+}
+/*绿色*/
+.GreenSelector {
+    color: white;
+    background-color: #0C0;
+}
+/*紫红*/
+.PurpleSelector {
+    color: white;
+    background-color: #F06;
+}
+/*黑色*/
+.BlackSelector {
+    color: white;
+    background-color: black;
+}

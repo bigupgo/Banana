@@ -1,0 +1,6 @@
+﻿为tree添加unselect方法
+unselect: function(jq) {
+    return jq.each(function() {
+        $(this).find("div.tree-node-selected").removeClass("tree-node-selected");
+    });
+},

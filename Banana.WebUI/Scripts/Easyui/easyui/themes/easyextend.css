@@ -1,0 +1,35 @@
+﻿
+.searchtable
+{
+    text-align: center;
+    width: 100%;
+    line-height: 33px;
+    padding: 30px 10px 20px 10px;
+}
+
+.searchtable-tdtext
+{
+    text-align: right;
+    width: 30%;
+    padding-right: 10px;
+}
+.searchtable-tdvalue
+{
+    text-align: left;
+    width: 70%;
+}
+input
+{
+    height: 20px;
+    width:180px;
+}
+button
+{
+    height: 40px;
+    width:60px;
+}
+
+#dvsearch
+{
+    background: url(default/images/pageBack.jpg) bottom repeat-x;
+}

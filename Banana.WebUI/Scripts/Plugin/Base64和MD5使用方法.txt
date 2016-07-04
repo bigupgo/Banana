@@ -1,0 +1,2 @@
+$.md5("Hello,Liehuo.Net")
+$.base64.encode("ss")
