@@ -217,3 +217,4 @@ pip-log.txt
 
 Banana/packages/*
 Banana/Banana.WebUI/upload/*
+Banana/Banana.WebUI/App_Data/errorLog/*
