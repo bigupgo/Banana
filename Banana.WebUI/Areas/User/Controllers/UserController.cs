@@ -42,5 +42,14 @@ namespace Banana.WebUI.Areas.User.Controllers
             return JSONResult(result);
         }
 
+        [HttpPost]
+        public string SaveUserImg(string userId)
+        {
+            string url = "";
+            HttpPostedFileBase file = base.Request.Files[0];
+            url = server.SaveUserIcon(userId, file);
+            return url;
+        }
+
     }
 }

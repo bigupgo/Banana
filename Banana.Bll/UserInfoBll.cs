@@ -5,13 +5,15 @@ using Banana.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Banana.Bll
 {
-    public class UserInfoBll
+    public class UserInfoBll:BaseBll
     {
         DbHelper db = null;
         public UserInfoBll()
@@ -19,6 +21,12 @@ namespace Banana.Bll
             db = new DbHelper();
         }
 
+        /// <summary>
+        /// 获取用户列表
+        /// </summary>
+        /// <param name="pagetion"></param>
+        /// <param name="search"></param>
+        /// <returns></returns>
         public List<UserInfo> GetList(Pagetion pagetion, string search)
         {
             List<UserInfo> list = new List<UserInfo>();
@@ -45,6 +53,11 @@ namespace Banana.Bll
             return list;
         }
 
+        /// <summary>
+        /// 添加用户
+        /// </summary>
+        /// <param name="userInfo"></param>
+        /// <returns></returns>
         public AjaxReturn Add(UserInfo userInfo)
         {
             AjaxReturn result = new AjaxReturn();
@@ -71,6 +84,11 @@ namespace Banana.Bll
             return result;
         }
 
+        /// <summary>
+        /// 修改用户
+        /// </summary>
+        /// <param name="userInfo"></param>
+        /// <returns></returns>
         public AjaxReturn Edit(UserInfo userInfo)
         {
             AjaxReturn result = new AjaxReturn();
@@ -96,6 +114,11 @@ namespace Banana.Bll
             return result;
         }
 
+        /// <summary>
+        /// 删除用户
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
         public AjaxReturn Delete(String ids)
         {
             AjaxReturn result = new AjaxReturn();
@@ -131,6 +154,31 @@ namespace Banana.Bll
             }
             result.SetMessage("删除成功", "删除失败");
             return result;
+        }
+
+        /// <summary>
+        /// 保存用户头像
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        public string SaveUserIcon(string userId, HttpPostedFileBase file)
+        {
+
+            HttpServerUtility Server = HttpContext.Current.Server;
+            if (string.IsNullOrEmpty(userId) || file == null)
+            {
+                throw new ArgumentNullException();
+            }
+            if (userId == "0")
+            {
+                userId = GetGUID();
+            }
+            string basePath = BaseConfig.GetValue("UserImgUrl");
+            string url = basePath + userId + Path.GetExtension(file.FileName);
+            string filePath = Server.MapPath("~" + url);
+            UploadHelper.UploadFile(filePath, file);
+            return url;
         }
     }
 }

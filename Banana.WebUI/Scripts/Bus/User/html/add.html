@@ -1,27 +1,132 @@
-﻿<div id="wrap-baseInfo">
+﻿<style>
+    .employee-table {
+        font-size: 12px;
+        border-collapse: collapse;
+        border-spacing: 0;
+        border: 0px;
+        width: 90%;
+        margin: 20px auto;
+        color: #454545;
+        font-family: "Microsoft YaHei","宋体",Arial;
+    }
+
+        .employee-table td {
+            height: 24px;
+            line-height: 24px;
+            padding: 5px 15px 5px 0;
+            vertical-align: middle;
+            text-align: left;
+            font-family: "Microsoft YaHei","宋体",Arial;
+        }
+
+    td.col-name {
+        text-align: right;
+        padding: 5px;
+        
+        width: 12%;
+    }
+
+    .employee-table td textarea {
+        width: 98%;
+        height: 50px;
+        border: 1px solid #ccc;
+        padding: 1%;
+    }
+
+    .employee-table .combo {
+        height: 25px!important;
+        width: 100%!important;
+    }
+
+        .employee-table .combo .combo-arrow {
+            height: 25px!important;
+            width: 11%;
+        }
+
+        .employee-table .combo input[type="text"], .pop-wrap .combo input[type="password"] {
+            border: 0 none;
+            padding: 2px;
+            height: 23px;
+        }
+
+    .employee-table input[type="text"],
+    .employee-table input[type="password"] {
+        border: 1px solid #ccc;
+        padding: 2px 1%;
+        color: #454545;
+        width: 98%;
+        height: 20px;
+        line-height: 20px;
+    }
+
+        .employee-table input[type="text"].combo-text {
+            width: 87%!important;
+            padding: 2px 1%;
+        }
+
+    .employee-table input[disabled="disabled"] {
+        background: #fff;
+        border: 0 none;
+    }
+
+    .employee-table td.vt {
+        vertical-align: top;
+    }
+    .imgtbl {
+        height: 170px;
+        width: 150px;
+        border: 1px solid #ccc;
+    }
+
+        .imgtbl img {
+            height: 150px;
+            width: 130px;
+        }
+
+        .imgtbl td {
+            padding: 0;
+            vertical-align: top;
+            text-align: center;
+        }
+</style>
+<div id="wrap-baseInfo">
     <form>
         <input type="hidden" name="Id" />
-        <table class="dialog-table">
+        <table class="employee-table"><!-- <table class="dialog-table">-->
             <tr>
                 <td class="col-name">姓名：</td>
                 <td>
 
                    <input type="text" name="Name" class="easyui-validatebox" data-options="required:true"/>
                 </td>
+                 <td rowspan="5">
+                    <table class="imgtbl" style="margin-left: 25px;">
+                        <tr>
+                            <td rowspan="4">
+                                <img style="margin-top: 8px;"  id="imgupload" alt="个人照片" />
+                                <input type="hidden" id="ImageUrl" name="ImageUrl" />
+                            </td>
+                        </tr>
+                   </table>
+                </td>
+            </tr>
+            <tr>
+
                 <td class="col-name">年龄：</td>
                 <td>
                     <input type="text" name="Age" class="easyui-textbox" />
 
                 </td>
+                
             </tr>
             <tr>
                 <td class="col-name">Email：</td>
-                <td colspan="2">
+                <td >
                     <input type="text" name="Email" class="easyui-validatebox" data-options="required:true,validType:'email'"/>
                 </td>
-               
+       
             </tr>
-           
+                      
         </table>
     </form>
 </div>

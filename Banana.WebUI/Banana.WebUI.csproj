@@ -412,6 +412,7 @@
     <Content Include="Scripts\bootstrap-ace\img\loading.gif" />
     <Content Include="Scripts\bootstrap-ace\js\ace-extra.min.js" />
     <Content Include="Scripts\bootstrap-ace\js\ace.min.js" />
+    <Content Include="Scripts\Bus\Base\html\upload.html" />
     <Content Include="Scripts\Bus\Index\index.common.js" />
     <Content Include="Scripts\Bus\Index\index.js" />
     <Content Include="Scripts\Bus\User\html\add.html" />
@@ -1182,6 +1183,7 @@
     <Content Include="Scripts\Plugin\qqmsg\loading.gif" />
     <Content Include="Scripts\Plugin\qqmsg\msgbox.css" />
     <Content Include="Scripts\Plugin\qqmsg\qqMsg.htm" />
+    <Content Include="Scripts\Plugin\SWFUpload.js" />
     <Content Include="Scripts\toolbar.btn.style.js" />
     <Content Include="Scripts\Uploadify\css\uploadify.css" />
     <Content Include="Scripts\Uploadify\icon\btn.png" />

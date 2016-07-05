@@ -10,7 +10,8 @@ var ActionURL =
     Read: baseActionPath + 'GetList',
     Add: baseActionPath + 'Add',
     Edit: baseActionPath + 'Edit',
-    Delete: baseActionPath + 'Delete'
+    Delete: baseActionPath + 'Delete',
+    SaveUserImg: baseActionPath + "SaveUserImg"
 };
 
 //模板
@@ -167,6 +168,31 @@ function getDefaultParams() {
 };
 
 function initAdd($h) {
+
+    $h.find('#imgupload').attr('src', URL('/DefaultImg.jpg'));
+
+    $h.find('#imgupload')
+       .attr('title', '单击上传图像')
+       .css({ 'cursor': 'pointer' })
+       .unbind('click').bind('click', function () {
+           $.SWFUpload(
+               {
+                   title: '&nbsp;' + '上传图片',
+                   width: 300,
+                   height: 300
+               },
+               {
+                   'auto': true,
+                   'uploader': ActionURL.SaveUserImg,
+                   'formData': { 'userId': "0" }, //传参数'fileTypeExts': AllowDocumentType,
+                   'fileTypeExts': '*.jpg;*.jpge;*.gif;*.png;',
+                   'fileSizeLimit': '2MB',
+                   'onUploadSuccess': function (file, data, response) {
+                       $h.find('#imgupload').attr('src', URL(data) + '?t=' + Math.random());
+                       $h.find("#ImageUrl").val(data);
+                   }
+               });
+       });
 }
 
 //右键菜单
