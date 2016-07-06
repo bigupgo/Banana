@@ -215,6 +215,6 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 
-/Banana/packages/*
-/Banana/Banana.WebUI/upload/*
-/Banana/Banana.WebUI/App_Data/errorLog/*
+packages/*
+Banana.WebUI/upload/*
+Banana.WebUI/App_Data/errorLog/*
