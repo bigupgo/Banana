@@ -22,8 +22,6 @@
     td.col-name {
         text-align: right;
         padding: 5px;
-        
-        width: 12%;
     }
 
     .employee-table td textarea {
@@ -94,17 +92,16 @@
         <input type="hidden" name="Id" />
         <table class="employee-table"><!-- <table class="dialog-table">-->
             <tr>
-                <td class="col-name">姓名：</td>
+                <td class="col-name">登录名：</td>
                 <td>
-
-                   <input type="text" name="Name" class="easyui-validatebox" data-options="required:true"/>
+                   <input type="text" name="LoginName" class="easyui-validatebox" data-options="required:true"/>
                 </td>
                  <td rowspan="5">
                     <table class="imgtbl" style="margin-left: 25px;">
                         <tr>
                             <td rowspan="4">
                                 <img style="margin-top: 8px;"  id="imgupload" alt="个人照片" />
-                                <input type="hidden" id="ImageUrl" name="ImageUrl" />
+                                <input type="hidden" id="userIcon" name="UserIcon" />
                             </td>
                         </tr>
                    </table>
@@ -112,21 +109,41 @@
             </tr>
             <tr>
 
-                <td class="col-name">年龄：</td>
+                <td class="col-name">密码：</td>
                 <td>
-                    <input type="text" name="Age" class="easyui-textbox" />
-
+                    <input id="pwd" type="password" name="Password" class="easyui-validatebox" data-options="required:true" />
+                </td>
+                
+            </tr>
+             <tr>
+                <td class="col-name">确认密码：</td>
+                <td>
+                    <input type="password" name="rPassword" class="easyui-validatebox"  required="required" validType="equalTo['#pwd']"  />
                 </td>
                 
             </tr>
             <tr>
-                <td class="col-name">Email：</td>
+                 <td class="col-name">姓名：</td>
+                <td>
+                   <input type="text" name="RealName" class="easyui-textbox" />
+                </td>
+            </tr>
+
+             <tr>
+                <td class="col-name">手机：</td>
                 <td >
-                    <input type="text" name="Email" class="easyui-validatebox" data-options="required:true,validType:'email'"/>
+                    <input type="text" name="Phone" class="easyui-validatebox" data-options="required:false,validType:'mobile'"/>
                 </td>
        
             </tr>
-                      
+            <tr>
+                <td class="col-name">Email：</td>
+                <td >
+                    <input type="text" name="Email" class="easyui-validatebox" data-options="required:false,validType:'email'"/>
+                </td>
+            </tr>
+            
+
         </table>
     </form>
 </div>

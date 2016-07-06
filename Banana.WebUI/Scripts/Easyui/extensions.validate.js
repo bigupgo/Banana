@@ -25,7 +25,7 @@
 	},
 	mobile: {
 		validator: function(value, param) {
-			return /^((\(\d{2,3}\))|(\d{3}\-))?13\d{9}$/.test(value);
+		    return /^(13[0-9]|14[0-9]|15[0-9]|18[0-9])\d{8}$/.test(value);
 		},
 		message: '手机号码不正确'
 	},

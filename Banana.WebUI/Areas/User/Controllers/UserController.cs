@@ -51,5 +51,10 @@ namespace Banana.WebUI.Areas.User.Controllers
             return url;
         }
 
+        public void Export(string search)
+        {
+            server.ExportExcel(search);
+        }
+
     }
 }

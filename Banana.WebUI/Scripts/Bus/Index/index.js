@@ -1,4 +1,5 @@
-﻿
+﻿var moduleID = null;
+var sysUserID = "12321";
 //窗体加载
 $(document).ready(function () {
 
@@ -16,21 +17,21 @@ $(document).ready(function () {
 //加载第一层菜单
 function initFirstMenu() {
     var $box = $('#ul_FirstMenu');
-    var topMentHtml = "<li mid='a2fc3c580b0f453f8fc36f8384123918'><a onclick=\"loadSonMenu('a2fc3c580b0f453f8fc36f8384123918','null','人员管理',1,'icon-blue-folder-close','null')\" href='javascript:void(0);'>人员管理</a></li>"
-                    + "<li mid='ebf192b651af4c838b16d29784111b11'><a onclick=\"loadSonMenu('ebf192b651af4c838b16d29784111b11','null','产品管理',1,'icon-blue-folder-close','null')\" href='javascript:void(0);'>产品管理</a></li>";
+    var topMentHtml = "<li><a onclick=\"loadSonMenu('page1','null','人员管理',1,'icon-blue-folder-close','null')\" href='javascript:void(0);'>人员管理</a></li>"
+                    + "<li><a onclick=\"loadSonMenu('page2','null','产品管理',1,'icon-blue-folder-close','null')\" href='javascript:void(0);'>产品管理</a></li>";
     $box.html(topMentHtml);
 }
 
 var _moduleDefaultId;
 //加载子菜单
 function loadSonMenu(pid, defaultId, text, type, iconCls, url) {
-
+    moduleID = pid;
     $('#wrap_west').panel('setTitle', text);
 
     $('body').layout('expand', 'west');
 
     var sonMideoHtml = "";
-    if (pid == "a2fc3c580b0f453f8fc36f8384123918") {
+    if (pid == "page1") {
         sonMideoHtml = "<li class='childmenu' text='会员管理' limit='5' url='User/User/Index' iconCls='fa fa-list-alt' pid='5f427b4edf0047db8e259a80b0059fe2' ><a href='javascript:void(0);' style='text-decoration:none'><i class='fa fa-list-alt'></i>会员管理</a></li>"
                      + "<li>"
                       + "<a href='javascript:void(0);' style='text-decoration:none' class='dropdown-toggle'><i class='fa fa-list-alt'></i>权限管理<b class='fa fa-angle-down'></b></a>"

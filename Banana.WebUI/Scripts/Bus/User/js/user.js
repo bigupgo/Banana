@@ -1,5 +1,5 @@
 ﻿var $datagrid;
-var iDialogW = 500, iDialogH = 300;
+var iDialogW = 560, iDialogH = 350;
 var preIndex = null;
 var $mineTree; var arrayId = [];
 
@@ -11,7 +11,8 @@ var ActionURL =
     Add: baseActionPath + 'Add',
     Edit: baseActionPath + 'Edit',
     Delete: baseActionPath + 'Delete',
-    SaveUserImg: baseActionPath + "SaveUserImg"
+    SaveUserImg: baseActionPath + "SaveUserImg",
+    Export: baseActionPath + "Export"
 };
 
 //模板
@@ -24,9 +25,15 @@ var HtmlURL =
 
 var column = [[
     { field: 'ckb', title: '选择', checkbox: true, width: 30 },
-    { field: "Name", title: "姓名", align: "left", width: 100 },
-    { field: "Age", title: "年龄", align: "center", width: 110 },
-    { field: "Email", title: "邮件", align: "center", width: 110 }
+    { field: "LoginName", title: "登录名", align: "left", width: 100 },
+    { field: "RealName", title: "姓名", align: "center", width: 110 },
+    { field: "Phone", title: "电话", align: "center", width: 110 },
+    { field: "Email", title: "邮件", align: "center", width: 110 },
+    {
+        field: "CreateDate", title: "注册时间", align: "center", width: 110, formatter: function (value,row,index) {
+            return ShortDate(value);
+        }
+   }
 ]];
 
 
@@ -82,7 +89,7 @@ var CRUD = {
                         {
                             type: 'post',
                             data: sendData,
-                            url: ActionURL.Edit,
+                            url: ActionURL.Add,
                             success: function (d) {
                                 if (d.success) {
                                     $h.dialog('close');
@@ -119,7 +126,7 @@ var CRUD = {
                         {
                             type: 'post',
                             data: sendData,
-                            url: ActionURL.Add,
+                            url: ActionURL.Edit,
                             success: function (d) {
                                 if (d.success) {
                                     $h.dialog('close');
@@ -150,6 +157,13 @@ var CRUD = {
                 })
             }
         });
+    }, Export: function () {
+        var p = getParams();
+        var str = '?a=1';
+        for (var i in p) {
+            str += '&' + i + '=' + p[i];
+        }
+        window.open(ActionURL.Export + str);
     }
 }
 
@@ -188,8 +202,9 @@ function initAdd($h) {
                    'fileTypeExts': '*.jpg;*.jpge;*.gif;*.png;',
                    'fileSizeLimit': '2MB',
                    'onUploadSuccess': function (file, data, response) {
-                       $h.find('#imgupload').attr('src', URL(data) + '?t=' + Math.random());
-                       $h.find("#ImageUrl").val(data);
+                       var array = data.split(",");
+                       $h.find('#imgupload').attr('src', URL(array[0]) + '?t=' + Math.random());
+                       $h.find("#userIcon").val(array[1]);
                    }
                });
        });

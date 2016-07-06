@@ -113,7 +113,7 @@ function fnSwitchSkin(skin) {
     var url = $link.attr('href');
     url = url.replace(/themes\/.+\//, 'themes/' + skin + '/');
     $link.attr('href', url);
-    //setCookie('skin', skin, 7);
+    setCookie('skin', skin, 7);
     $('#wrap-MainTabs').find('iframe').each(function () {
         var $one = $(this).contents().find('#link-skin');
         if (typeof this.contentWindow.setCookie === "function") {
@@ -195,10 +195,10 @@ function fnTabOnSelect(title) {
       
 
         if (!isAddMainPage) {
-            //setCookie('lrsmes_selecttab_title_' + moduleID + '_' + sysUserID, name);
-            //setCookie('lrsmes_selecttab_id_' + moduleID + '_' + sysUserID, id);
-            //setCookie('lrsmes_selecttab_icon_' + moduleID + '_' + sysUserID, icon);
-            //setCookie('lrsmes_selecttab_url_' + moduleID + '_' + sysUserID, url);
+            setCookie('lrsmes_selecttab_title_' + moduleID + '_' + sysUserID, name);
+            setCookie('lrsmes_selecttab_id_' + moduleID + '_' + sysUserID, id);
+            setCookie('lrsmes_selecttab_icon_' + moduleID + '_' + sysUserID, icon);
+            setCookie('lrsmes_selecttab_url_' + moduleID + '_' + sysUserID, url);
         }
     }
 
@@ -329,7 +329,6 @@ function onAddTab(title, index) {
 
 
 //添加tab页面useURLFun是否使用url函数转换，仅为false不转换
-//paras:'&aaa=1'
 function addTab(name, url, iconCls, closable, id, paras, useURLFun) {
     var tagUrl = url.url || url;
     var limit = url.limit || -1;

@@ -11,7 +11,7 @@ namespace Banana.WebUI
             //基础工具库
             bundles.Add(new ScriptBundle("~/bundles/util")
                         .Include(
-                         "~/Scripts/js/FunctionJS.js"
+                         "~/Scripts/FunctionJS.js"
                         , "~/Scripts/jquery-1.8.0.js")
                         );
 
