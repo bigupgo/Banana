@@ -16,12 +16,14 @@ namespace Banana.Bll
     public class UserInfoBll : BaseBll
     {
         private static string TABLE_NAME = "Ba_UserInfo";
-        DbHelper db = null;
-        public UserInfoBll()
-        {
-            db = new DbHelper();
-        }
 
+        /// <summary>
+        /// 设置操作的表名
+        /// </summary>
+        public override void SetTableName()
+        {
+            this.TableName = TABLE_NAME;
+        }
 
         /// <summary>
         /// 获取用户列表
@@ -34,11 +36,14 @@ namespace Banana.Bll
             List<UserInfo> list = new List<UserInfo>();
             try
             {
-                DataTable dt = GetAllData(TABLE_NAME, db);
+                DataTable dt = GetAllData();
                 var data = ERTools.GetList<UserInfo>(dt);
-                pagetion.total = data.Count();
+                var totalData = data
+                    .Where(x => x.LoginName.Contains(search) || x.RealName.Contains(search))
+                    .OrderByDescending(x => x.CreateDate);
+                pagetion.total = totalData.Count();
 
-                list = data.OrderBy(x => x.Id).Skip(pagetion.rows * (pagetion.page - 1)).Take(pagetion.rows).ToList();
+                list = totalData.Skip(pagetion.rows * (pagetion.page - 1)).Take(pagetion.rows).ToList();
             }
             catch (Exception e)
             {
@@ -54,32 +59,7 @@ namespace Banana.Bll
         /// <returns></returns>
         public AjaxReturn Add(UserInfo userInfo)
         {
-            AjaxReturn result = new AjaxReturn();
-            try
-            {
-                string sql = @"insert into Ba_UserInfo(Id,LoginName,RealName,Password,Phone,Email,CreateDate,UserIcon,IsDel) values(@Id,@LoginName,@RealName,@Password,@Phone,@Email,@CreateDate,@UserIcon,@IsDel)";
-                var cmd = db.GetSqlStringCommond(sql);
-                db.AddInParameter(cmd, "Id", DbType.String, GetGUID());
-                db.AddInParameter(cmd, "LoginName", DbType.String, userInfo.LoginName);
-                db.AddInParameter(cmd, "RealName", DbType.String, userInfo.RealName);
-                db.AddInParameter(cmd, "Password", DbType.Int32, userInfo.Password);
-                db.AddInParameter(cmd, "Phone", DbType.String, userInfo.Phone == null ? "" : userInfo.Phone);
-                db.AddInParameter(cmd, "Email", DbType.String, userInfo.Email == null ? "" : userInfo.Email);
-
-                db.AddInParameter(cmd, "CreateDate", DbType.DateTime, System.DateTime.Now);
-                db.AddInParameter(cmd, "UserIcon", DbType.String, userInfo.UserIcon == null ? "" : userInfo.UserIcon);
-
-                db.AddInParameter(cmd, "IsDel", DbType.Boolean, false);
-
-                int num = db.ExecuteNonQuery(cmd);
-                result.success = num > 0;
-            }
-            catch (Exception e)
-            {
-                result.success = false;
-                WriteExceptionLog(e);
-            }
-            result.SetMessage("添加成功", "添加失败");
+            AjaxReturn result = base.Add(userInfo);
             return result;
         }
 
@@ -90,29 +70,7 @@ namespace Banana.Bll
         /// <returns></returns>
         public AjaxReturn Edit(UserInfo userInfo)
         {
-            AjaxReturn result = new AjaxReturn();
-            try
-            {
-                string sql = @"update Ba_UserInfo set LoginName=@LoginName,RealName=@RealName,Password=@Password,Phone=@Phone,Email=@Email,UserIcon=@UserIcon where Id= @Id";
-                var cmd = db.GetSqlStringCommond(sql);
-                db.AddInParameter(cmd, "LoginName", DbType.String, userInfo.LoginName);
-                db.AddInParameter(cmd, "RealName", DbType.String, userInfo.RealName);
-                db.AddInParameter(cmd, "Password", DbType.Int32, userInfo.Password);
-                db.AddInParameter(cmd, "Phone", DbType.String, userInfo.Phone);
-                db.AddInParameter(cmd, "Email", DbType.String, userInfo.Email);
-                db.AddInParameter(cmd, "UserIcon", DbType.String, userInfo.UserIcon);
-                db.AddInParameter(cmd, "Id", DbType.String, userInfo.Id);
-
-                int num = db.ExecuteNonQuery(cmd);
-                result.success = num > 0;
-            }
-            catch (Exception e)
-            {
-                result.success = false;
-                WriteExceptionLog(e);
-            }
-            result.SetMessage("修改成功", "修改失败");
-
+            AjaxReturn result = base.Edit(userInfo);          
             return result;
         }
 
@@ -121,40 +79,9 @@ namespace Banana.Bll
         /// </summary>
         /// <param name="ids"></param>
         /// <returns></returns>
-        public AjaxReturn Delete(String ids)
+        public AjaxReturn Deletes(string ids)
         {
-            AjaxReturn result = new AjaxReturn();
-            Trans trans = new Trans();
-            try
-            {
-                string sql = "update Ba_UserInfo set IsDel = 1 where Id=@Id";
-                if (!String.IsNullOrEmpty(ids))
-                {
-                    string[] array = ids.Split(',');
-                    foreach (string id in array)
-                    {
-                        var cmd = db.GetSqlStringCommond(sql);
-                        db.AddInParameter(cmd, "Id", DbType.String, id);
-                        db.ExecuteNonQuery(cmd, trans);
-                    }
-
-                    trans.Commit();
-                }
-            }
-            catch (Exception e)
-            {
-                trans.RollBack();
-                result.success = false;
-                LogHelper.LogError(e.Message);
-            }
-            finally
-            {
-                if (trans != null)
-                {
-                    trans.Close();
-                }
-            }
-            result.SetMessage("删除成功", "删除失败");
+            AjaxReturn result = base.Delete(ids);
             return result;
         }
 
@@ -182,16 +109,19 @@ namespace Banana.Bll
             return url + "," + userId;
         }
 
-
+        /// <summary>
+        /// 导出Excel
+        /// </summary>
+        /// <param name="search"></param>
         public void ExportExcel(string search)
         {
             try
             {
                 //获取数据源
-                DataTable dt = GetAllData(TABLE_NAME, db);;
+                DataTable dt = GetAllData();
                 List<UserInfo> list = ERTools.GetList<UserInfo>(dt);
 
-
+                list.Where(x => x.LoginName.Contains(search) || x.RealName.Contains(search));
                 //获取文件模板路径
                 var filename = "会员";
                 var tmpPath = AppDomain.CurrentDomain.BaseDirectory + "App_Data\\excelTemplate\\" + filename + ".xml";

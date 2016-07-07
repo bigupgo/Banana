@@ -6,11 +6,6 @@ namespace Banana.Model
     {
         public string Id { get; set; }
         public DateTime CreateDate { get; set; }
-        private bool _isDel = false;
-        public bool IsDel {
-            get { return this._isDel; }
-            set { this._isDel = value; }
-        }
-
+        public bool IsDel { get; set; }
     }
 }

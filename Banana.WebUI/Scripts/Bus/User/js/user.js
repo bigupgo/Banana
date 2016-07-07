@@ -108,7 +108,7 @@ var CRUD = {
         var $h = top.$.hDialog(
                 {
                     iconCls: 'icon-edit',
-                    title: '&nbsp;&nbsp;&nbsp;' + '编辑【' + row.Name + '】的信息',
+                    title: '&nbsp;&nbsp;&nbsp;' + '编辑【' + row.LoginName + '】的信息',
                     href: HtmlURL.Add,
                     width: iDialogW,
                     height: iDialogH,

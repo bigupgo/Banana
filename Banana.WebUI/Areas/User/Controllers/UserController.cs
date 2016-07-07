@@ -38,7 +38,7 @@ namespace Banana.WebUI.Areas.User.Controllers
         [HttpPost]
         public ActionResult Delete(string ids)
         {
-            AjaxReturn result = server.Delete(ids);
+            AjaxReturn result = server.Deletes(ids);
             return JSONResult(result);
         }
 
