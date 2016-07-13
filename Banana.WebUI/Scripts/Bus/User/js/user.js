@@ -77,6 +77,10 @@ var CRUD = {
                     height: iDialogH,
                    // cache: true,
                     onLoad: function () {
+                        $h.find("#loginNameId").validatebox({
+                            validType: ['loginName', 'loginNameHave']
+                        });
+
                         initAdd($h);//初始化添加
                     },
                     submit: function () {
@@ -114,6 +118,10 @@ var CRUD = {
                     height: iDialogH,
                   //  cache: true,
                     onLoad: function () {
+                        $h.find("#loginNameId").validatebox({
+                            validType: ['loginName', 'loginNameEditHave["#Id"]']
+                        });
+
                         $h.find("#rpwd").validatebox({
                             required: false
                         });

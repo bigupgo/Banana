@@ -393,7 +393,6 @@
     <Content Include="Content\icons\world-edit.png" />
     <Content Include="Content\icons\world.png" />
     <Content Include="Content\icons\zoom.png" />
-    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap-3.3.4-dist\css\bootstrap-theme.css" />
     <Content Include="Scripts\bootstrap-3.3.4-dist\css\bootstrap-theme.min.css" />

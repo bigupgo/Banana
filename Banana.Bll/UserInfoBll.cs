@@ -205,5 +205,29 @@ namespace Banana.Bll
             SessionUser sessionUser = GetCurrentUser();
             return sessionUser;
         }
+
+        public string IsAddHaveUser(string loginName)
+        {
+            string result = "ok";
+
+            var data =  GetList().Where(x => x.LoginName.Equals(loginName));
+            if (data != null && data.Count() > 0)
+            {
+                result = "no";
+            }
+            return result;
+        }
+
+        public string IsEditHaveUser(string loginName,string Id)
+        {
+            string result = "ok";
+
+            var data = GetList().Where(x => x.LoginName.Equals(loginName) && !x.Id.Equals(Id));
+            if (data != null && data.Count() > 0)
+            {
+                result = "no";
+            }
+            return result;
+        }
     }
 }

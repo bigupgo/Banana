@@ -30,10 +30,62 @@
 		message: '手机号码不正确'
 	},
 	loginName: {
-		validator: function(value, param) {
-			return /^[\u0391-\uFFE5\w]+$/.test(value);
+	  
+	    validator: function (value, param) {
+	        return  /^[\u0391-\uFFE5\w]+$/.test(value);
 		},
-		message: '登录名称只允许汉字、英文字母、数字及下划线。'
+	    message: "登录名称只允许汉字、英文字母、数字及下划线。"
+	},
+	loginNameHave:{
+	    validator: function (value, param) {
+	        var flag = false;
+	        $.ajax({
+	            url: "/Home/IsAddHave",
+	            type: "post",
+	            async: false,
+	            data: { loginName: value },
+	            success: function (d) {
+
+	                if (d == "no") {
+	                    flag = false;
+	                }
+	                if (d == "ok") {
+	                    flag = true;
+	                }
+	            }
+
+	        });
+	        return flag;
+	    },
+	    message: "登录名已存在。"
+
+	},
+	loginNameEditHave: {
+	    validator: function (value, param) {
+	        var Id = $(param[0]).val();
+	        var flag = false;
+	        if (Id != "") {
+	            $.ajax({
+	                url: "/Home/IsEditHave",
+	                type: "post",
+	                async: false,
+	                data: { loginName: value, Id: Id },
+	                success: function (d) {
+
+	                    if (d == "no") {
+	                        flag = false;
+	                    }
+	                    if (d == "ok") {
+	                        flag = true;
+	                    }
+	                }
+
+	            });
+	        }
+	        return flag;
+	    },
+	    message: "登录名已存在。"
+
 	},
 	safepass: {
 		validator: function(value, param) {

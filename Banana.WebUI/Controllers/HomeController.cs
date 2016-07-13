@@ -12,6 +12,7 @@ namespace Banana.WebUI.Controllers
 {
     public class HomeController : Controller
     {
+
         //
         // GET: /Home/
 
@@ -120,6 +121,18 @@ namespace Banana.WebUI.Controllers
                 data.UserIcon = BaseConfig.GetValue("UserImgUrl") + fileName;
             }
             return Content(JSON.Serialize(data));
+        }
+
+        public string IsAddHave(string loginName)
+        {
+            var service = new UserInfoBll();
+            return service.IsAddHaveUser(loginName);
+        }
+
+        public string IsEditHave(string loginName, string Id)
+        {
+            var service = new UserInfoBll();
+            return service.IsEditHaveUser(loginName, Id);
         }
     }
 }

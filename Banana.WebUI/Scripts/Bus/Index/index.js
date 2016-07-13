@@ -1,5 +1,4 @@
 ﻿var moduleID = null;
-var sysUserID = "12321";
 //窗体加载
 $(document).ready(function () {
 
@@ -18,7 +17,7 @@ $(document).ready(function () {
 function initFirstMenu() {
     var $box = $('#ul_FirstMenu');
     var topMentHtml = "<li><a onclick=\"loadSonMenu('page1','null','人员管理',1,'icon-blue-folder-close','null')\" href='javascript:void(0);'>人员管理</a></li>"
-                    + "<li><a onclick=\"loadSonMenu('page2','null','产品管理',1,'icon-blue-folder-close','null')\" href='javascript:void(0);'>产品管理</a></li>";
+                    + "<li><a onclick=\"loadSonMenu('page2','null','巡查管理',1,'icon-blue-folder-close','null')\" href='javascript:void(0);'>巡查管理</a></li>";
     $box.html(topMentHtml);
 }
 
@@ -43,7 +42,7 @@ function loadSonMenu(pid, defaultId, text, type, iconCls, url) {
 
     if (pid == "page2") {
 
-        sonMideoHtml = "<li class='childmenu' text='产品管理' limit='5' url='Information/Regulator/Index' iconCls='fa fa-list-alt' pid='page21' ><a href='javascript:void(0);' style='text-decoration:none'><i class='fa fa-list-alt'></i>产品管理</a></li>"           
+        sonMideoHtml = "<li class='childmenu' text='巡查管理' limit='5' url='Information/Regulator/Index' iconCls='fa fa-list-alt' pid='page21' ><a href='javascript:void(0);' style='text-decoration:none'><i class='fa fa-list-alt'></i>巡查管理</a></li>"
     }
 
 
