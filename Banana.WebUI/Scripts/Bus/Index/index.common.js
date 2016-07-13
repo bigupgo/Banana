@@ -17,14 +17,10 @@ var ActionURL =
         {
             GetSonModules: URL('Base/Common/GetDirectSonModules'),
             GetModuleTrees: URL('Base/Common/GetAllSonModules'),
-            SearchModule: URL('Base/Common/SearchModules'),
-          
+            SearchModule: URL('Base/Common/SearchModules'),          
             LoginOut: URL('Home/LoginOut'),
-       
-            SelfInfo: URL('/Base/Personal/GetDetail'),
+            SelfInfo: URL('Home/GetDetail'),
             ResetPass: URL('/Base/Personal/ResetPass'),
-
-       
         };
 //静态模板
 var HtmlTemplate =
@@ -45,8 +41,6 @@ function onIframeload() {
         $topLoading = null;
     }
 };
-
-
 
 //顶层遮罩
 var $topLoading = null;
@@ -445,9 +439,9 @@ function fnShowSelfInfo() {
     $.hDialog(
         {
             iconCls: 'icon-person',
-            title: sysDisplayName + '的个人资料',
-            width: 550,
-            height: 400,
+            title: sysLoginName + '的个人资料',
+            width: 500,
+            height: 300,
             href: HtmlTemplate.SelfInfo,
             onLoad: function () {
                 $.hAjax(
@@ -456,20 +450,20 @@ function fnShowSelfInfo() {
                    type: 'GET',
                    cache: false,
                    success: function (d) {
-                       objPerson = d;
+                       var userInfo = JSON.parse(d);
                        var $box = $('#wrap-personInfo');
-                       if (d.ImageUrl) {
-                           $box.find('#img_userIcon').attr('src', URL(d.ImageUrl));
+                       if (userInfo.UserIcon) {
+                           $box.find('#img_userIcon').attr('src', URL(userInfo.UserIcon));
                        }
                        var txt = '';
                        var val = null;
-                       for (var item in d) {
-                           val = d[item];
+                       for (var item in userInfo) {
+                           val = userInfo[item];
                            switch (item) {
                                case 'Gender':
                                    txt = val ? val : '男';
                                    break;
-                               case 'RegisterTime':
+                               case 'CreateDate':
                                    txt = ShortDate(val);
                                    break;
                                default:

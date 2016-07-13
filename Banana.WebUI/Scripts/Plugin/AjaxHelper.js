@@ -100,7 +100,7 @@ $(document).ajaxError(function (event, request, settings) {
     if (request.getResponseHeader('X-Requested-SessionOut') == 'true') {
         try {
             // alert('登录超时，需要重新登录'); //页面内多次Ajax 弹窗提示重复
-            if (top.sysDeptID) {
+            if (top.sysUserID) {
                 top.ShowLogin();
             } else { location.href = URL('/Home/Login'); }
             return;
@@ -110,12 +110,12 @@ $(document).ajaxError(function (event, request, settings) {
 
     }
 
-    if (request.getResponseHeader('X-Requested-Logining') == 'true') {
-        // alert('登录超时，需要重新登录'); //页面内多次Ajax 弹窗提示重复
-        alert('本账号在其他地方登录，您被迫下线！');
-        location.href = URL('/Home/Login');
-        return;
-    }
+    //if (request.getResponseHeader('X-Requested-Logining') == 'true') {
+    //    // alert('登录超时，需要重新登录'); //页面内多次Ajax 弹窗提示重复
+    //    alert('本账号在其他地方登录，您被迫下线！');
+    //    location.href = URL('/Home/Login');
+    //    return;
+    //}
 
     if (request.getResponseHeader('X-Requested-UnAuthorized') == 'true') {
         var errorMsg = '<p class="messager-icon messager-error" style="color:red;"></p><h3 style="color:red">你正在尝试，越权操作，请求已被终止！<br>错误代码：' + request.status + '<br /> 错误地址:' + settings.url + '</h3>';

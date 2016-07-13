@@ -158,11 +158,8 @@
     <Content Include="Content\Default\images\se.png" />
     <Content Include="Content\Default\logo_blue.ico" />
     <Content Include="Content\Default\logo_red.ico" />
-    <Content Include="Content\Home\css\desk.css" />
-    <Content Include="Content\Home\css\exam.css" />
     <Content Include="Content\Home\css\index.css" />
     <Content Include="Content\Home\css\login.css" />
-    <Content Include="Content\Home\css\main.css" />
     <Content Include="Content\Home\error.css" />
     <Content Include="Content\Home\font-awesome\css\font-awesome.css" />
     <Content Include="Content\Home\font-awesome\css\font-awesome.min.css" />
@@ -179,16 +176,16 @@
     <Content Include="Content\Home\images\ajax-loader1.gif" />
     <Content Include="Content\Home\images\ajax-loader2.gif" />
     <Content Include="Content\Home\images\app-icon.png" />
-    <Content Include="Content\Home\images\asd2345634.jpg" />
     <Content Include="Content\Home\images\errorbg.jpg" />
     <Content Include="Content\Home\images\graybg.png" />
     <Content Include="Content\Home\images\hong.gif" />
     <Content Include="Content\Home\images\loading.gif" />
-    <Content Include="Content\Home\images\login_bgx.gif" />
-    <Content Include="Content\Home\images\login_m_bg.png" />
+    <Content Include="Content\Home\images\login\beijing.jpg" />
+    <Content Include="Content\Home\images\login\denglukuang.png" />
+    <Content Include="Content\Home\images\login\loginbtn.png" />
+    <Content Include="Content\Home\images\login\logo.png" />
     <Content Include="Content\Home\images\logo.png" />
     <Content Include="Content\Home\images\logobg.png" />
-    <Content Include="Content\Home\images\lv.gif" />
     <Content Include="Content\Home\images\photo.gif" />
     <Content Include="Content\Home\images\site_bg.png" />
     <Content Include="Content\Home\images\switchbtnbg.png" />
@@ -271,6 +268,7 @@
     <Content Include="Content\icons\email.png" />
     <Content Include="Content\icons\expand-all.gif" />
     <Content Include="Content\icons\extSetting.png" />
+    <Content Include="Content\icons\favicon.ico" />
     <Content Include="Content\icons\feed.png" />
     <Content Include="Content\icons\female.png" />
     <Content Include="Content\icons\filesave.png" />
@@ -1287,9 +1285,6 @@
     <Content Include="Areas\User\Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Home.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Areas\User\Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -1297,6 +1292,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\excelTemplate\会员.xls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Home.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

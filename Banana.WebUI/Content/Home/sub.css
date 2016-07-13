@@ -65,9 +65,9 @@ td.th-col { text-align: center; background: #f5f5f5; width: 150px; vertical-alig
 .vitalist { font-size: 18px; }
 .bold { font-weight: 700; }
 .paragraph { height: 150px; }
-.user-infor-pop{padding:25px 5px 5px 5px;margin:0 auto;overflow:hidden;_height:1%;width:430px;}
-.user-infor-pop dt.p-photo { padding:2px;border:1px solid #ccc;width:80px;height:100px;margin:9px 123px 9px 0;float:right;}
-.user-infor-pop dd { float:left;width:215px;line-height:25px;margin:3px 0;}
+.user-infor-pop{padding:25px 5px 5px 5px;margin:0 auto;overflow:hidden;_height:1%;width:450px;}
+.user-infor-pop dt.p-photo { padding:2px;border:1px solid #ccc;width:100px;height:150px;margin:9px 70px 9px 0;float:right;}
+.user-infor-pop dd { float:left;width:215px;line-height:25px;margin:3px 0 0 30px;}
 .user-infor-pop dd b { width:70px;display:inline-block;padding:0 5px;float:left;}
 .user-infor-pop dd span { width:130px;display:inline-block;text-overflow:ellipsis;white-space:nowrap;float:left;}
 #toolbar{ line-height:1px;}

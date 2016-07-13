@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 @using System.Web.Optimization
-
+@using  Banana.Core.Common
 @section headfirst{
     <link href="~/Scripts/Easyui/easyui/themes/icon.css" rel="stylesheet" />
     <link href="~/Scripts/bootstrap-ace/css/ace.min.css" rel="stylesheet" />
@@ -37,7 +37,7 @@
                             <i class="fa fa-user"></i>admin<i class="fa fa-angle-down"></i>
                         </a>
                         <a class="infor-link" href="javascript:void(0);" onclick="fnShowSelfInfo();">
-                            管理员
+                            @ContextHelper.GetLoginName()
                         </a>
                     </li>
                     <li class="show-btns">

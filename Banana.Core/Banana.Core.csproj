@@ -63,6 +63,7 @@
     <Compile Include="Common\ContextStorage.cs" />
     <Compile Include="Common\LogHelper.cs" />
     <Compile Include="Common\Pagetion.cs" />
+    <Compile Include="Common\SessionManager.cs" />
     <Compile Include="Common\SessionUser.cs" />
     <Compile Include="Common\UploadHelper.cs" />
     <Compile Include="Common\Util.cs" />

@@ -19,9 +19,19 @@ namespace Banana.Core.Common
             }
         }
 
-        public string DisplayName { get; set; }
+        public string LoginName { get; set; }
 
-        public string ID { get; set; }
+        public string Id { get; set; }
+
+        public string RealName { get; set; }
+
+        public string Phone { get; set; }
+
+        public string Email { get; set; }
+
+        public string UserIcon { get; set; }
+
+        public DateTime CreateDate { get; set; }
 
         public bool IsSuperAdmin
         {
@@ -31,7 +41,7 @@ namespace Banana.Core.Common
             }
         }
 
-        public string LoginName { get; set; }
+      
 
       
        

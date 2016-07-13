@@ -32,16 +32,22 @@ function loadSonMenu(pid, defaultId, text, type, iconCls, url) {
 
     var sonMideoHtml = "";
     if (pid == "page1") {
-        sonMideoHtml = "<li class='childmenu' text='会员管理' limit='5' url='User/User/Index' iconCls='fa fa-list-alt' pid='5f427b4edf0047db8e259a80b0059fe2' ><a href='javascript:void(0);' style='text-decoration:none'><i class='fa fa-list-alt'></i>会员管理</a></li>"
+        sonMideoHtml = "<li class='childmenu' text='会员管理' limit='5' url='User/User/Index' iconCls='fa fa-list-alt' pid='page11' ><a href='javascript:void(0);' style='text-decoration:none'><i class='fa fa-list-alt'></i>会员管理</a></li>"
                      + "<li>"
                       + "<a href='javascript:void(0);' style='text-decoration:none' class='dropdown-toggle'><i class='fa fa-list-alt'></i>权限管理<b class='fa fa-angle-down'></b></a>"
                        + "<ul class='submenu'>"
-                        + "<li class='childmenu' text='角色授权' limit='5' url='Information/DeptInformation/Design' iconCls='fa fa-list-alt' pid='c391dca2695b436384bf235e3e335cec' ><a href='javascript:void(0);' style='text-decoration:none'><i class='fa fa-list-alt'></i>角色授权</a></li>"
+                        + "<li class='childmenu' text='角色授权' limit='5' url='Information/DeptInformation/Design' iconCls='fa fa-list-alt' pid='page12' ><a href='javascript:void(0);' style='text-decoration:none'><i class='fa fa-list-alt'></i>角色授权</a></li>"
                        + "</ul>"
                      + "</li>";
-    } else {
-        sonMideoHtml = "<li class='childmenu' text='产品管理' limit='5' url='Information/Regulator/Index' iconCls='fa fa-list-alt' pid='5f427b4edf0047db8e259a80b0059fe2' ><a href='javascript:void(0);' style='text-decoration:none'><i class='fa fa-list-alt'></i>产品管理</a></li>"           
     }
+
+    if (pid == "page2") {
+
+        sonMideoHtml = "<li class='childmenu' text='产品管理' limit='5' url='Information/Regulator/Index' iconCls='fa fa-list-alt' pid='page21' ><a href='javascript:void(0);' style='text-decoration:none'><i class='fa fa-list-alt'></i>产品管理</a></li>"           
+    }
+
+
+
     $('#ul_menuTree').html(sonMideoHtml);
     bindMedioClick();//绑定菜单点击事件
 

@@ -16,7 +16,7 @@ namespace Banana.Core.Common
         //带添加
         public static SessionUser GetCurrentUser()
         {
-            return new SessionUser();
+            return SessionManager.Get<SessionUser>(SessionManager.UserKey);
         }
 
 
@@ -53,13 +53,13 @@ namespace Banana.Core.Common
         public static string GetUserID()
         {
             SessionUser currentUser = GetCurrentUser();
-            return ((currentUser == null) ? "" : currentUser.ID);
+            return ((currentUser == null) ? "" : currentUser.Id);
         }
 
         public static string GetUserName()
         {
             SessionUser currentUser = GetCurrentUser();
-            return ((currentUser == null) ? "" : currentUser.DisplayName);
+            return ((currentUser == null) ? "" : currentUser.LoginName);
         }
 
          
@@ -80,5 +80,9 @@ namespace Banana.Core.Common
             HttpContext.Current.Session["CURRENT_USER"] = user;
         }
 
+        public static bool IsLogin()
+        {
+            return (GetCurrentUser() != null);
+        }
     }
 }

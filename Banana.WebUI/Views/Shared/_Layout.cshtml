@@ -36,7 +36,9 @@
         function URL(path) {
             return '@Url.Content("~/")' + path.replace(/^\//, '');
         };
-
+        //当前登录用户信息
+        var sysLoginName = "@ContextHelper.GetLoginName()";
+        var sysUserID = "@ContextHelper.GetUserID()";
     </script>
     @RenderSection("head", false)
 </body>

@@ -35,10 +35,17 @@ namespace Banana.WebUI.Areas.User.Controllers
             return JSONResult(result);
         }
 
+        public ActionResult Edit(UserInfo userInfo)
+        {
+            AjaxReturn result = server.Edit(userInfo);
+            return JSONResult(result);
+        }
+
         [HttpPost]
         public ActionResult Delete(string ids)
         {
             AjaxReturn result = server.Deletes(ids);
+           
             return JSONResult(result);
         }
 

@@ -16,7 +16,7 @@ filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#2486cf', endC
 height:56px;
 }
 .logo-wrap { background:url(../images/logobg.png) no-repeat;width:814px;height:56px;float:left;color:#fff;}
-.logo { background:url(../images/logo.png) no-repeat;height:56px;margin:0 8px 0 10px;padding-left:45px;}
+.logo { background:url(../images/logo.png) no-repeat 0 center;height:56px; width: 411px;margin:0 8px 0 10px;padding-left:45px;}
 .sys-main-name { font-size:22px;line-height:56px;letter-spacing:1px;}
 .sys-sub-name { font-size:16px;}
 .header-options {float:right;text-align:right;position:absolute;right:0; }

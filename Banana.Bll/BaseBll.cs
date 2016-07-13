@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Banana.Bll
 {
-    public abstract class BaseBll
+    public abstract class BaseBll<T>
     {
         public static DbHelper db = null;
      
@@ -48,7 +48,7 @@ namespace Banana.Bll
         /// 获取操作表内所有数据
         /// </summary>
         /// <returns></returns>
-        public DataTable GetAllData()
+        public DataTable GetDataTable()
         {
             DataTable dt = null;
             try
@@ -64,7 +64,28 @@ namespace Banana.Bll
             return dt;
         }
 
-        public AjaxReturn Add<TEntity>(TEntity t)
+        public List<T> GetList()
+        {
+            List<T> list = new List<T>();
+            try
+            {
+
+                string sql = string.Format("select * from {0} where IsDel = 0", TableName);
+                var cmd = db.GetSqlStringCommond(sql);
+                DataTable dt = db.ExecuteDataTable(cmd);
+                if (dt != null)
+                {
+                    list = ERTools.GetList<T>(dt);
+                }
+            }
+            catch (Exception e)
+            {
+                LogHelper.LogError(e.Message);
+            }
+            return list;
+        }
+
+        public AjaxReturn Add(T t)
         {
             AjaxReturn result = new AjaxReturn();
             try
@@ -119,7 +140,7 @@ namespace Banana.Bll
             return result;
         }
 
-        public AjaxReturn Edit<TEntity>(TEntity t, List<string> paramExclude = null)
+        public AjaxReturn Edit(T t, List<string> paramExclude = null)
         {
             AjaxReturn result = new AjaxReturn();
             try
@@ -181,7 +202,7 @@ namespace Banana.Bll
             return result;
         }
 
-        public AjaxReturn Delete(String ids)
+        public AjaxReturn Delete(string ids)
         {
             AjaxReturn result = new AjaxReturn();
             Trans trans = new Trans();
@@ -215,6 +236,23 @@ namespace Banana.Bll
             }
             result.SetMessage("删除成功", "删除失败");
             return result;
+        }
+
+        public T GetEntity(string Id)
+        {
+            T t = default(T);
+            try
+            {
+                string sql = string.Format("select * from {0} where Id ='{1}'", TableName, Id);
+                DataTable dt = db.ExecuteDataTable(sql);
+                t = ERTools.GetFirst<T>(dt);
+            }
+            catch (Exception e)
+            {
+                WriteExceptionLog(e);
+            }
+
+            return t;
         }
 
         public DbType ConvertDbType(Type type)
@@ -286,18 +324,22 @@ namespace Banana.Bll
           
         }
 
-        public List<string> GetFileds<TEntity>()
+        public List<string> GetFileds()
         {
             List<string> list = new List<string>();
-            TEntity t = Activator.CreateInstance<TEntity>();
+            T t = Activator.CreateInstance<T>();
             PropertyInfo[] propertypes = t.GetType().GetProperties();
             foreach (PropertyInfo pro in propertypes)
             {
                list.Add( pro.Name);
             }
-
             return list;
         }
 
+
+        public SessionUser GetCurrentUser()
+        {
+          return  ContextHelper.GetCurrentUser();
+        }
     }
 }

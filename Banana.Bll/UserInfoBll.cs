@@ -13,7 +13,7 @@ using System.Web;
 
 namespace Banana.Bll
 {
-    public class UserInfoBll : BaseBll
+    public class UserInfoBll : BaseBll<UserInfo>
     {
         private static string TABLE_NAME = "Ba_UserInfo";
 
@@ -35,9 +35,8 @@ namespace Banana.Bll
         {
             List<UserInfo> list = new List<UserInfo>();
             try
-            {
-                DataTable dt = GetAllData();
-                var data = ERTools.GetList<UserInfo>(dt);
+            {      
+                var data = GetList();
                 var totalData = data
                     .Where(x => x.LoginName.Contains(search) || x.RealName.Contains(search))
                     .OrderByDescending(x => x.CreateDate);
@@ -59,6 +58,7 @@ namespace Banana.Bll
         /// <returns></returns>
         public AjaxReturn Add(UserInfo userInfo)
         {
+            userInfo.Password = Util.ComputeMD5(userInfo.Password);
             AjaxReturn result = base.Add(userInfo);
             return result;
         }
@@ -70,7 +70,9 @@ namespace Banana.Bll
         /// <returns></returns>
         public AjaxReturn Edit(UserInfo userInfo)
         {
-            AjaxReturn result = base.Edit(userInfo);          
+            List<string> list = new List<string>();
+            list.Add("Password");
+            AjaxReturn result = base.Edit(userInfo, list);          
             return result;
         }
 
@@ -103,10 +105,11 @@ namespace Banana.Bll
                 userId = GetGUID();
             }
             string basePath = BaseConfig.GetValue("UserImgUrl");
-            string url = basePath + userId + Path.GetExtension(file.FileName);
+            string fileName = userId + Path.GetExtension(file.FileName);
+            string url = basePath + fileName;
             string filePath = Server.MapPath("~" + url);
             UploadHelper.UploadFile(filePath, file);
-            return url + "," + userId;
+            return url + "," + fileName;
         }
 
         /// <summary>
@@ -118,8 +121,7 @@ namespace Banana.Bll
             try
             {
                 //获取数据源
-                DataTable dt = GetAllData();
-                List<UserInfo> list = ERTools.GetList<UserInfo>(dt);
+                List<UserInfo> list =GetList();
 
                 list.Where(x => x.LoginName.Contains(search) || x.RealName.Contains(search));
                 //获取文件模板路径
@@ -157,5 +159,51 @@ namespace Banana.Bll
             }
         }
 
+        public AjaxReturn Login(string loginName, string loginPass)
+        {
+            AjaxReturn result = new AjaxReturn();
+            result.success = false;
+          
+
+            if (string.IsNullOrEmpty(loginName) || string.IsNullOrEmpty(loginPass))
+            {
+                result.message = "账号或密码不能为空！";
+                return result;
+            }
+            UserInfo userInfo = GetList().Where(x => x.LoginName.Equals(loginName)).FirstOrDefault();
+            if (userInfo == null)
+            {
+                result.message = "账号不存在！";
+                return result;
+            }
+           
+            if (!userInfo.Password.Equals(Util.ComputeMD5(loginPass)))
+            {
+                result.message = "密码错误！";
+                return result;
+            } 
+
+
+            SessionUser sessionUser = new SessionUser();
+            sessionUser.Id = userInfo.Id;
+            sessionUser.LoginName = userInfo.LoginName;
+            sessionUser.RealName = userInfo.RealName;
+            sessionUser.Phone = userInfo.Phone;
+            sessionUser.UserIcon = userInfo.UserIcon;
+            sessionUser.Email = userInfo.Email;
+            sessionUser.CreateDate = userInfo.CreateDate;
+           
+            result.data = sessionUser;
+            result.success = true;
+            result.message = "登录成功!";
+
+            return result;
+        }
+
+        public SessionUser GetDetail()
+        {
+            SessionUser sessionUser = GetCurrentUser();
+            return sessionUser;
+        }
     }
 }

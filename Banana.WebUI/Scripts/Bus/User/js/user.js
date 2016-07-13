@@ -114,7 +114,16 @@ var CRUD = {
                     height: iDialogH,
                   //  cache: true,
                     onLoad: function () {
+                        $h.find("#rpwd").validatebox({
+                            required: false
+                        });
+                        $h.find("#pwd").validatebox({
+                            required: false
+                        });
+                        $h.find("#cssPwd").hide();
+                        $h.find("#cssRpwd").hide();
                         $h.find('form').form('load', row);
+                        initAdd($h);
                     },
                     submit: function () {
                         var eID;
@@ -182,8 +191,18 @@ function getDefaultParams() {
 };
 
 function initAdd($h) {
+   
+    var imgId = $h.find("#userIcon").val();
+    var userId = "";
+    if (imgId == "") {
+        userId = "0";
+        $h.find('#imgupload').attr('src', URL('/DefaultImg.jpg'));
+    } else {
+        $h.find('#imgupload').attr('src', URL('/upload/user/') + imgId);
+        userId = imgId.substring(0, imgId.indexOf("."))
+    }
 
-    $h.find('#imgupload').attr('src', URL('/DefaultImg.jpg'));
+    
 
     $h.find('#imgupload')
        .attr('title', '单击上传图像')
@@ -198,7 +217,7 @@ function initAdd($h) {
                {
                    'auto': true,
                    'uploader': ActionURL.SaveUserImg,
-                   'formData': { 'userId': "0" }, //传参数'fileTypeExts': AllowDocumentType,
+                   'formData': { 'userId': userId }, //传参数'fileTypeExts': AllowDocumentType,
                    'fileTypeExts': '*.jpg;*.jpge;*.gif;*.png;',
                    'fileSizeLimit': '2MB',
                    'onUploadSuccess': function (file, data, response) {
@@ -209,6 +228,7 @@ function initAdd($h) {
                });
        });
 }
+
 
 //右键菜单
 function onRowContextMenu(e, rowIndex, rowData) {

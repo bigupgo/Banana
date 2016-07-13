@@ -1,18 +1,144 @@
-body, html, div, p, ul, li, dl, dd, dt,h1,h2,h3,h4 { padding:0;margin:0;}
-html { height:100%;width:100%;}
-ul, li { list-style-type:none;}
-* { font-family:"Microsoft YaHei","宋体",Arial;}
-body { background:url(../images/login/bg.jpg) no-repeat center center;height:100%;width:100%;overflow:hidden;}
-.wrap { height:100%;width:100%;float:left;}
-.title { background:url(../images/login/tit.png) no-repeat;width:650px;height:42px;margin:6% auto 30px;position:relative;z-index:9999;}
-.mid { width:1024px;margin:0 auto;position:relative;padding-top:75px;}
-.pic { background:url(../images/login/pic1.png) no-repeat;width:1006px;height:485px;position:absolute;left:-120px;top:-30px;}
-.clear { clear:both;}
-.login-box { background:url(../images/login/lgbg.png);border:1px solid #9ec3de;padding:60px 35px 25px;width:240px;position:relative;float:right;margin:-20px 40px 0 0;box-shadow:0 0 10px rgba(0,0,0,0.3);border-radius:8px;}
-.login-tag { background:url(../images/login/lg.png) no-repeat;width:249px;height:38px;position:absolute;left:10px;top:18px;line-height:38px;color:#fff;font-size:19px;padding-left:15px;letter-spacing:2px;font-weight:400;}
-.login-ul { width:240px;margin:10px auto;}
-.login-ul li{ height:40px;line-height:40px;width:240px;margin:12px 0;overflow:hidden;border-bottom:1px solid #94b7d7;}
-.login-ul li input { height:40px;line-height:40px;font-size:14px;color:#fff;padding:0 4px 0 40px;border:0 none;outline:none;background:transparent;width:190px;}
-.login-ul li input.u { background:url(../images/login/user.png) no-repeat 8px center;}
-.login-ul li input.p { background:url(../images/login/key.png) no-repeat 9px center;}
-.login-ul li input.lg-btn { background:#77a936;color:#fff;font-size:22px;text-align:center;width:240px;padding:0;cursor:pointer;height:40px;line-height:40px;}
+
+html, body, h1, h2, h3, h4, h5, h6, form, fieldset, legend, div, p, span, dl, dt, dd, ul, ol, li, blockquote, pre, q, cite, input,button {margin:0; padding:0;outline:0 none; list-style:none;}
+a:link, a:visited, ins, del {text-decoration:none;}
+a,input{/*blr:expression(this.onFocus=this.blur());*/outline: none;}
+a:focus,input:focus{-moz-outline-style: none; }
+a:hover, a:active {text-decoration:none;outline:0 none;}
+*:focus{outline-style: none;}
+button::-moz-focus-inner{border-color:transparent!important;}
+a img, fieldset {border:0 none;}
+ul, ol {list-style-type:none;}
+h1, h2, h3, h4, h5, h6, strong, em, cite, address, sup, sub, th {font-weight:normal; font-style:normal; vertical-align:auto; }
+legend {display:none;}
+table {border-collapse:collapse;}
+textarea {resize:none;}
+input {/*background-color:#FFFFFF;*/border:none;}
+select{font-size:12px;}
+input, textarea{font-family:Helvetica,sans-serif;}
+input, textarea, button {font-size:100%;}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+.clearfix { display: inline-table; }
+/* Hides from IE-mac \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* End hide from IE-mac */
+*html{ background-image:url(about:blank); background-attachment:fixed; /* 解决固定层在IE6下闪的问题 */}
+
+
+/* line 2, login.less */
+html {
+  overflow: hidden;
+}
+/* line 11, login.less */
+body {
+  background-color: #499df3;
+  font-family: "Lucida Grande", Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, "微软雅黑", "microsoft yahei", msyh, yahei, "simsun", sans-serif;
+  font-weight: normal;
+  background-position: center 0;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+/* line 21, login.less */
+.beijing {
+  position: fixed;
+  top: 0;
+}
+/* line 27, login.less */
+.login {
+  position: fixed;
+  right: 50px;
+  width: 504px;
+  height: 246px;
+  background-image: url(../images/login/denglukuang.png);
+  background-repeat: no-repeat;
+  margin-top: 0%;
+  background-position: center 0;
+}
+/* line 39, login.less */
+.login .logo {
+  position: absolute;
+  top: -120px;
+  left: -230px;
+}
+/* line 46, login.less */
+.login .denglukuang {
+  position: absolute;
+  top: 95px;
+  width: 370px;
+  left: 75px;
+}
+/* line 54, login.less */
+.login .login-line {
+  margin-top: 10px;
+  height: 40px;
+  line-height: 40px;
+}
+/* line 60, login.less */
+.login .line-block {
+  display: inline-block;
+}
+/* line 63, login.less */
+.login .login-text {
+  color: #ffffff;
+  width: 55px;
+}
+/* line 67, login.less */
+.login .login-input {
+  width: 170px;
+  height: 20px;
+  line-height: 20px;
+  padding: 0 5px;
+  border: none;
+  background-color: transparent;
+}
+/* line 75, login.less */
+.login .login-checkbox {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+/* line 81, login.less */
+.login .checkbox-text {
+  display: inline-block;
+  color: #272727;
+  font-size: 13px;
+}
+/* line 88, login.less */
+.login .login-button {
+  position: absolute;
+  display: block;
+  width: 95px;
+  height: 94px;
+  background-image: url(../images/login/loginbtn.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  top: 8px;
+  right: 0px;
+  cursor: pointer;
+}
+/* line 101, login.less */
+.login .error {
+  display: inline-block;
+  padding-left: 20px;
+  padding-top: 0px;
+  color: #ff3217;
+  font-size: 12px;
+}
+/* line 111, login.less */
+.fo {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  color: #fff;
+  height: 40px;
+}
