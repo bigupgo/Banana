@@ -30,7 +30,7 @@ namespace Banana.Core.Common
             catch (Exception e)
             {
                 result = false;
-                LogHelper.LogError(e.Message);
+               // LogHelper.LogError(e.Message);
             }
 
             return result;

@@ -1,4 +1,5 @@
 ﻿using Banana.Core;
+using Banana.Core.Base;
 using Banana.Core.Common;
 using Banana.Core.Db;
 using Banana.Model;
@@ -13,7 +14,7 @@ using System.Web;
 
 namespace Banana.Bll
 {
-    public class UserInfoBll : BaseBll<UserInfo>
+    public class UserInfoBll : BaseSqlBll<UserInfo>
     {
         private static string TABLE_NAME = "Ba_UserInfo";
 

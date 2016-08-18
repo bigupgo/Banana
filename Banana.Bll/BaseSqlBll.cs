@@ -1,21 +1,18 @@
-﻿using Banana.Core;
-using Banana.Core.Common;
+﻿using Banana.Core.Base;
 using Banana.Core.Db;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Banana.Bll
 {
-    public abstract class BaseBll<T>
+    public abstract class BaseSqlBll<T>
     {
         public static DbHelper db = null;
-     
-        public BaseBll()
+
+        public BaseSqlBll()
         {
             db = new DbHelper();
             this.SetTableName();

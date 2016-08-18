@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data.Objects.DataClasses;
 
-namespace Banana.Core
+namespace Banana.Core.Base
 {
     public class JSON
     {
@@ -23,8 +23,8 @@ namespace Banana.Core
             {
                 List<string> excludedProperties = new List<string> { "EntityKey", "EntityState", "$id" };
                 JsonSerializerSettings settings = new JsonSerializerSettings();
-                settings.ReferenceLoopHandling=ReferenceLoopHandling.Ignore;
-                settings.ContractResolver =new ExcludePropertiesContractResolver(excludedProperties);
+                settings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                settings.ContractResolver = new ExcludePropertiesContractResolver(excludedProperties);
                 settings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
                 return JsonConvert.SerializeObject(obj, Formatting.Indented, settings);
             }
@@ -51,7 +51,7 @@ namespace Banana.Core
             JsonSerializerSettings settings = new JsonSerializerSettings();
             settings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             settings.ContractResolver = new ExcludePropertiesContractResolver(excludedProperties);
-            settings.DateFormatHandling =DateFormatHandling.IsoDateFormat;
+            settings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
             return JsonConvert.SerializeObject(obj, Formatting.Indented, settings);
         }
     }

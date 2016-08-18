@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Banana.Core.Common
+namespace Banana.Core.Base
 {
-    public static class Util
+    public class Util
     {
         public static string ComputeMD5(string src)
         {
@@ -72,7 +69,7 @@ namespace Banana.Core.Common
             byte[] bytes = Encoding.UTF8.GetBytes(aeskey);
             byte[] buffer2 = Convert.FromBase64String(str);
             RijndaelManaged managed = new RijndaelManaged();
-            managed.Key=bytes;
+            managed.Key = bytes;
             managed.Mode = CipherMode.ECB;
             managed.Padding = PaddingMode.PKCS7;
             byte[] buffer3 = managed.CreateDecryptor().TransformFinalBlock(buffer2, 0, (int)buffer2.Length);
@@ -233,8 +230,8 @@ namespace Banana.Core.Common
                 int num2 = Convert.ToInt32(pToDecrypt.Substring((int)(i * 2), 2), 0x10);
                 buffer[i] = (byte)((byte)num2);
             }
-            provider.Key=Encoding.ASCII.GetBytes(sKey);
-            provider.IV=Encoding.ASCII.GetBytes(sKey);
+            provider.Key = Encoding.ASCII.GetBytes(sKey);
+            provider.IV = Encoding.ASCII.GetBytes(sKey);
             MemoryStream stream = new MemoryStream();
             CryptoStream stream2 = new CryptoStream(stream, provider.CreateDecryptor(), CryptoStreamMode.Write);
             stream2.Write(buffer, 0, (int)buffer.Length);
@@ -251,8 +248,8 @@ namespace Banana.Core.Common
             }
             DESCryptoServiceProvider provider = new DESCryptoServiceProvider();
             byte[] bytes = Encoding.Default.GetBytes(pToEncrypt);
-            provider.Key=Encoding.ASCII.GetBytes(sKey);
-            provider.IV=Encoding.ASCII.GetBytes(sKey);
+            provider.Key = Encoding.ASCII.GetBytes(sKey);
+            provider.IV = Encoding.ASCII.GetBytes(sKey);
             MemoryStream stream = new MemoryStream();
             CryptoStream stream2 = new CryptoStream(stream, provider.CreateEncryptor(), CryptoStreamMode.Write);
             stream2.Write(bytes, 0, (int)bytes.Length);

@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
+﻿using System.Web;
 
-namespace Banana.Core.Common
+namespace Banana.Core.Base
 {
     public class ContextHelper
     {
         private const string default_skin = "bootstrap";
         private const string key_user = "CURRENT_USER";
 
-      
+
         //带添加
         public static SessionUser GetCurrentUser()
         {
@@ -25,7 +20,7 @@ namespace Banana.Core.Common
             SessionUser currentUser = GetCurrentUser();
             return ((currentUser == null) ? "" : currentUser.LoginName);
         }
-   
+
         public static string GetSkin()
         {
             HttpCookieCollection cookies = HttpContext.Current.Request.Cookies;
@@ -62,14 +57,14 @@ namespace Banana.Core.Common
             return ((currentUser == null) ? "" : currentUser.LoginName);
         }
 
-         
+
         public static bool IsSuperAdmin()
         {
             SessionUser currentUser = GetCurrentUser();
             return ((currentUser != null) && currentUser.IsSuperAdmin);
         }
 
-     
+
         public static void RemoveCurrentUser()
         {
             HttpContext.Current.Session.Remove("CURRENT_USER");

@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4E84D883-0195-4674-AC58-5C588DBBF3F7}</ProjectGuid>
+    <ProjectGuid>{3AFA17B6-DF24-4E74-B762-DD37BE8D211F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Banana.Bll</RootNamespace>
-    <AssemblyName>Banana.Bll</AssemblyName>
+    <RootNamespace>Banana.DBModel</RootNamespace>
+    <AssemblyName>Banana.DBModel</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,7 +20,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,38 +28,22 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Banana.Bll.Base">
-      <HintPath>..\Banana.Base.Dll\Banana.Bll.Base.dll</HintPath>
-    </Reference>
     <Reference Include="Banana.Core.Base">
       <HintPath>..\Banana.Base.Dll\Banana.Core.Base.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="ExcelReport, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ExcelReport.1.5.2.0\lib\net40\ExcelReport.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\packages\ExcelReport.1.5.2.0\content\Libraries\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI">
-      <HintPath>..\packages\ExcelReport.1.5.2.0\content\Libraries\NPOI.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI.OOXML">
-      <HintPath>..\packages\ExcelReport.1.5.2.0\content\Libraries\NPOI.OOXML.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI.OpenXml4Net">
-      <HintPath>..\packages\ExcelReport.1.5.2.0\content\Libraries\NPOI.OpenXml4Net.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI.OpenXmlFormats">
-      <HintPath>..\packages\ExcelReport.1.5.2.0\content\Libraries\NPOI.OpenXmlFormats.dll</HintPath>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Web" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -69,19 +51,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseSqlBll.cs" />
-    <Compile Include="UserInfoBll.cs" />
+    <Compile Include="Banana.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Banana.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryFactoryExt.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Banana.Core\Banana.Core.csproj">
-      <Project>{296f6fa0-f4d8-48e5-aed1-36aa34a78635}</Project>
-      <Name>Banana.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Banana.Model\Banana.Model.csproj">
-      <Project>{ab531ccc-0bb4-4daf-a29f-e156c2e35fd2}</Project>
-      <Name>Banana.Model</Name>
-    </ProjectReference>
+    <EntityDeploy Include="Banana.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Banana.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Banana.edmx.diagram">
+      <DependentUpon>Banana.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

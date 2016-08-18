@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-
-using System.Threading.Tasks;
 using System.Xml;
 
-
-namespace Banana.Core.Common
+namespace Banana.Core.Base
 {
     public class BaseConfig
     {
@@ -20,7 +17,7 @@ namespace Banana.Core.Common
             }
         }
         public static void Init()
-        {     
+        {
             XmlTextReader reader = new XmlTextReader(AppDomain.CurrentDomain.BaseDirectory + "App_Data/config/base.config");
             XmlDocument document = new XmlDocument();
             document.Load(reader);

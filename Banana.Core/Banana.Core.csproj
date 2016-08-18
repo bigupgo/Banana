@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Banana.Base.Dll\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,18 +33,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net.1.2.13.0.Fakes">
-      <HintPath>FakesAssemblies\log4net.1.2.13.0.Fakes.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -57,22 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AjaxReturn.cs" />
-    <Compile Include="Common\BaseConfig.cs" />
-    <Compile Include="Common\ContextHelper.cs" />
-    <Compile Include="Common\ContextStorage.cs" />
-    <Compile Include="Common\LogHelper.cs" />
-    <Compile Include="Common\Pagetion.cs" />
-    <Compile Include="Common\SessionManager.cs" />
-    <Compile Include="Common\SessionUser.cs" />
     <Compile Include="Common\UploadHelper.cs" />
-    <Compile Include="Common\Util.cs" />
-    <Compile Include="ContextManager.cs" />
     <Compile Include="Db\BLLBase.cs" />
     <Compile Include="Db\DBHelper.cs" />
     <Compile Include="Db\ERTools.cs" />
-    <Compile Include="ExcludePropertiesContractResolver.cs" />
-    <Compile Include="JSON.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

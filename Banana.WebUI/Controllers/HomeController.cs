@@ -1,10 +1,6 @@
 ﻿using Banana.Bll;
-using Banana.Core;
-using Banana.Core.Common;
-using Banana.Model;
+using Banana.Core.Base;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -123,12 +119,25 @@ namespace Banana.WebUI.Controllers
             return Content(JSON.Serialize(data));
         }
 
+        /// <summary>
+        /// 添加验证用户名是否重复
+        /// </summary>
+        /// <param name="loginName"></param>
+        /// <returns></returns>
+        [HttpPost]
         public string IsAddHave(string loginName)
-        {
+        { 
             var service = new UserInfoBll();
             return service.IsAddHaveUser(loginName);
         }
 
+        /// <summary>
+        /// 修改验证用户名是否重复
+        /// </summary> 
+        /// <param name="loginName"></param>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        [HttpPost]
         public string IsEditHave(string loginName, string Id)
         {
             var service = new UserInfoBll();
