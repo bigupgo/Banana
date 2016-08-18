@@ -17,6 +17,8 @@ namespace Banana.Bll.Base
         public RepositoryFactory RepositoryFactory = new RepositoryFactory();
         public BaseBLL()
         {
+            this.SetRepository();
+            this.SetEntityName();
         }
 
         protected string GetGUID()
