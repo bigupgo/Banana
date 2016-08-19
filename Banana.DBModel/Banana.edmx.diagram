@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8c8906680e974368a5d9ec81d2abd886" Name="关系图1">
-        <EntityTypeShape EntityType="BananaModel.Ba_UserInfo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="9b240a5d321f49e6a07fbc5b96bfbbb8" Name="关系图1">
+        <EntityTypeShape EntityType="BananaModel.Ba_UserInfo" Width="1.5" PointX="0.66619775475291432" PointY="21.170659492337453" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

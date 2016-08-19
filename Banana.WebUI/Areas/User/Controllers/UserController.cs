@@ -20,8 +20,6 @@ namespace Banana.WebUI.Areas.User.Controllers
         [HttpPost]
         public ActionResult GetList(Pagetion pagetion, string search)
         {
-            TestBll bb = new TestBll();
-            bb.GetlistTest();
             List<UserInfo> list = new List<UserInfo>();
             list = server.GetList(pagetion, search);
             return GridResult(list, pagetion.total);

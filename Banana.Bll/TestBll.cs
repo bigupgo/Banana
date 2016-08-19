@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Banana.Bll.Base;
+﻿using Banana.Bll.Base;
 using Banana.DBModel;
 
 namespace Banana.Bll
@@ -18,19 +13,12 @@ namespace Banana.Bll
 
         public override void SetRepository()
         {
-            Repository = RepositoryFactory.GetBusinessRepository<Ba_UserInfo>();
+           Repository = RepositoryFactory.GetBusinessRepository<Ba_UserInfo>();
         }
 
         public void GetlistTest()
         {
-            try
-            {
-                var data = Repository.GetList();
-            }
-            catch (Exception e)
-            {
-            }
-          
+            var data = Repository.GetList();
         }
     }
 }
