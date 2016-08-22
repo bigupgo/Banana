@@ -39,24 +39,8 @@
     <Reference Include="Banana.Core.Base">
       <HintPath>..\Banana.Base.Dll\Banana.Core.Base.dll</HintPath>
     </Reference>
-    <Reference Include="ExcelReport, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ExcelReport.1.5.2.0\lib\net40\ExcelReport.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\packages\ExcelReport.1.5.2.0\content\Libraries\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI">
-      <HintPath>..\packages\ExcelReport.1.5.2.0\content\Libraries\NPOI.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI.OOXML">
-      <HintPath>..\packages\ExcelReport.1.5.2.0\content\Libraries\NPOI.OOXML.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI.OpenXml4Net">
-      <HintPath>..\packages\ExcelReport.1.5.2.0\content\Libraries\NPOI.OpenXml4Net.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI.OpenXmlFormats">
-      <HintPath>..\packages\ExcelReport.1.5.2.0\content\Libraries\NPOI.OpenXmlFormats.dll</HintPath>
+    <Reference Include="ExcelReport">
+      <HintPath>..\Banana.Base.Dll\ExcelReport.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
