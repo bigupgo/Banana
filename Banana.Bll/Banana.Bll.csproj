@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Banana.Dll\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -36,8 +36,19 @@
     <Reference Include="Banana.Bll.Base">
       <HintPath>..\Banana.Base.Dll\Banana.Bll.Base.dll</HintPath>
     </Reference>
+    <Reference Include="Banana.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Banana.Dll\Banana.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Banana.Core.Base">
       <HintPath>..\Banana.Base.Dll\Banana.Core.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Banana.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Banana.Dll\Banana.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Banana.Model.Base">
+      <HintPath>..\Banana.Base.Dll\Banana.Model.Base.dll</HintPath>
     </Reference>
     <Reference Include="ExcelReport">
       <HintPath>..\Banana.Base.Dll\ExcelReport.dll</HintPath>
@@ -58,19 +69,12 @@
     <Compile Include="TestBll.cs" />
     <Compile Include="UserInfoBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Wweixin\WeixinApiDispatch.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Banana.Core\Banana.Core.csproj">
-      <Project>{296f6fa0-f4d8-48e5-aed1-36aa34a78635}</Project>
-      <Name>Banana.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Banana.DBModel\Banana.DBModel.csproj">
       <Project>{3afa17b6-df24-4e74-b762-dd37be8d211f}</Project>
       <Name>Banana.DBModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Banana.Model\Banana.Model.csproj">
-      <Project>{ab531ccc-0bb4-4daf-a29f-e156c2e35fd2}</Project>
-      <Name>Banana.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Banana.Model
+namespace Banana.Model.Base
 {
     public class BaseModel
     {
