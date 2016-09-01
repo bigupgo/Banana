@@ -11,7 +11,7 @@ using System.Text;
 using System.Web;
 using System.Web.Security;
 
-namespace Banana.WebUI
+namespace Banana.Weixin
 {
     /// <summary>
     /// WeixinRequest 的摘要说明

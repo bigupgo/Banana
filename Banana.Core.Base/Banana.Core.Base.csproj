@@ -65,6 +65,7 @@
     <Compile Include="SessionManager.cs" />
     <Compile Include="SessionUser.cs" />
     <Compile Include="Util.cs" />
+    <Compile Include="Weixin\HttpHelper.cs" />
     <Compile Include="Weixin\WeixinCommon.cs" />
     <Compile Include="Weixin\XmlHelper.cs" />
   </ItemGroup>

@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+}
+@using Banana.Core.Base
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>微信开发</title>
+    @Scripts.Render("~/bundles/jquery")
+    <!--微信基础js -->
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <!--使用摇一摇周边功能，请引入 -->
+    @* <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>*@
+    <script type="text/javascript">
+        var appId = '@BaseConfig.GetValue("AppID")';
+        var appsecret = '@BaseConfig.GetValue("AppSecret")';
+    </script>
+    <script src="~/Scripts/jqueryStorage.js"></script>
+    <script src="~/Scripts/weixin/weixinHttpUrl.js"></script>
+    <script src="~/Scripts/weixin/weixinUtil.js"></script>
+    @RenderSection("head", false)
+</head>
+<body>
+    @RenderBody()
+</body>
+</html>

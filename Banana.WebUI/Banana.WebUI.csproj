@@ -159,9 +159,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WeixinRequest.ashx.cs">
-      <DependentUpon>WeixinRequest.ashx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\excelTemplate\会员.xml" />
@@ -1313,9 +1310,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Home.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="WeixinRequest.ashx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
