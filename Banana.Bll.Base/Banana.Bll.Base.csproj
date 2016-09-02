@@ -52,6 +52,7 @@
     <Compile Include="BaseBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Weixin\AuthBLL.cs" />
+    <Compile Include="Weixin\WxBaseBll.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

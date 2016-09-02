@@ -49,8 +49,10 @@
     <Compile Include="Weixin\AuthModel.cs" />
     <Compile Include="Weixin\Base\BaseMessage.cs" />
     <Compile Include="Weixin\Enum\ResponseMsgType.cs" />
+    <Compile Include="Weixin\Enum\WxUrl.cs" />
     <Compile Include="Weixin\ResponseNews.cs" />
     <Compile Include="Weixin\ResponseText.cs" />
+    <Compile Include="Weixin\WeixinModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

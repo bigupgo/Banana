@@ -39,18 +39,38 @@
 
 var wxUtil = {
     getAccessToken: function () {
-        var url = wxUrl.Token(appId, appId);
+        var url = URL("/Home/GetAccessToken");
         $.ajax({
             url: url,
-            type: "get",
-            dataType: "json",
-            success: function (data) {
-                var accessToken = JSON.parse(data);
-                storageUtils.setParam("token", accessToken);
-                return accessToken;
+            async: false,
+            type: "post",
+            success: function (res) {
+                return res.data;
+            }
+        }); 
+    },
+    getJsapiTicket: function () {
+        var url = URL("/Home/GetJsapiTicket");
+        $.ajax({
+            url: url,
+            async: false,
+            type: "post",
+            success: function (res) {
+                return res.data;
             }
         });
-        
+    },
+    getSignature: function (noncestr, jsapiTicket, timestamp, url) {
+        var url = URL("/Home/GetSignature");
+        $.ajax({
+            url: url,
+            async:false,
+            type: "post",
+            data: { noncestr: noncestr, jsapiTicket: jsapiTicket, timestamp: timestamp, url: timestamp },
+            success: function (res) {
+                return res.data;
+            }
+        });
     }
-
+    
 };

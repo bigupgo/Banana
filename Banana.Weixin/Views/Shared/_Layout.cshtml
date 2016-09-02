@@ -14,8 +14,13 @@
     <!--使用摇一摇周边功能，请引入 -->
     @* <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>*@
     <script type="text/javascript">
+        function URL(path) {
+            return '@Url.Content("~/")' + path.replace(/^\//, '');
+          };
         var appId = '@BaseConfig.GetValue("AppID")';
         var appsecret = '@BaseConfig.GetValue("AppSecret")';
+        var noncestr = '@ContextHelper.GetNoncestr(16)';
+        var timestamp = '@ContextHelper.ConvertDateTimeInt(System.DateTime.Now)';
     </script>
     <script src="~/Scripts/jqueryStorage.js"></script>
     <script src="~/Scripts/weixin/weixinHttpUrl.js"></script>

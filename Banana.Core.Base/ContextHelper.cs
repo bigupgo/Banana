@@ -1,4 +1,6 @@
-﻿using System.Web;
+﻿using System;
+using System.Security.Cryptography;
+using System.Web;
 
 namespace Banana.Core.Base
 {
@@ -78,6 +80,43 @@ namespace Banana.Core.Base
         public static bool IsLogin()
         {
             return (GetCurrentUser() != null);
+        }
+
+
+        /// 生成随机字母字符串(数字字母混和)
+        public static string GetNoncestr(int codeCount)
+        {
+            int rep = 0;
+            string str = string.Empty;
+            long num2 = DateTime.Now.Ticks + rep;
+            rep++;
+            Random random = new Random(((int)(((ulong)num2) & 0xffffffffL)) | ((int)(num2 >> rep)));
+            for (int i = 0; i < codeCount; i++)
+            {
+                char ch;
+                int num = random.Next();
+                if ((num % 2) == 0)
+                {
+                    ch = (char)(0x30 + ((ushort)(num % 10)));
+                }
+                else
+                {
+                    ch = (char)(0x41 + ((ushort)(num % 0x1a)));
+                }
+                str = str + ch.ToString();
+            }
+            return str;
+        }
+
+        /// <summary>
+        /// 时间戳转换
+        /// </summary>
+        /// <param name="time"></param>
+        /// <returns></returns>
+        public static int ConvertDateTimeInt(DateTime time)
+        {
+            System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1));
+            return (int)(time - startTime).TotalSeconds;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Banana.Core.Base;
+﻿using Banana.Bll.Weixin;
+using Banana.Core.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,14 +8,13 @@ using System.Web.Mvc;
 
 namespace Banana.Weixin.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : WxBaseController
     {
         //
         // GET: /Home/
 
         public ActionResult Index()
         {
-            BaseConfig.SetValue("AccessToken", "123qw123");
             return View();
         }
 

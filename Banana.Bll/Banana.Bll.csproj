@@ -69,7 +69,8 @@
     <Compile Include="TestBll.cs" />
     <Compile Include="UserInfoBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Wweixin\WeixinApiDispatch.cs" />
+    <Compile Include="Weixin\WeixinApiDispatch.cs" />
+    <Compile Include="Weixin\WeixinBll.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Banana.DBModel\Banana.DBModel.csproj">

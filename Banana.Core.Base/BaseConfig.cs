@@ -33,7 +33,9 @@ namespace Banana.Core.Base
             }
         }
 
-        public static void SetValue(string key, string value)
+
+
+        public static void SetWxValue(string key, string value)
         {
             string url = AppDomain.CurrentDomain.BaseDirectory + "App_Data/config/wxconfig.xml";
             XmlTextReader reader = new XmlTextReader(url);
@@ -46,5 +48,19 @@ namespace Banana.Core.Base
             node.InnerText = value;
             document.Save(url);
         }
+
+        public static string GetWxValue(string key)
+        {
+            string url = AppDomain.CurrentDomain.BaseDirectory + "App_Data/config/wxconfig.xml";
+            XmlTextReader reader = new XmlTextReader(url);
+            XmlDocument document = new XmlDocument();
+            document.Load(reader);
+            reader.Close();
+
+            XmlNode root = document.DocumentElement;
+            XmlNode node = root.SelectSingleNode(key);
+            return node.InnerText;
+        }
+
     }
 }
