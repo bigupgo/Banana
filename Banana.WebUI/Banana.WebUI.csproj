@@ -1239,26 +1239,6 @@
     <Content Include="Scripts\bootstrap-3.3.4-dist\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Scripts\bootstrap-3.3.4-dist\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Scripts\bootstrap-3.3.4-dist\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Scripts\Easyui\easyui\locale\vssver2.scc" />
-    <Content Include="Scripts\Easyui\easyui\plugins\vssver2.scc" />
-    <Content Include="Scripts\Easyui\easyui\themes\black\images\vssver2.scc" />
-    <Content Include="Scripts\Easyui\easyui\themes\black\vssver2.scc" />
-    <Content Include="Scripts\Easyui\easyui\themes\bootstrap\images\vssver2.scc" />
-    <Content Include="Scripts\Easyui\easyui\themes\bootstrap\vssver2.scc" />
-    <Content Include="Scripts\Easyui\easyui\themes\default\images\vssver2.scc" />
-    <Content Include="Scripts\Easyui\easyui\themes\default\vssver2.scc" />
-    <Content Include="Scripts\Easyui\easyui\themes\flat-blue\images\vssver2.scc" />
-    <Content Include="Scripts\Easyui\easyui\themes\gray\images\vssver2.scc" />
-    <Content Include="Scripts\Easyui\easyui\themes\gray\vssver2.scc" />
-    <Content Include="Scripts\Easyui\easyui\themes\icons\vssver2.scc" />
-    <Content Include="Scripts\Easyui\easyui\themes\metro\images\vssver2.scc" />
-    <Content Include="Scripts\Easyui\easyui\themes\metro\vssver2.scc" />
-    <Content Include="Scripts\Easyui\easyui\themes\new-bootstrap\images\vssver2.scc" />
-    <Content Include="Scripts\Easyui\easyui\themes\new\images\vssver2.scc" />
-    <Content Include="Scripts\Easyui\easyui\themes\new\vssver2.scc" />
-    <Content Include="Scripts\Easyui\easyui\themes\red\images\vssver2.scc" />
-    <Content Include="Scripts\Easyui\easyui\themes\super-simple\images\vssver2.scc" />
-    <Content Include="Scripts\Easyui\easyui\themes\vssver2.scc" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_HomeLayout.cshtml" />
@@ -1277,7 +1257,6 @@
     <Content Include="Content\Home\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\Home\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\Home\fonts\FontAwesome.otf" />
-    <Content Include="Content\icons\vssver2.scc" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\config\base.config">
@@ -1311,6 +1290,7 @@
   <ItemGroup>
     <Content Include="Views\Home\Home.cshtml" />
   </ItemGroup>
+
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
