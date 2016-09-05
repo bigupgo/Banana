@@ -56,7 +56,7 @@ var wxUtil = {
             async: false,
             type: "post",
             success: function (res) {
-                return res.data;
+                jsapiTicket = res.data;
             }
         });
     },
@@ -66,9 +66,9 @@ var wxUtil = {
             url: url,
             async:false,
             type: "post",
-            data: { noncestr: noncestr, jsapiTicket: jsapiTicket, timestamp: timestamp, url: timestamp },
+            data: { noncestr: noncestr, jsapiTicket: jsapiTicket, timestamp: timestamp, url: url },
             success: function (res) {
-                return res.data;
+                signature = res.data;
             }
         });
     }

@@ -8,11 +8,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>微信开发</title>
+    <link href="@Url.Content("~/Content/icons/tab.ico")" rel="shortcut icon" type="image/x-icon" />
     @Scripts.Render("~/bundles/jquery")
     <!--微信基础js -->
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <!--使用摇一摇周边功能，请引入 -->
     @* <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>*@
+    <script src="~/Scripts/jqueryStorage.js"></script>
+    <script src="~/Scripts/weixin/weixinHttpUrl.js"></script>
+    <script src="~/Scripts/weixin/weixinUtil.js"></script>
     <script type="text/javascript">
         function URL(path) {
             return '@Url.Content("~/")' + path.replace(/^\//, '');
@@ -21,10 +25,22 @@
         var appsecret = '@BaseConfig.GetValue("AppSecret")';
         var noncestr = '@ContextHelper.GetNoncestr(16)';
         var timestamp = '@ContextHelper.ConvertDateTimeInt(System.DateTime.Now)';
-    </script>
-    <script src="~/Scripts/jqueryStorage.js"></script>
-    <script src="~/Scripts/weixin/weixinHttpUrl.js"></script>
-    <script src="~/Scripts/weixin/weixinUtil.js"></script>
+        var jsapiTicket = "";
+        var signature = "";
+        var url = window.location.href;
+        wxUtil.getJsapiTicket();
+        wxUtil.getSignature(noncestr, jsapiTicket, timestamp, url);
+       // onfig接口注入权限验证配置
+        wx.config({
+            debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: appId, // 必填，公众号的唯一标识
+            timestamp: timestamp, // 必填，生成签名的时间戳
+            nonceStr: noncestr, // 必填，生成签名的随机串
+            signature: signature,// 必填，签名，见附录1
+            jsApiList: jsApiList // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+
+    </script> 
     @RenderSection("head", false)
 </head>
 <body>

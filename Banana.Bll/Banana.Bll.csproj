@@ -33,6 +33,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aspose.Words">
+      <HintPath>..\Banana.Base.Dll\Aspose.Words.dll</HintPath>
+    </Reference>
     <Reference Include="Banana.Bll.Base">
       <HintPath>..\Banana.Base.Dll\Banana.Bll.Base.dll</HintPath>
     </Reference>

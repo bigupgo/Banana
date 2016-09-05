@@ -1,4 +1,5 @@
-﻿using Banana.Bll.Base;
+﻿using Aspose.Words;
+using Banana.Bll.Base;
 using Banana.DBModel;
 
 namespace Banana.Bll
@@ -19,6 +20,13 @@ namespace Banana.Bll
         public void GetlistTest()
         {
             var data = Repository.GetList();
+        }
+
+        public void GetDocText(string path)
+        {
+            path = "d:\\《类似商品和服务区分表--基于尼斯分类第十版》2016文本 .doc";
+            Document doc = new Document(path);
+            string str = doc.GetText();
         }
     }
 }
