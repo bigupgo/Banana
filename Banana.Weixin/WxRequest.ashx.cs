@@ -6,21 +6,20 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Web;
-using System.Web.Security;
 
 namespace Banana.Weixin
 {
     /// <summary>
-    /// WeixinRequest 的摘要说明
+    /// WxRequest 的摘要说明
     /// </summary>
-    public class WeixinRequest : IHttpHandler
+    public class WxRequest : IHttpHandler
     {
 
         public void ProcessRequest(HttpContext context)
         {
+
             string PostStr = string.Empty;
             //如果是POST请求则不是微信验证
             if (HttpContext.Current.Request.HttpMethod.ToUpper() == "POST")
@@ -43,7 +42,6 @@ namespace Banana.Weixin
                 auth();
             }
         }
-
         /// <summary>
         /// 应答
         /// </summary>
@@ -88,7 +86,6 @@ namespace Banana.Weixin
             }
         }
 
-
         public bool IsReusable
         {
             get
@@ -96,6 +93,5 @@ namespace Banana.Weixin
                 return false;
             }
         }
-        
     }
 }

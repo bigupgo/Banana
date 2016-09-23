@@ -1,5 +1,6 @@
 ﻿using Banana.Bll.Weixin;
 using Banana.Core.Base;
+using Banana.DBModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

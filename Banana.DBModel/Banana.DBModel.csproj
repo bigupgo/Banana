@@ -56,6 +56,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Banana.edmx</DependentUpon>
     </Compile>
+    <Compile Include="BaWeixin.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaWeixin.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryFactoryExt.cs" />
   </ItemGroup>
@@ -70,6 +75,13 @@
     </EntityDeploy>
     <None Include="Banana.edmx.diagram">
       <DependentUpon>Banana.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="BaWeixin.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BaWeixin.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BaWeixin.edmx.diagram">
+      <DependentUpon>BaWeixin.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

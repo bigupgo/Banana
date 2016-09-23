@@ -1,6 +1,7 @@
 ﻿using Banana.Core.Base;
 using Banana.Core.Base.Weixin;
 using Banana.Core.Common;
+using Banana.DBModel;
 using Banana.Model.Base.Weixin;
 using System;
 using System.Collections.Generic;
@@ -20,12 +21,50 @@ namespace Banana.Bll.Weixin
                 XmlDocument xmldoc = XmlHelper.StrToXmlDocument(PostStr);
                 if (xmldoc != null)
                 {
-                    return TextHandle(xmldoc);
+                    string msgType = this.GetMsgType(xmldoc);
+                    if (msgType.Equals("event"))
+                    {
+                        return EventHandle(xmldoc);
+                    }
+                    else
+                    {
+                        return TextHandle(xmldoc);
+                    }
                 }
             }
             return "";
         }
 
+        /// <summary>
+        /// 判断消息类型
+        /// </summary>
+        /// <param name="xmldoc"></param>
+        /// <returns></returns>
+        public string GetMsgType(XmlDocument xmldoc)
+        {
+            string msgType = XmlHelper.getXmlNodeByXmlDocument(xmldoc, "/xml/MsgType").InnerText;
+            return msgType;
+        }
+
+        /// <summary>
+        /// 处理事件
+        /// </summary>
+        /// <param name="xmldoc"></param>
+        /// <returns></returns>
+        public string EventHandle(XmlDocument xmldoc)
+        {
+            SubscribeBll server = new SubscribeBll();
+            string FromUserName = XmlHelper.getXmlNodeByXmlDocument(xmldoc, "/xml/FromUserName").InnerText;
+            string CreateTime = XmlHelper.getXmlNodeByXmlDocument(xmldoc, "/xml/CreateTime").InnerText;
+            string Event = XmlHelper.getXmlNodeByXmlDocument(xmldoc, "/xml/Event").InnerText;
+          
+            Ba_Subscribe entity = new Ba_Subscribe();
+            entity.FromUserName = FromUserName;
+            entity.OptionDate = this.GetTime(CreateTime);
+            entity.Status = Event;
+            server.UpdateSub(entity);
+            return "";
+        }
 
         public string TextHandle(XmlDocument xmldoc)
         {
@@ -38,10 +77,10 @@ namespace Banana.Bll.Weixin
 
                 ////图文消息  注:发送数据的时候 ，Form变成了To   发送人变成了接收人
                 ResponseNews News = new ResponseNews(FromUserName, ToUserName);
-                News.Articles.Add(new ArticleEntity("欢迎光临马祥龙的小站!", " 0o^-^o0 今天要开心愉快哦~ 0o^-^o0 ", WeixinCommon.FormatPath("/supin/Content/Mobile/Images/1.jpg"), ""));
+                News.Articles.Add(new ArticleEntity("欢迎关注【BigUpGo】", "今天吃什么？", WeixinCommon.FormatPath("/Content/qrcode.jpg"), WeixinCommon.FormatPath("/mobile/index.html")));
                 responseContent = News.ToXml();
 
-                //ResponseText text = new ResponseText(ToUserName, FromUserName, "Hello,我是马祥龙！");
+                //ResponseText text = new ResponseText(ToUserName, FromUserName, "Hello,我是【BigUpGO】");
                 //responseContent = text.ToXml();
 
 
@@ -52,6 +91,17 @@ namespace Banana.Bll.Weixin
                 LogHelper.LogError("错误信息:" + ex.Message);
                 return "";
             }
+        }
+        /// <summary>
+        /// 时间戳转化成时间
+        /// </summary>
+        /// <param name="timeStamp"></param>
+        /// <returns></returns>
+        private DateTime GetTime(string timeStamp)
+        {
+            DateTime dtStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
+            long lTime = long.Parse(timeStamp + "0000000");
+            TimeSpan toNow = new TimeSpan(lTime); return dtStart.Add(toNow);
         }
     }
 }

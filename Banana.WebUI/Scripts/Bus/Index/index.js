@@ -34,9 +34,9 @@ function loadSonMenu(pid, defaultId, text, type, iconCls, url) {
         sonMideoHtml = "<li class='childmenu' text='会员管理' limit='5' url='User/User/Index' iconCls='fa fa-list-alt' pid='page11' ><a href='javascript:void(0);' style='text-decoration:none'><i class='fa fa-list-alt'></i>会员管理</a></li>"
                      + "<li>"
                       + "<a href='javascript:void(0);' style='text-decoration:none' class='dropdown-toggle'><i class='fa fa-list-alt'></i>权限管理<b class='fa fa-angle-down'></b></a>"
-                       + "<ul class='submenu'>"
-                        + "<li class='childmenu' text='角色授权' limit='5' url='Information/DeptInformation/Design' iconCls='fa fa-list-alt' pid='page12' ><a href='javascript:void(0);' style='text-decoration:none'><i class='fa fa-list-alt'></i>角色授权</a></li>"
-                       + "</ul>"
+                      + "<ul class='submenu'>"
+                       + "<li class='childmenu' text='角色授权' limit='5' url='Information/DeptInformation/Design' iconCls='fa fa-list-alt' pid='page12' ><a href='javascript:void(0);' style='text-decoration:none'><i class='fa fa-list-alt'></i>角色授权</a></li>"
+                      + "</ul>"
                      + "</li>";
     }
 

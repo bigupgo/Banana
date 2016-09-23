@@ -147,17 +147,40 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WeixinRequest.ashx.cs">
-      <DependentUpon>WeixinRequest.ashx</DependentUpon>
+    <Compile Include="WxRequest.ashx.cs">
+      <DependentUpon>WxRequest.ashx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\config\wxconfig.xml" />
     <Content Include="Content\icons\tab.ico" />
+    <Content Include="Content\qrcode.jpg" />
     <Content Include="Global.asax" />
     <Content Include="App_Data\config\base.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="mobile\css\public\font-awesome.css" />
+    <Content Include="mobile\css\public\function.css" />
+    <Content Include="mobile\css\public\reset.css" />
+    <Content Include="mobile\css\style.css" />
+    <Content Include="mobile\end.html" />
+    <Content Include="mobile\images\facepic.jpg" />
+    <Content Include="mobile\images\g3.png" />
+    <Content Include="mobile\images\g4.png" />
+    <Content Include="mobile\images\g5.png" />
+    <Content Include="mobile\images\g6.png" />
+    <Content Include="mobile\images\g7.png" />
+    <Content Include="mobile\images\g8.png" />
+    <Content Include="mobile\images\g9.png" />
+    <Content Include="mobile\images\middle.png" />
+    <Content Include="mobile\images\monery.png" />
+    <Content Include="mobile\images\shadow.png" />
+    <Content Include="mobile\index.html" />
+    <Content Include="mobile\js\app.js" />
+    <Content Include="mobile\js\model\html5.js" />
+    <Content Include="mobile\js\model\jquery-1.8.0.min.js" />
+    <Content Include="mobile\js\model\jquery.SuperSlide.2.1.1.source.js" />
+    <Content Include="mobile\js\public.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jqueryStorage.js" />
@@ -174,7 +197,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="WeixinRequest.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -186,7 +208,16 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="mobile\images\Thumbs.db" />
+    <Content Include="log4net.config" />
     <None Include="Properties\PublishProfiles\weixin.pubxml" />
+    <Content Include="WxRequest.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Banana.DBModel\Banana.DBModel.csproj">
+      <Project>{3afa17b6-df24-4e74-b762-dd37be8d211f}</Project>
+      <Name>Banana.DBModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

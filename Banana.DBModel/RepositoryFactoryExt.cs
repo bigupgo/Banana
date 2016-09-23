@@ -19,5 +19,17 @@ namespace Banana.DBModel
         {
             return repositoryFactory.GetRepository<BananaContext, TEntity>();
         }
+
+        /// <summary>
+        /// 获取 微信 仓库
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <param name="repositoryFactory"></param>
+        /// <returns></returns>
+        public static IRepository<TEntity> GetWxRepository<TEntity>(this RepositoryFactory repositoryFactory)
+         where TEntity : EntityObject
+        {
+            return repositoryFactory.GetRepository<BaWeixinEntities, TEntity>();
+        }
     }
 }
