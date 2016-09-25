@@ -22,4 +22,10 @@ namespace Banana.Model.Base.Weixin
         public string ticket { get; set; }
         public string expires_in { get; set; }
     }
+
+    public class WheelModel
+    {
+        public int ran { get; set; }
+        public string mess { get; set; }
+    }
 }

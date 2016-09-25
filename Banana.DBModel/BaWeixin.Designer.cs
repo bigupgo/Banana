@@ -80,6 +80,22 @@ namespace Banana.DBModel
             }
         }
         private ObjectSet<Ba_Subscribe> _Ba_Subscribe;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<Ba_Food> Ba_Food
+        {
+            get
+            {
+                if ((_Ba_Food == null))
+                {
+                    _Ba_Food = base.CreateObjectSet<Ba_Food>("Ba_Food");
+                }
+                return _Ba_Food;
+            }
+        }
+        private ObjectSet<Ba_Food> _Ba_Food;
 
         #endregion
 
@@ -92,6 +108,14 @@ namespace Banana.DBModel
         {
             base.AddObject("Ba_Subscribe", ba_Subscribe);
         }
+    
+        /// <summary>
+        /// 用于向 Ba_Food EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToBa_Food(Ba_Food ba_Food)
+        {
+            base.AddObject("Ba_Food", ba_Food);
+        }
 
         #endregion
 
@@ -100,6 +124,110 @@ namespace Banana.DBModel
     #endregion
 
     #region 实体
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BaWeixinModel", Name="Ba_Food")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Ba_Food : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 Ba_Food 对象。
+        /// </summary>
+        /// <param name="id">ID 属性的初始值。</param>
+        public static Ba_Food CreateBa_Food(global::System.String id)
+        {
+            Ba_Food ba_Food = new Ba_Food();
+            ba_Food.ID = id;
+            return ba_Food;
+        }
+
+        #endregion
+
+        #region 简单属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value, false, "ID");
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.String _ID;
+        partial void OnIDChanging(global::System.String value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FoodName
+        {
+            get
+            {
+                return _FoodName;
+            }
+            set
+            {
+                OnFoodNameChanging(value);
+                ReportPropertyChanging("FoodName");
+                _FoodName = StructuralObject.SetValidValue(value, true, "FoodName");
+                ReportPropertyChanged("FoodName");
+                OnFoodNameChanged();
+            }
+        }
+        private global::System.String _FoodName;
+        partial void OnFoodNameChanging(global::System.String value);
+        partial void OnFoodNameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Pic
+        {
+            get
+            {
+                return _Pic;
+            }
+            set
+            {
+                OnPicChanging(value);
+                ReportPropertyChanging("Pic");
+                _Pic = StructuralObject.SetValidValue(value, true, "Pic");
+                ReportPropertyChanged("Pic");
+                OnPicChanged();
+            }
+        }
+        private global::System.String _Pic;
+        partial void OnPicChanging(global::System.String value);
+        partial void OnPicChanged();
+
+        #endregion
+
+    }
     
     /// <summary>
     /// 没有元数据文档可用。

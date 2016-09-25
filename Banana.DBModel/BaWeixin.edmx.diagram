@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="54091f9b7c0c4c0dabfb50a9f8095b70" Name="关系图1">
         <EntityTypeShape EntityType="BaWeixinModel.Ba_Subscribe" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaWeixinModel.Ba_Food" Width="1.5" PointX="1.4091592530762587" PointY="0.73440438543185793" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

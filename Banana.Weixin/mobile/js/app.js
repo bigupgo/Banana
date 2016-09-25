@@ -1,3 +1,4 @@
+var preNum = 0;
 var indexApp = {
 	//入口方法
 	init : function (valueJson) {
@@ -63,21 +64,23 @@ var indexApp = {
 
 					//ajax 事件 获取
 					//得到的参数详细见交互文档
-					
-					/*$.ajax({
-						'type' : 'POST',
-						'url' : t.valueJson['clickAjaxUrl'],
-						success : function (data) {*/
-							var data = {'status' : 1, 'actionStatus' : 1, 'ran' : 40, 'onceran' : 40, 'num' : 1}
-							if(data['status'] == 1) { //表示成功 
-								t.showWheel(data); //执行转动效果
-							}else if(data['status'] == 2){ //金额不足 或者次数不足
-								t.dialog($('.info'),data); //没有按钮的提示信息
-							}else {         //出现了异常错误
-								t.dialog($('.again'),data);  //执行带按钮的提示框
-							}
-						/*}
-					});*/
+				   
+				    $.ajax({
+				        type: 'POST',
+				        url: URL("/Home/GetEat"),
+				        data: { foodlist: JSON.stringify(t.valueJson['foods']), nowRan: t.nowRan, preNum: preNum, first: t.once },
+				        success: function (res) {
+				            preNum = res.Item3;
+				            var data = { 'status': 1, 'actionStatus': 1, 'ran': res.Item1, 'onceran': 40, 'num': 1, 'mess': res.Item2 }
+				            if (data['status'] == 1) { //表示成功 
+				                t.showWheel(data); //执行转动效果
+				            } else if (data['status'] == 2) { //金额不足 或者次数不足
+				                t.dialog($('.info'), data); //没有按钮的提示信息
+				            } else {         //出现了异常错误
+				                t.dialog($('.again'), data);  //执行带按钮的提示框
+				            }
+				        }
+				    });
 				}
 			}
 		});
@@ -132,7 +135,7 @@ var indexApp = {
 	//弹出层
 	dialog : function (obj, data, bl) {
 		if(data && !bl) { //关注 再来一次  谢谢参与  系统异常 都是执行此处
-			obj.find('d-main').children('p').html(data['mess']);
+			obj.find('.d-main').children('p').html(data['mess']);
 		}
 
 		//打开弹出层

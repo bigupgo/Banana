@@ -1,5 +1,6 @@
 ﻿using Banana.Bll.Weixin;
 using Banana.Core.Base;
+using Banana.DBModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,28 @@ namespace Banana.Weixin.Controllers
     {
         //
         // GET: /Home/
-
+        FoodBll server = new FoodBll();
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult Food()
+        {
+            return View();
+        }
+
+        public ActionResult GetFood()
+        {
+            
+            var list = server.GetRandFood();
+            return JSONResult(list);
+        }
+
+        public ActionResult GetEat(string foodlist,int nowRan,int preNum,bool first)
+        {
+            var data = server.GetRandWheel(foodlist, nowRan, preNum, first);
+            return JSONResult(data);
         }
 
     }

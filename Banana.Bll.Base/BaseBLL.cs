@@ -59,6 +59,24 @@ namespace Banana.Bll.Base
             return this.Repository.SaveChange();
         }
 
+        public virtual AjaxReturn Add(TEntity t)
+        {
+            AjaxReturn res = new AjaxReturn();
+            Type tt = t.GetType();
+            tt.GetProperty("ID").SetValue(t, GetGUID());
+            res.success = this.Repository.Add(t, true);
+            res.SetMessage("添加成功", "添加失败");
+            return res;
+        }
+
+        public virtual AjaxReturn Edit(TEntity t)
+        {
+            AjaxReturn res = new AjaxReturn();       
+            res.success = this.Repository.Update(t, true);
+            res.SetMessage("修改成功", "修改失败");
+            return res;
+        }
+
         public abstract void SetEntityName();
         public abstract void SetRepository();
 

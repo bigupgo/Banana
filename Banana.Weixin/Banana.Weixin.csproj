@@ -153,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\config\wxconfig.xml" />
+    <Content Include="Content\1.png" />
     <Content Include="Content\icons\tab.ico" />
     <Content Include="Content\qrcode.jpg" />
     <Content Include="Global.asax" />
@@ -208,10 +209,11 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="mobile\images\Thumbs.db" />
     <Content Include="log4net.config" />
+    <None Include="Properties\PublishProfiles\webfile.pubxml" />
     <None Include="Properties\PublishProfiles\weixin.pubxml" />
     <Content Include="WxRequest.ashx" />
+    <Content Include="Views\Home\Food.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Banana.DBModel\Banana.DBModel.csproj">

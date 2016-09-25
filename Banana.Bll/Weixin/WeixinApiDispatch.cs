@@ -77,7 +77,7 @@ namespace Banana.Bll.Weixin
 
                 ////图文消息  注:发送数据的时候 ，Form变成了To   发送人变成了接收人
                 ResponseNews News = new ResponseNews(FromUserName, ToUserName);
-                News.Articles.Add(new ArticleEntity("欢迎关注【BigUpGo】", "今天吃什么？", WeixinCommon.FormatPath("/Content/qrcode.jpg"), WeixinCommon.FormatPath("/mobile/index.html")));
+                News.Articles.Add(new ArticleEntity("欢迎关注【BigUpGo】", "今天吃什么？", WeixinCommon.FormatPath("/Content/qrcode.jpg"), WeixinCommon.FormatPath("/Home/Food")));
                 responseContent = News.ToXml();
 
                 //ResponseText text = new ResponseText(ToUserName, FromUserName, "Hello,我是【BigUpGO】");
