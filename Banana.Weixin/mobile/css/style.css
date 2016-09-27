@@ -129,6 +129,9 @@ footer {width: 100%;line-height: 24px;color:#ffb820;text-align: center;margin-to
 
 .g-num {width: 80%;height:40px;background: #d82828;border-radius:20px;border:1px solid #e44025;margin:0 auto;margin-top: 10px;line-height: 40px;text-align: center;color:#fff;font-size: 1.3em}
 .g-num em {margin:0 5px;color:#ffd737;}
+    .g-num a {
+    color:#bbbaba;
+    }
 
 .dialog {width: 100%;height:100%;background: rgba(0,0,0,0.7);position: fixed;top:0;z-index: 1000;font-size: 1.2em;display: none;}
 .dialog .d-main {width: 84%;overflow: hidden;padding:16px 8%;position: absolute;top:20%;background: #bc1616;}

@@ -69,14 +69,6 @@ namespace Banana.Bll.Base
             return res;
         }
 
-        public virtual AjaxReturn Edit(TEntity t)
-        {
-            AjaxReturn res = new AjaxReturn();       
-            res.success = this.Repository.Update(t, true);
-            res.SetMessage("修改成功", "修改失败");
-            return res;
-        }
-
         public abstract void SetEntityName();
         public abstract void SetRepository();
 

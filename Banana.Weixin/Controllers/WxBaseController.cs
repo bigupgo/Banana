@@ -14,7 +14,7 @@ namespace Banana.Weixin.Controllers
         //
         // GET: /WxBase/
 
-         public const string JsonContentType = "application/json";
+        public const string JsonContentType = "application/json";
 
         protected WxBaseController()
         {

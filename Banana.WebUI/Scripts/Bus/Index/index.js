@@ -17,7 +17,7 @@ $(document).ready(function () {
 function initFirstMenu() {
     var $box = $('#ul_FirstMenu');
     var topMentHtml = "<li><a onclick=\"loadSonMenu('page1','null','人员管理',1,'icon-blue-folder-close','null')\" href='javascript:void(0);'>人员管理</a></li>"
-                    + "<li><a onclick=\"loadSonMenu('page2','null','巡查管理',1,'icon-blue-folder-close','null')\" href='javascript:void(0);'>巡查管理</a></li>";
+                    + "<li><a onclick=\"loadSonMenu('page2','null','微信管理',1,'icon-blue-folder-close','null')\" href='javascript:void(0);'>微信管理</a></li>";
     $box.html(topMentHtml);
 }
 
@@ -31,21 +31,21 @@ function loadSonMenu(pid, defaultId, text, type, iconCls, url) {
 
     var sonMideoHtml = "";
     if (pid == "page1") {
-        sonMideoHtml = "<li class='childmenu' text='会员管理' limit='5' url='User/User/Index' iconCls='fa fa-list-alt' pid='page11' ><a href='javascript:void(0);' style='text-decoration:none'><i class='fa fa-list-alt'></i>会员管理</a></li>"
-                     + "<li>"
-                      + "<a href='javascript:void(0);' style='text-decoration:none' class='dropdown-toggle'><i class='fa fa-list-alt'></i>权限管理<b class='fa fa-angle-down'></b></a>"
+        sonMideoHtml = "<li>"
+                      + "<a href='javascript:void(0);' style='text-decoration:none' class='dropdown-toggle'><i class='fa fa-list-alt'></i>人员管理<b class='fa fa-angle-down'></b></a>"
                       + "<ul class='submenu'>"
-                       + "<li class='childmenu' text='角色授权' limit='5' url='Information/DeptInformation/Design' iconCls='fa fa-list-alt' pid='page12' ><a href='javascript:void(0);' style='text-decoration:none'><i class='fa fa-list-alt'></i>角色授权</a></li>"
+                      + "<li class='childmenu' text='会员管理' limit='5' url='User/User/Index' iconCls='fa fa-list-alt' pid='page11' >"
+                      + "<a href='javascript:void(0);' style='text-decoration:none'><i class='fa fa-list-alt'></i>会员管理</a></li>"
+                      + "<li class='childmenu' text='关注会员' limit='5' url='Weixin/Subscribe/Index' iconCls='fa fa-list-alt' pid='page12' >"
+                      + "<a href='javascript:void(0);' style='text-decoration:none'><i class='fa fa-list-alt'></i>关注会员</a></li>"
                       + "</ul>"
                      + "</li>";
     }
 
     if (pid == "page2") {
 
-        sonMideoHtml = "<li class='childmenu' text='巡查管理' limit='5' url='Information/Regulator/Index' iconCls='fa fa-list-alt' pid='page21' ><a href='javascript:void(0);' style='text-decoration:none'><i class='fa fa-list-alt'></i>巡查管理</a></li>"
+        sonMideoHtml = "<li class='childmenu' text='饭菜管理' limit='5' url='Weixin/Food/Index' iconCls='fa fa-list-alt' pid='page21' ><a href='javascript:void(0);' style='text-decoration:none'><i class='fa fa-list-alt'></i>饭菜管理</a></li>"
     }
-
-
 
     $('#ul_menuTree').html(sonMideoHtml);
     bindMedioClick();//绑定菜单点击事件

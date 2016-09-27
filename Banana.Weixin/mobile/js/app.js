@@ -129,7 +129,7 @@ var indexApp = {
 
 	//扣除次数的相关操作  次数的 参数 也是ajax 后台传递过来
 	deduct : function (data) {
-		$('.g-num').find('em').html(data['num']);
+		//$('.g-num').find('em').html(data['num']);
 	},
 
 	//弹出层

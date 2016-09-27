@@ -153,6 +153,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\User\Controllers\UserController.cs" />
     <Compile Include="Areas\User\UserAreaRegistration.cs" />
+    <Compile Include="Areas\Weixin\Controllers\FoodController.cs" />
+    <Compile Include="Areas\Weixin\Controllers\SubscribeController.cs" />
+    <Compile Include="Areas\Weixin\WeixinAreaRegistration.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -412,6 +415,7 @@
     <Content Include="Content\icons\world-edit.png" />
     <Content Include="Content\icons\world.png" />
     <Content Include="Content\icons\zoom.png" />
+    <Content Include="defaultFood.png" />
     <Content Include="DefaultImg.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap-3.3.4-dist\css\bootstrap-theme.css" />
@@ -433,8 +437,11 @@
     <Content Include="Scripts\bootstrap-ace\js\ace-extra.min.js" />
     <Content Include="Scripts\bootstrap-ace\js\ace.min.js" />
     <Content Include="Scripts\Bus\Base\html\upload.html" />
+    <Content Include="Scripts\Bus\Food\html\add.html" />
+    <Content Include="Scripts\Bus\Food\js\food.js" />
     <Content Include="Scripts\Bus\Index\index.common.js" />
     <Content Include="Scripts\Bus\Index\index.js" />
+    <Content Include="Scripts\Bus\Subscribe\js\subscribe.js" />
     <Content Include="Scripts\Bus\User\html\add.html" />
     <Content Include="Scripts\Bus\User\js\user.js" />
     <Content Include="Scripts\Easyui\defaultOptions.js" />
@@ -1213,7 +1220,9 @@
     <Content Include="Scripts\Uploadify\js\uploadify\jquery.uploadify.js" />
     <Content Include="Scripts\Uploadify\js\uploadify\jquery.uploadify.min.js" />
     <Content Include="Scripts\Uploadify\js\uploadify\uploadify.swf" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1228,6 +1237,8 @@
   <ItemGroup>
     <Folder Include="Areas\User\Models\" />
     <Folder Include="Areas\User\Views\Shared\" />
+    <Folder Include="Areas\Weixin\Models\" />
+    <Folder Include="Areas\Weixin\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -1265,6 +1276,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Banana.DBModel\Banana.DBModel.csproj">
+      <Project>{3afa17b6-df24-4e74-b762-dd37be8d211f}</Project>
+      <Name>Banana.DBModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Banana.Model\Banana.Model.csproj">
       <Project>{ab531ccc-0bb4-4daf-a29f-e156c2e35fd2}</Project>
       <Name>Banana.Model</Name>
@@ -1290,6 +1305,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Home.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Weixin\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Weixin\Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Weixin\Views\Food\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Weixin\Views\Subscribe\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\webManage.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

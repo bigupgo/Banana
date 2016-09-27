@@ -14,7 +14,6 @@ namespace Banana.WebUI.Areas.User.Controllers
         UserInfoBll server = new UserInfoBll();
         public ActionResult Index()
         {
-            new TestBll().GetDocText("");
             return View();
         }
 

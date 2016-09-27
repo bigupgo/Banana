@@ -1,12 +1,15 @@
 ﻿using Banana.Bll.Base;
 using Banana.Core.Base;
+using Banana.Core.Common;
 using Banana.DBModel;
 using Banana.Model.Base.Weixin;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Banana.Bll.Weixin
 {
@@ -31,9 +34,22 @@ namespace Banana.Bll.Weixin
         public List<Ba_Food> GetList(Pagetion pagetion, string search)
         {
             List<Ba_Food> list = new List<Ba_Food>();
-            var totalData = base.GetList();
-            pagetion.total = totalData.Count();
-            list = totalData.Skip(pagetion.rows * (pagetion.page - 1)).Take(pagetion.rows).ToList();
+            try
+            {
+                var totalData = base.GetList();
+                if (!string.IsNullOrEmpty(search))
+                {
+                    totalData = totalData.Where(x => x.FoodName.Contains(search));
+                }
+                pagetion.total = totalData.Count();
+                list = totalData.OrderByDescending(x => x.CreateDate).Skip(pagetion.rows * (pagetion.page - 1)).Take(pagetion.rows).ToList();
+            }
+            catch (Exception e)
+            {
+                LogHelper.LogError(e.Message);
+            }
+           
+          
             return list;
         }
 
@@ -44,7 +60,18 @@ namespace Banana.Bll.Weixin
         /// <returns></returns>
         public override AjaxReturn Add(Ba_Food entity)
         {
-            AjaxReturn result = base.Add(entity);
+            AjaxReturn result = new AjaxReturn();
+            if (IsAddHas(entity.FoodName))
+            {
+                result.success = false;
+                result.message = "菜名已添加!";
+            }
+            else
+            {
+                entity.CreateDate = System.DateTime.Now;
+                result = base.Add(entity);
+            }
+           
             return result;
         }
 
@@ -53,14 +80,68 @@ namespace Banana.Bll.Weixin
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public override AjaxReturn Edit(Ba_Food entity)
+        public AjaxReturn Edit(Ba_Food entity)
         {
             AjaxReturn result = new AjaxReturn();
-            var oldEntity = this.GetByKey(entity.ID);
-            oldEntity.FoodName = entity.FoodName;
-            oldEntity.Pic = entity.Pic;
-            result = base.Edit(entity);
+            try
+            {
+                if (IsEditHas(entity.FoodName, entity.ID))
+                {
+                    result.success = false;
+                    result.message = "菜名已添加!";
+                }
+                else
+                {
+                    var oldEntity = this.GetByKey(entity.ID);
+                    oldEntity.FoodName = entity.FoodName;
+                    oldEntity.Pic = entity.Pic;
+                    result.success = Repository.Update(oldEntity, true);
+                }
+            }
+            catch (Exception e)
+            {
+                LogHelper.LogError(e.Message);
+            }
+
             return result;
+        }
+
+        public AjaxReturn DeleteByIDs(string ids)
+        {
+            AjaxReturn res = new AjaxReturn();
+            string[] arrayId = ids.Split(',');
+            foreach (string id in arrayId)
+            {
+                Repository.Delete(x => x.ID.Equals(id),false);
+            }
+            res.success = Repository.SaveChange()>0;
+            res.SetMessage("操作成功", "操作失败");
+            return res;
+        }
+
+        /// <summary>
+        /// 保存饭菜图片
+        /// </summary>
+        /// <param name="foodId"></param>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        public string SavePic(string foodId, HttpPostedFileBase file)
+        {
+            HttpServerUtility Server = HttpContext.Current.Server;
+            if (string.IsNullOrEmpty(foodId) || file == null)
+            {
+                throw new ArgumentNullException();
+            }
+            if (foodId == "0")
+            {
+                foodId = GetGUID();
+            }
+            string basePath = BaseConfig.GetValue("FoodPicUrl");
+            string fileName = foodId + Path.GetExtension(file.FileName);
+            string url = basePath + fileName;
+            string filePath = Server.MapPath("~" + url);
+            UploadHelper.UploadFile(filePath, file);
+            return url + "," + fileName;
         }
 
         /// <summary>
@@ -98,10 +179,11 @@ namespace Banana.Bll.Weixin
             int index = 0;
             int num = 0;
             int ran = 0;
+            Random ra = new Random();
+            num = ra.Next(9);
             if (first)
             {
-                Random ra = new Random();
-                num = ra.Next(9);
+              
                 ran = num * 40;
                 if (num != 0)
                 {
@@ -112,9 +194,6 @@ namespace Banana.Bll.Weixin
             }
             else
             {
-                Random ra = new Random();
-              
-                num = ra.Next(10);
                 ran = num * 40;
                 if (preNum > num)
                 {
@@ -130,9 +209,34 @@ namespace Banana.Bll.Weixin
           
 
             string foodName = list[index].FoodName;
-            string mess = "今天就去吃" + foodName;
+            string mess = "今天就去吃【" + foodName+"】";
             Tuple<int, string, int> tuple = new Tuple<int, string, int>(ran, mess, preNum);
             return tuple;
+        }
+
+
+        private bool IsAddHas(string foodName)
+        {
+            bool flag = false;
+            var list = this.GetList().Where(x => x.FoodName.Equals(foodName));
+            if (list != null && list.Count() > 0)
+            {
+                flag = true;
+            }
+
+            return flag;
+        }
+
+        private bool IsEditHas(string foodName,string ID)
+        {
+            bool flag = false;
+            var list = this.GetList().Where(x => x.FoodName.Equals(foodName) && !x.ID.Equals(ID));
+            if (list != null && list.Count() > 0)
+            {
+                flag = true;
+            }
+
+            return flag;
         }
     }
 }

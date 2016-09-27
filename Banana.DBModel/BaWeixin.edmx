@@ -16,6 +16,7 @@
           <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="FoodName" Type="nvarchar" MaxLength="50" />
           <Property Name="Pic" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Ba_Subscribe">
           <Key>
@@ -50,6 +51,7 @@
           <Property Type="String" Name="ID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="FoodName" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Pic" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateDate" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -70,6 +72,7 @@
           <EntitySetMapping Name="Ba_Food">
             <EntityTypeMapping TypeName="BaWeixinModel.Ba_Food">
               <MappingFragment StoreEntitySet="Ba_Food">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="Pic" ColumnName="Pic" />
                 <ScalarProperty Name="FoodName" ColumnName="FoodName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />

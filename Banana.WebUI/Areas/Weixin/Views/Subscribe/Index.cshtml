@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "关注";
+}
+
+@section head{
+    @Scripts.Render("~/Scripts/Bus/Subscribe/js/subscribe.js")
+}
+
+<div class="easyui-layout" data-options="fit:true">
+    <div id="toolbar" class="datagrid-toolbar">
+        <a href="javascript:void(0);" onclick="CRUD.Read();" class="easyui-linkbutton l-btn l-btn-plain" iconcls="fa fa-refresh" plain="true" title="刷新">刷新</a>
+        <div class="lab_Search" style="">
+            <input id="txtSearch" class="easyui-searchbox searchbox-f" style="width: 150px; display: none;" data-options="searcher:CRUD.Read,prompt:''">
+        </div>
+    </div>
+    <div data-options="region:'center'">
+        <div id="dataGrid"></div>
+    </div>
+</div>

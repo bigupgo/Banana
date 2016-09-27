@@ -49,5 +49,28 @@ namespace Banana.Bll.Weixin
                 LogHelper.LogError(e.Message);
             }
         }
+
+        /// <summary>
+        /// 获取关注列表
+        /// </summary>
+        /// <param name="pagetion"></param>
+        /// <param name="search"></param>
+        /// <returns></returns>
+        public List<Ba_Subscribe> GetList(Pagetion pagetion, string search)
+        {
+            List<Ba_Subscribe> list = new List<Ba_Subscribe>();
+            try
+            {
+                var totalList = this.GetList();
+                pagetion.total = totalList.Count();
+                list = totalList.OrderByDescending(x => x.OptionDate).Skip((pagetion.page - 1) * pagetion.rows).Take(pagetion.rows).ToList();
+            }
+            catch (Exception e)
+            {
+                LogHelper.LogError(e.Message);
+            }
+          
+            return list;
+        }
     }
 }

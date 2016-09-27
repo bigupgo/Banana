@@ -68,7 +68,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="Banana.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Banana.Designer.cs</LastGenOutput>

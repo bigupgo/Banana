@@ -1,19 +1,20 @@
 ﻿@{
     ViewBag.Title = "Food";
 }
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>签到送红包</title>
-    <link rel="stylesheet" type="text/css" href="/mobile/css/public/reset.css">
-    <link rel="stylesheet" type="text/css" href="/mobile/css/public/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="/mobile/css/public/function.css">
-    <link rel="stylesheet" type="text/css" href="/mobile/css/style.css">
-    <script type="text/javascript" src="/mobile/js/model/jquery.SuperSlide.2.1.1.source.js"></script>
-    <script type="text/javascript" src="/mobile/js/model/html5.js"></script>
-    <script type="text/javascript" src="/mobile/js/public.js"></script>
-    <script type="text/javascript" src="/mobile/js/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/mobile/css/public/reset.css">
+    <link rel="stylesheet" type="text/css" href="~/mobile/css/public/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="~/mobile/css/public/function.css">
+    <link rel="stylesheet" type="text/css" href="~/mobile/css/style.css">
+    <script type="text/javascript" src="~/mobile/js/model/jquery.SuperSlide.2.1.1.source.js"></script>
+    <script type="text/javascript" src="~/mobile/js/model/html5.js"></script>
+    <script type="text/javascript" src="~/mobile/js/public.js"></script>
+    <script type="text/javascript" src="~/mobile/js/app.js"></script>
 </head>
 <body class="g-body-in">
     <div class="g-wrap">
@@ -25,16 +26,18 @@
         </section>
 
         <section class="main-sec">
-            <div class="g-num">您还有<em>2</em>次抽奖机会</div>
+           <div class="g-num">
+              <a  href="javascript:void();">换一波</a>
+            </div>
         </section>
 
-        <section class="main-sec loptop">
+        <section class="main-sec loptop" style="display:none">
             <div class="m-title">
                 <h3>有谁在抢</h3>
             </div>
             <dl class="peolist">
                 <dd>
-                    <img src="/mobile/images/facepic.jpg" width="20%">
+                    <img src="~/mobile/images/facepic.jpg" width="20%">
                     <div class="right">
                         <span>
                             <h2>雨中漫步</h2>
@@ -44,7 +47,7 @@
                 </dd>
 
                 <dd>
-                    <img src="/mobile/images/facepic.jpg" width="20%">
+                    <img src="~/mobile/images/facepic.jpg" width="20%">
                     <div class="right">
                         <span>
                             <h2>雨中漫步</h2>
@@ -54,7 +57,7 @@
                 </dd>
 
                 <dd>
-                    <img src="/mobile/images/facepic.jpg" width="20%">
+                    <img src="~/mobile/images/facepic.jpg" width="20%">
                     <div class="right">
                         <span>
                             <h2>雨中漫步</h2>
@@ -73,12 +76,10 @@
 
         <section class="main-sec">
             <div class="m-title">
-                <h3>活动说明</h3>
+                <h3>说明</h3>
             </div>
             <div class="einfo">
-                <p>活动时间：7月1日-7月30日</p>
-                <p>每日签到可获1次抽奖机会</p>
-                <p>每日邀请好友参与可获1次抽奖机会</p>
+                <p>点击【吃】即可随机出今天要吃什么</p>
             </div>
         </section>
 
@@ -89,7 +90,7 @@
 
     <div class="dialog gz">
         <div class="d-main">
-            <p>请进入"镇江微生活"公众号立即参与</p>
+            <p>请进入"【BigUpGo】微生活"公众号立即参与</p>
             <div class="btn-w">
                 <a class="btn" href="#">进入</a>
                 <a class="btn false" href="javascript:void(0);">取消</a>
@@ -126,48 +127,5 @@
 
 
 </body>
-
-<script type="text/javascript">
-    var foods = null;
-    $.ajax({
-        url: URL("/Home/GetFood"),
-        async: false,
-        type: "post",
-        success: function (res) {
-            foods = res;
-            if (res != null) {
-                var htmlstr = "<div class=\"small-border g9\">";
-                $.each(res, function (index, obj) {
-                    htmlstr += "<div class=\"shan\">"
-                            + "<span>" + obj.FoodName + "</span>"
-                            + "<img src=\"/Content/1.png\" width=\"30%\">"
-                            + "</div>";
-                });
-                htmlstr += "<img src=\"/mobile/images/middle.png\" width=\"50%\" class=\"middle\">";
-                htmlstr += "</div>";
-                $(".big-border").html(htmlstr);
-            }
-        }
-    });
-
-    var valueJson = {
-        'wheelBody': $('.big-border'), //转盘主体
-        'wheelSmall': $('.small-border'), //转盘内部
-        'starsNum': 16, //转盘边缘小黄点个数
-
-        'starsPostion': [[50, 0.5], [70, 6], [84.5, 18], [92.5, 32], [95.5, 50], [91, 68], [81.5, 81.5], [68, 91], [50, 95.5], [32, 92.5], [16, 83], [6, 70], [0.5, 50], [3.5, 32], [14, 15], [27, 5.5]], //小圆点坐标
-        'actionRan': 7200, //转盘转动弧度
-        'theOnce': 0, //初始化转盘第一个
-        'startBtn': $('.middle'), //开始按钮
-
-        //需要后台传值的参数
-        'clickAjaxUrl': 'www.baidu.com', //点击抽奖获取信息的交互的ajax
-        'is_gz': 1, //是否开启关注 1开 2 关
-        'is_follow': 1, //是否关注
-
-        'foods': foods
-
-    };
-    indexApp.init(valueJson).wheelStart(); //应用开始
-</script>
+ <script src="~/mobile/js/Food.js"></script>
 </html>
