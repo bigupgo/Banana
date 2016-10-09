@@ -53,7 +53,9 @@ namespace Banana.Bll.Weixin
         /// <returns></returns>
         public string EventHandle(XmlDocument xmldoc)
         {
+            string responseContent = "";
             SubscribeBll server = new SubscribeBll();
+            string ToUserName = XmlHelper.getXmlNodeByXmlDocument(xmldoc, "/xml/ToUserName").InnerText;
             string FromUserName = XmlHelper.getXmlNodeByXmlDocument(xmldoc, "/xml/FromUserName").InnerText;
             string CreateTime = XmlHelper.getXmlNodeByXmlDocument(xmldoc, "/xml/CreateTime").InnerText;
             string Event = XmlHelper.getXmlNodeByXmlDocument(xmldoc, "/xml/Event").InnerText;
@@ -63,7 +65,15 @@ namespace Banana.Bll.Weixin
             entity.OptionDate = this.GetTime(CreateTime);
             entity.Status = Event;
             server.UpdateSub(entity);
-            return "";
+
+            if (Event.Equals("subscribe"))
+            {
+               
+                ResponseText text = new ResponseText(ToUserName, FromUserName, "回复“吃”、“吃什么”等包含“吃”文字,试试看。");
+                responseContent = text.ToXml();
+            }
+           
+            return responseContent;
         }
 
         public string TextHandle(XmlDocument xmldoc)
@@ -75,15 +85,25 @@ namespace Banana.Bll.Weixin
                 string ToUserName = XmlHelper.getXmlNodeByXmlDocument(xmldoc, "/xml/FromUserName").InnerText;
                 string Content = XmlHelper.getXmlNodeByXmlDocument(xmldoc, "/xml/Content").InnerText;
 
-                ////图文消息  注:发送数据的时候 ，Form变成了To   发送人变成了接收人
-                ResponseNews News = new ResponseNews(FromUserName, ToUserName);
-                News.Articles.Add(new ArticleEntity("欢迎关注【BigUpGo】", "今天吃什么？", WeixinCommon.FormatPath("/Content/qrcode.jpg"), WeixinCommon.FormatPath("/Home/Food")));
-                responseContent = News.ToXml();
-
-                //ResponseText text = new ResponseText(ToUserName, FromUserName, "Hello,我是【BigUpGO】");
-                //responseContent = text.ToXml();
-
-
+                if (Content.Contains("吃"))
+                {
+                    ////图文消息  注:发送数据的时候 ，Form变成了To   发送人变成了接收人
+                    ResponseNews News = new ResponseNews(FromUserName, ToUserName);
+                    News.Articles.Add(new ArticleEntity("欢迎关注【BigUpGo】", "今天吃什么？", WeixinCommon.FormatPath("/Content/wheel.png"), WeixinCommon.FormatPath("/Home/Food")));
+                    responseContent = News.ToXml();
+                }
+                else if (Content.Contains("1"))
+                {
+                    ResponseNews News = new ResponseNews(FromUserName, ToUserName);
+                    News.Articles.Add(new ArticleEntity("欢迎关注【BigUpGo】", "今天吃什么？", WeixinCommon.FormatPath("/Content/wheel.png"), WeixinCommon.FormatPath("/Home/Grid")));
+                    responseContent = News.ToXml();
+                }
+                else
+                {
+                    ResponseText text = new ResponseText(FromUserName, ToUserName, "回复“吃”、“吃什么”等包含“吃”文字,试试看。");
+                    responseContent = text.ToXml();
+                }
+                    
                 return responseContent;
             }
             catch (Exception ex)
@@ -103,5 +123,8 @@ namespace Banana.Bll.Weixin
             long lTime = long.Parse(timeStamp + "0000000");
             TimeSpan toNow = new TimeSpan(lTime); return dtStart.Add(toNow);
         }
+
     }
+
+
 }

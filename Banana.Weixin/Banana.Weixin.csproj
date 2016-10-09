@@ -156,33 +156,35 @@
     <Content Include="Content\default.png" />
     <Content Include="Content\icons\tab.ico" />
     <Content Include="Content\qrcode.jpg" />
+    <Content Include="Content\wheel.png" />
     <Content Include="Global.asax" />
     <Content Include="App_Data\config\base.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="mobile\css\public\font-awesome.css" />
-    <Content Include="mobile\css\public\function.css" />
-    <Content Include="mobile\css\public\reset.css" />
-    <Content Include="mobile\css\style.css" />
-    <Content Include="mobile\end.html" />
-    <Content Include="mobile\images\facepic.jpg" />
-    <Content Include="mobile\images\g3.png" />
-    <Content Include="mobile\images\g4.png" />
-    <Content Include="mobile\images\g5.png" />
-    <Content Include="mobile\images\g6.png" />
-    <Content Include="mobile\images\g7.png" />
-    <Content Include="mobile\images\g8.png" />
-    <Content Include="mobile\images\g9.png" />
-    <Content Include="mobile\images\middle.png" />
-    <Content Include="mobile\images\monery.png" />
-    <Content Include="mobile\images\shadow.png" />
-    <Content Include="mobile\index.html" />
-    <Content Include="mobile\js\app.js" />
-    <Content Include="mobile\js\Food.js" />
-    <Content Include="mobile\js\model\html5.js" />
-    <Content Include="mobile\js\model\jquery-1.8.0.min.js" />
-    <Content Include="mobile\js\model\jquery.SuperSlide.2.1.1.source.js" />
-    <Content Include="mobile\js\public.js" />
+    <Content Include="mobile\grid\css\grid.css" />
+    <Content Include="mobile\grid\images\bg.jpg" />
+    <Content Include="mobile\grid\js\app.js" />
+    <Content Include="mobile\wheel\css\public\font-awesome.css" />
+    <Content Include="mobile\wheel\css\public\function.css" />
+    <Content Include="mobile\wheel\css\public\reset.css" />
+    <Content Include="mobile\wheel\css\style.css" />
+    <Content Include="mobile\wheel\images\facepic.jpg" />
+    <Content Include="mobile\wheel\images\g3.png" />
+    <Content Include="mobile\wheel\images\g4.png" />
+    <Content Include="mobile\wheel\images\g5.png" />
+    <Content Include="mobile\wheel\images\g6.png" />
+    <Content Include="mobile\wheel\images\g7.png" />
+    <Content Include="mobile\wheel\images\g8.png" />
+    <Content Include="mobile\wheel\images\g9.png" />
+    <Content Include="mobile\wheel\images\middle.png" />
+    <Content Include="mobile\wheel\images\monery.png" />
+    <Content Include="mobile\wheel\images\shadow.png" />
+    <Content Include="mobile\wheel\js\app.js" />
+    <Content Include="mobile\wheel\js\Food.js" />
+    <Content Include="mobile\wheel\js\model\html5.js" />
+    <Content Include="mobile\wheel\js\model\jquery-1.8.0.min.js" />
+    <Content Include="mobile\wheel\js\model\jquery.SuperSlide.2.1.1.source.js" />
+    <Content Include="mobile\wheel\js\public.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jqueryStorage.js" />
@@ -215,6 +217,7 @@
     <None Include="Properties\PublishProfiles\weixin.pubxml" />
     <Content Include="WxRequest.ashx" />
     <Content Include="Views\Home\Food.cshtml" />
+    <Content Include="Views\Home\Grid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Banana.DBModel\Banana.DBModel.csproj">

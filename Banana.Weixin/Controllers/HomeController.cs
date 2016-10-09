@@ -24,10 +24,9 @@ namespace Banana.Weixin.Controllers
             return View();
         }
 
-        public ActionResult GetFood()
+        public ActionResult GetFood(int total)
         {
-            
-            var list = server.GetRandFood();
+            var list = server.GetRandFood(total);
             return JSONResult(list);
         }
 
@@ -35,6 +34,11 @@ namespace Banana.Weixin.Controllers
         {
             var data = server.GetRandWheel(foodlist, nowRan, preNum, first);
             return JSONResult(data);
+        }
+
+        public ActionResult Grid()
+        {
+            return View();
         }
 
     }

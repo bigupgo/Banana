@@ -145,15 +145,15 @@ namespace Banana.Bll.Weixin
         }
 
         /// <summary>
-        /// 随机选择10 个菜
+        /// 随机选择菜
         /// </summary>
         /// <returns></returns>
-        public List<Ba_Food> GetRandFood()
+        public List<Ba_Food> GetRandFood(int total)
         {
             List<Ba_Food> list = new List<Ba_Food>();
             var totalData = base.GetList().ToList();
             Random rd = new Random();
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < total; i++)
             {
                 int num = rd.Next(totalData.Count());
                 if (!list.Contains(totalData[num]))
