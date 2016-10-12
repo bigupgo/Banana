@@ -52,14 +52,17 @@
     <Compile Include="AjaxReturn.cs" />
     <Compile Include="BaseConfig.cs" />
     <Compile Include="BaseRepository.cs" />
+    <Compile Include="CommonFields.cs" />
     <Compile Include="ContextHelper.cs" />
     <Compile Include="ContextManager.cs" />
     <Compile Include="ContextStorage.cs" />
+    <Compile Include="DynamicLinqExpressions.cs" />
     <Compile Include="ExcludePropertiesContractResolver.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="JSON.cs" />
     <Compile Include="LogHelper.cs" />
     <Compile Include="Pagetion.cs" />
+    <Compile Include="ParameterReplacer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryFactory.cs" />
     <Compile Include="SessionManager.cs" />

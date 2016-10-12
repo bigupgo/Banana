@@ -13,7 +13,7 @@ using System.Web;
 
 namespace Banana.Bll.Weixin
 {
-    public class FoodBll:BaseBLL<Ba_Food>
+    public class FoodBll : BaseBD<Ba_Food>
     {
         public override void SetEntityName()
         {

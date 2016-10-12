@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Banana.Bll.Weixin
 {
-    public class SubscribeBll : BaseBLL<Ba_Subscribe>
+    public class SubscribeBll : BaseBD<Ba_Subscribe>
     {
         public override void SetEntityName()
         {

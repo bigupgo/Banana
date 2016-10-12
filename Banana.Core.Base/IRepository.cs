@@ -8,6 +8,7 @@ namespace Banana.Core.Base
     public interface IRepository<TEntity>
     {
         bool Add(TEntity entity, bool saveChange);
+
         bool Delete(IEnumerable<TEntity> items, bool saveChange);
         bool Delete(Expression<Func<TEntity, bool>> whereLamb, bool saveChange);
         bool Delete(TEntity entity, bool saveChange);

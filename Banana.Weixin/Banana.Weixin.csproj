@@ -162,6 +162,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="mobile\grid\css\grid.css" />
+    <Content Include="mobile\grid\css\gridmobile.css" />
     <Content Include="mobile\grid\images\bg.jpg" />
     <Content Include="mobile\grid\js\app.js" />
     <Content Include="mobile\wheel\css\public\font-awesome.css" />
