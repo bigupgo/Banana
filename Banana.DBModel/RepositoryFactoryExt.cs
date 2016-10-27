@@ -14,7 +14,7 @@ namespace Banana.DBModel
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="repositoryFactory"></param>
         /// <returns></returns>
-        public static IRepository<TEntity> GetBusinessRepository<TEntity>(this RepositoryFactory repositoryFactory)
+        public static IRepository<TEntity> GetBananaRepository<TEntity>(this RepositoryFactory repositoryFactory)
             where TEntity : EntityObject
         {
             return repositoryFactory.GetRepository<BananaContext, TEntity>();

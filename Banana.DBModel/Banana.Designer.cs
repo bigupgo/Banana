@@ -80,6 +80,22 @@ namespace Banana.DBModel
             }
         }
         private ObjectSet<Ba_UserInfo> _Ba_UserInfo;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<Ba_Model> Ba_Model
+        {
+            get
+            {
+                if ((_Ba_Model == null))
+                {
+                    _Ba_Model = base.CreateObjectSet<Ba_Model>("Ba_Model");
+                }
+                return _Ba_Model;
+            }
+        }
+        private ObjectSet<Ba_Model> _Ba_Model;
 
         #endregion
 
@@ -92,6 +108,14 @@ namespace Banana.DBModel
         {
             base.AddObject("Ba_UserInfo", ba_UserInfo);
         }
+    
+        /// <summary>
+        /// 用于向 Ba_Model EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToBa_Model(Ba_Model ba_Model)
+        {
+            base.AddObject("Ba_Model", ba_Model);
+        }
 
         #endregion
 
@@ -100,6 +124,254 @@ namespace Banana.DBModel
     #endregion
 
     #region 实体
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BananaModel", Name="Ba_Model")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Ba_Model : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 Ba_Model 对象。
+        /// </summary>
+        /// <param name="id">ID 属性的初始值。</param>
+        public static Ba_Model CreateBa_Model(global::System.String id)
+        {
+            Ba_Model ba_Model = new Ba_Model();
+            ba_Model.ID = id;
+            return ba_Model;
+        }
+
+        #endregion
+
+        #region 简单属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value, false, "ID");
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.String _ID;
+        partial void OnIDChanging(global::System.String value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ModelName
+        {
+            get
+            {
+                return _ModelName;
+            }
+            set
+            {
+                OnModelNameChanging(value);
+                ReportPropertyChanging("ModelName");
+                _ModelName = StructuralObject.SetValidValue(value, true, "ModelName");
+                ReportPropertyChanged("ModelName");
+                OnModelNameChanged();
+            }
+        }
+        private global::System.String _ModelName;
+        partial void OnModelNameChanging(global::System.String value);
+        partial void OnModelNameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ModelLevel
+        {
+            get
+            {
+                return _ModelLevel;
+            }
+            set
+            {
+                OnModelLevelChanging(value);
+                ReportPropertyChanging("ModelLevel");
+                _ModelLevel = StructuralObject.SetValidValue(value, "ModelLevel");
+                ReportPropertyChanged("ModelLevel");
+                OnModelLevelChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ModelLevel;
+        partial void OnModelLevelChanging(Nullable<global::System.Int32> value);
+        partial void OnModelLevelChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Type
+        {
+            get
+            {
+                return _Type;
+            }
+            set
+            {
+                OnTypeChanging(value);
+                ReportPropertyChanging("Type");
+                _Type = StructuralObject.SetValidValue(value, "Type");
+                ReportPropertyChanged("Type");
+                OnTypeChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Type;
+        partial void OnTypeChanging(Nullable<global::System.Int32> value);
+        partial void OnTypeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IconCls
+        {
+            get
+            {
+                return _IconCls;
+            }
+            set
+            {
+                OnIconClsChanging(value);
+                ReportPropertyChanging("IconCls");
+                _IconCls = StructuralObject.SetValidValue(value, true, "IconCls");
+                ReportPropertyChanged("IconCls");
+                OnIconClsChanged();
+            }
+        }
+        private global::System.String _IconCls;
+        partial void OnIconClsChanging(global::System.String value);
+        partial void OnIconClsChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Url
+        {
+            get
+            {
+                return _Url;
+            }
+            set
+            {
+                OnUrlChanging(value);
+                ReportPropertyChanging("Url");
+                _Url = StructuralObject.SetValidValue(value, true, "Url");
+                ReportPropertyChanged("Url");
+                OnUrlChanged();
+            }
+        }
+        private global::System.String _Url;
+        partial void OnUrlChanging(global::System.String value);
+        partial void OnUrlChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Pid
+        {
+            get
+            {
+                return _Pid;
+            }
+            set
+            {
+                OnPidChanging(value);
+                ReportPropertyChanging("Pid");
+                _Pid = StructuralObject.SetValidValue(value, true, "Pid");
+                ReportPropertyChanged("Pid");
+                OnPidChanged();
+            }
+        }
+        private global::System.String _Pid;
+        partial void OnPidChanging(global::System.String value);
+        partial void OnPidChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> CreateTime
+        {
+            get
+            {
+                return _CreateTime;
+            }
+            set
+            {
+                OnCreateTimeChanging(value);
+                ReportPropertyChanging("CreateTime");
+                _CreateTime = StructuralObject.SetValidValue(value, "CreateTime");
+                ReportPropertyChanged("CreateTime");
+                OnCreateTimeChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _CreateTime;
+        partial void OnCreateTimeChanging(Nullable<global::System.DateTime> value);
+        partial void OnCreateTimeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IsDel
+        {
+            get
+            {
+                return _IsDel;
+            }
+            set
+            {
+                OnIsDelChanging(value);
+                ReportPropertyChanging("IsDel");
+                _IsDel = StructuralObject.SetValidValue(value, true, "IsDel");
+                ReportPropertyChanged("IsDel");
+                OnIsDelChanged();
+            }
+        }
+        private global::System.String _IsDel;
+        partial void OnIsDelChanging(global::System.String value);
+        partial void OnIsDelChanged();
+
+        #endregion
+
+    }
     
     /// <summary>
     /// 没有元数据文档可用。

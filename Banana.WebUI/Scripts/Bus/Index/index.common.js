@@ -21,6 +21,8 @@ var ActionURL =
             LoginOut: URL('Home/LoginOut'),
             SelfInfo: URL('Home/GetDetail'),
             ResetPass: URL('/Base/Personal/ResetPass'),
+            GetFirstMenu: URL("Home/GetFirstMenu"),
+            GetOtherMenu: URL("Home/GetOtherMenu")
         };
 //静态模板
 var HtmlTemplate =

@@ -1,4 +1,5 @@
-﻿using Banana.Model.Base;
+﻿
+using Banana.Model.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;

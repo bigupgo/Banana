@@ -1,4 +1,5 @@
 ﻿using Banana.Bll;
+using Banana.Bll.Base;
 using Banana.Core.Base;
 using System;
 using System.Web;
@@ -6,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Banana.WebUI.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
 
         //
@@ -142,6 +143,30 @@ namespace Banana.WebUI.Controllers
         {
             var service = new UserInfoBll();
             return service.IsEditHaveUser(loginName, Id);
+        }
+
+        /// <summary>
+        /// 获取第一层菜单
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult GetFirstMenu()
+        {
+            var server = new MenuBase();
+            var data = server.GetMenu(0);
+            return JSONResult(data);
+        }
+
+        /// <summary>
+        /// 获取其他菜单
+        /// </summary>
+        /// <param name="level"></param>
+        /// <param name="pid"></param>
+        /// <returns></returns>
+        public ActionResult GetOtherMenu(int level,string pid)
+        {
+            var server = new MenuBase();
+            var data = server.GetMenu(level, pid);
+            return JSONResult(data);
         }
     }
 }

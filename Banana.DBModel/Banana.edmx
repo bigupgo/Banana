@@ -6,8 +6,23 @@
     <edmx:StorageModels>
     <Schema Namespace="BananaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="BananaModelStoreContainer">
+          <EntitySet Name="Ba_Model" EntityType="BananaModel.Store.Ba_Model" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Ba_UserInfo" EntityType="BananaModel.Store.Ba_UserInfo" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
+        <EntityType Name="Ba_Model">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ModelName" Type="nvarchar" MaxLength="10" />
+          <Property Name="ModelLevel" Type="int" />
+          <Property Name="Type" Type="int" />
+          <Property Name="IconCls" Type="nvarchar" MaxLength="50" />
+          <Property Name="Url" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pid" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="IsDel" Type="char" MaxLength="1" />
+        </EntityType>
         <EntityType Name="Ba_UserInfo">
           <Key>
             <PropertyRef Name="Id" />
@@ -28,6 +43,7 @@
       <Schema Namespace="BananaModel" Alias="Self" p1:UseStrongSpatialTypes="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BananaContext" p1:LazyLoadingEnabled="true">
           <EntitySet Name="Ba_UserInfo" EntityType="BananaModel.Ba_UserInfo" />
+          <EntitySet Name="Ba_Model" EntityType="BananaModel.Ba_Model" />
         </EntityContainer>
         <EntityType Name="Ba_UserInfo">
           <Key>
@@ -42,6 +58,20 @@
           <Property Type="String" Name="UserIcon" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="CreateDate" Precision="3" />
           <Property Type="Boolean" Name="IsDel" />
+        </EntityType>
+        <EntityType Name="Ba_Model">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="String" Name="ID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ModelName" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ModelLevel" />
+          <Property Type="Int32" Name="Type" />
+          <Property Type="String" Name="IconCls" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Url" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Pid" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateTime" Precision="3" />
+          <Property Type="String" Name="IsDel" MaxLength="1" FixedLength="true" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -61,6 +91,21 @@
                 <ScalarProperty Name="RealName" ColumnName="RealName" />
                 <ScalarProperty Name="LoginName" ColumnName="LoginName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ba_Model">
+            <EntityTypeMapping TypeName="BananaModel.Ba_Model">
+              <MappingFragment StoreEntitySet="Ba_Model">
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Pid" ColumnName="Pid" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="IconCls" ColumnName="IconCls" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ModelLevel" ColumnName="ModelLevel" />
+                <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

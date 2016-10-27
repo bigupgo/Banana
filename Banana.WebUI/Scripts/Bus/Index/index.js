@@ -16,9 +16,27 @@ $(document).ready(function () {
 //加载第一层菜单
 function initFirstMenu() {
     var $box = $('#ul_FirstMenu');
-    var topMentHtml = "<li><a onclick=\"loadSonMenu('page1','null','人员管理',1,'icon-blue-folder-close','null')\" href='javascript:void(0);'>人员管理</a></li>"
-                    + "<li><a onclick=\"loadSonMenu('page2','null','微信管理',1,'icon-blue-folder-close','null')\" href='javascript:void(0);'>微信管理</a></li>";
-    $box.html(topMentHtml);
+    $.ajax({
+        url: ActionURL.GetOtherMenu,
+        type: "post",
+        success: function (res) {
+
+            if (res != null) {
+
+                $.each(res, function (index, obj) {
+
+
+                });
+            }
+            var topMentHtml = "<li><a onclick=\"loadSonMenu('page1','null','人员管理',1,'icon-blue-folder-close','null')\" href='javascript:void(0);'>人员管理</a></li>"
+                  + "<li><a onclick=\"loadSonMenu('page2','null','微信管理',1,'icon-blue-folder-close','null')\" href='javascript:void(0);'>微信管理</a></li>";
+            //var topMentHtml = "<li><a onclick=\"loadSonMenu('page1','null','人员管理',1,'icon-blue-folder-close','null')\" href='javascript:void(0);'>人员管理</a></li>"
+            //       + "<li><a onclick=\"loadSonMenu('page2','null','微信管理',1,'icon-blue-folder-close','null')\" href='javascript:void(0);'>微信管理</a></li>";
+            $box.html(topMentHtml);
+        }
+    });
+
+   
 }
 
 var _moduleDefaultId;
