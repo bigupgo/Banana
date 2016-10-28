@@ -1,0 +1,1583 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="http://android.googlepages.com/" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://bean.longruan.com" targetNamespace="http://android.googlepages.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://android.googlepages.com/">
+      <xsd:element name="getAllEmployees">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getAllEmployeesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfEmployee" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getBlogsOfInterest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getBlogsOfInterestResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfBlog" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteBlog">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteBlogResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sendNotification">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in3" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sendNotificationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getProjectsOfManager">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getProjectsOfManagerResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfProject" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addLog">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addLogResponse">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="getRelatedEmployeeByProject">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRelatedEmployeeByProjectResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfEmployee" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="rejectBlogOfProject">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="rejectBlogOfProjectResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getAuthorizedUser">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="getAuthorizedUserResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfUser" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getAllContacts">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="getAllContactsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfContact" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getDepartConcernedByWho">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getDepartConcernedByWhoResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfUser" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getAllProjects">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="getAllProjectsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfProject" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteFollowID">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteFollowIDResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getAuthorizedInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ArrayOfString">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getAuthorizedInfoResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="tns:ArrayOfString" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="insertBlog">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="ns1:NewBlog" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="insertBlogResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getBlogsByPage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getBlogsByPageResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfBlog" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getUserLogs">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getUserLogsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="tns:ArrayOfString" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getProjectStatistics">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getProjectStatisticsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfProjectStatistics" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="login">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="loginResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:User" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getAllDepartments">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="getAllDepartmentsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfDepartment" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getNewBlogsOfProject">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getNewBlogsOfProjectResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfBlog" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getAttendance">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getAttendanceResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfAttendance" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getModifyTime">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="getModifyTimeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getDecryptEmployee">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="getDecryptEmployeeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="tns:ArrayOfString" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getAuthorizedEmployee">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getAuthorizedEmployeeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfEmployee" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getAllBlogs">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="getAllBlogsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfBlog" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getBlogByDepartmentManager">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="ns1:BlogQuery" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getBlogByDepartmentManagerResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfBlog" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateBlog">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="ns1:NewBlog" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateBlogResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getBlogsByEmployeeID">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getBlogsByEmployeeIDResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfBlog" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="isDepartmentManager">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="isDepartmentManagerResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfDepartment" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getEmplyeeConcernedByWho">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getEmplyeeConcernedByWhoResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfUser" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="queryBlog">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="ns1:BlogQuery" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="queryBlogResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfBlog" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="insertFollowID">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="insertFollowIDResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getAttendanceOfLeaders">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="getAttendanceOfLeadersResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfAttendance" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getBlogsByProject">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getBlogsByProjectResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfBlog" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getFollowList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getFollowListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfEmployee" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="login2">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="login2Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:User" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="confirmBlogOfProject">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="confirmBlogOfProjectResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getAuthorizedDepart">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getAuthorizedDepartResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfDepartment" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getEncryptEmployee">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="getEncryptEmployeeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="tns:ArrayOfString" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="saveBlog">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="ns1:NewBlog" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="saveBlogResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getBlogsToCheck">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getBlogsToCheckResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfBlog" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateContacts">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateContactsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfContact" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://bean.longruan.com">
+      <xsd:complexType name="ArrayOfEmployee">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Employee" nillable="true" type="ns1:Employee" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Employee">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="departmentName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="employeeID" type="xsd:int" />
+          <xsd:element minOccurs="0" name="employeeName" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfBlog">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Blog" nillable="true" type="ns1:Blog" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Blog">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="beginMinute" type="xsd:int" />
+          <xsd:element minOccurs="0" name="beginTime" type="xsd:int" />
+          <xsd:element minOccurs="0" name="blogContent" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="blogDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="blogID" type="xsd:int" />
+          <xsd:element minOccurs="0" name="checkEmployeeName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="checkState" type="xsd:int" />
+          <xsd:element minOccurs="0" name="departmentName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="employeeID" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="employerName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="encryptType" type="xsd:int" />
+          <xsd:element minOccurs="0" name="endMinute" type="xsd:int" />
+          <xsd:element minOccurs="0" name="endTime" type="xsd:int" />
+          <xsd:element minOccurs="0" name="location" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="projectID" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="projectName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="pubDate" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfProject">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Project" nillable="true" type="ns1:Project" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Project">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="company" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="pManager" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="pSupervisor" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="projectID" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="projectName" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfUser">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="ns1:User" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="User">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="beginTime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="currentVersion" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="decryptRight" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="departmentName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="employeeID" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="employeeName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="encryptType" type="xsd:int" />
+          <xsd:element minOccurs="0" name="endTime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="location" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="psRight" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="rejectedBlogNum" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="userName" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfContact">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Contact" nillable="true" type="ns1:Contact" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Contact">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="departName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="deviceType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="employeeID" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="employeeName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="mobile" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="NewBlog">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="beginTime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="blogContent" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="blogDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="blogID" type="xsd:int" />
+          <xsd:element minOccurs="0" name="blogType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="employeeID" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="encryptType" type="xsd:int" />
+          <xsd:element minOccurs="0" name="endTime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="location" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="projectID" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="projectName" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfProjectStatistics">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ProjectStatistics" nillable="true" type="ns1:ProjectStatistics" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ProjectStatistics">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="budgetTime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="completionRate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cumulativeTime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="employeeName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="participantsNum" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="projectID" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="projectName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="time" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfDepartment">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Department" nillable="true" type="ns1:Department" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Department">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="departmentID" type="xsd:int" />
+          <xsd:element minOccurs="0" name="departmentName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="manager" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAttendance">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Attendance" nillable="true" type="ns1:Attendance" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Attendance">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="checkinTime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="checkoutTime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="departmentName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="employeeID" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="employeeName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="note" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="BlogQuery">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="checkState" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="departmentID" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="employeeID" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="endNum" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="filtHimself" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="projectID" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="startNum" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="workDate" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getBlogsByPageRequest">
+    <wsdl:part name="parameters" element="tns:getBlogsByPage" />
+  </wsdl:message>
+  <wsdl:message name="getDecryptEmployeeRequest">
+    <wsdl:part name="parameters" element="tns:getDecryptEmployee" />
+  </wsdl:message>
+  <wsdl:message name="getAuthorizedUserRequest">
+    <wsdl:part name="parameters" element="tns:getAuthorizedUser" />
+  </wsdl:message>
+  <wsdl:message name="getEmplyeeConcernedByWhoRequest">
+    <wsdl:part name="parameters" element="tns:getEmplyeeConcernedByWho" />
+  </wsdl:message>
+  <wsdl:message name="getModifyTimeResponse">
+    <wsdl:part name="parameters" element="tns:getModifyTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getNewBlogsOfProjectRequest">
+    <wsdl:part name="parameters" element="tns:getNewBlogsOfProject" />
+  </wsdl:message>
+  <wsdl:message name="updateContactsResponse">
+    <wsdl:part name="parameters" element="tns:updateContactsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAttendanceOfLeadersResponse">
+    <wsdl:part name="parameters" element="tns:getAttendanceOfLeadersResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBlogsToCheckRequest">
+    <wsdl:part name="parameters" element="tns:getBlogsToCheck" />
+  </wsdl:message>
+  <wsdl:message name="getAuthorizedEmployeeResponse">
+    <wsdl:part name="parameters" element="tns:getAuthorizedEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProjectStatisticsResponse">
+    <wsdl:part name="parameters" element="tns:getProjectStatisticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="saveBlogResponse">
+    <wsdl:part name="parameters" element="tns:saveBlogResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAttendanceOfLeadersRequest">
+    <wsdl:part name="parameters" element="tns:getAttendanceOfLeaders" />
+  </wsdl:message>
+  <wsdl:message name="getAllBlogsResponse">
+    <wsdl:part name="parameters" element="tns:getAllBlogsResponse" />
+  </wsdl:message>
+  <wsdl:message name="queryBlogResponse">
+    <wsdl:part name="parameters" element="tns:queryBlogResponse" />
+  </wsdl:message>
+  <wsdl:message name="getNewBlogsOfProjectResponse">
+    <wsdl:part name="parameters" element="tns:getNewBlogsOfProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDepartConcernedByWhoResponse">
+    <wsdl:part name="parameters" element="tns:getDepartConcernedByWhoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAttendanceRequest">
+    <wsdl:part name="parameters" element="tns:getAttendance" />
+  </wsdl:message>
+  <wsdl:message name="insertFollowIDResponse">
+    <wsdl:part name="parameters" element="tns:insertFollowIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBlogsByPageResponse">
+    <wsdl:part name="parameters" element="tns:getBlogsByPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAuthorizedEmployeeRequest">
+    <wsdl:part name="parameters" element="tns:getAuthorizedEmployee" />
+  </wsdl:message>
+  <wsdl:message name="getBlogsByProjectRequest">
+    <wsdl:part name="parameters" element="tns:getBlogsByProject" />
+  </wsdl:message>
+  <wsdl:message name="getEmplyeeConcernedByWhoResponse">
+    <wsdl:part name="parameters" element="tns:getEmplyeeConcernedByWhoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRelatedEmployeeByProjectRequest">
+    <wsdl:part name="parameters" element="tns:getRelatedEmployeeByProject" />
+  </wsdl:message>
+  <wsdl:message name="getAuthorizedDepartRequest">
+    <wsdl:part name="parameters" element="tns:getAuthorizedDepart" />
+  </wsdl:message>
+  <wsdl:message name="login2Request">
+    <wsdl:part name="parameters" element="tns:login2" />
+  </wsdl:message>
+  <wsdl:message name="deleteFollowIDResponse">
+    <wsdl:part name="parameters" element="tns:deleteFollowIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBlogsByProjectResponse">
+    <wsdl:part name="parameters" element="tns:getBlogsByProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllContactsResponse">
+    <wsdl:part name="parameters" element="tns:getAllContactsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProjectsOfManagerResponse">
+    <wsdl:part name="parameters" element="tns:getProjectsOfManagerResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDepartConcernedByWhoRequest">
+    <wsdl:part name="parameters" element="tns:getDepartConcernedByWho" />
+  </wsdl:message>
+  <wsdl:message name="rejectBlogOfProjectResponse">
+    <wsdl:part name="parameters" element="tns:rejectBlogOfProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDecryptEmployeeResponse">
+    <wsdl:part name="parameters" element="tns:getDecryptEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="loginRequest">
+    <wsdl:part name="parameters" element="tns:login" />
+  </wsdl:message>
+  <wsdl:message name="insertBlogRequest">
+    <wsdl:part name="parameters" element="tns:insertBlog" />
+  </wsdl:message>
+  <wsdl:message name="getProjectStatisticsRequest">
+    <wsdl:part name="parameters" element="tns:getProjectStatistics" />
+  </wsdl:message>
+  <wsdl:message name="getBlogsByEmployeeIDResponse">
+    <wsdl:part name="parameters" element="tns:getBlogsByEmployeeIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="isDepartmentManagerResponse">
+    <wsdl:part name="parameters" element="tns:isDepartmentManagerResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllProjectsResponse">
+    <wsdl:part name="parameters" element="tns:getAllProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateBlogRequest">
+    <wsdl:part name="parameters" element="tns:updateBlog" />
+  </wsdl:message>
+  <wsdl:message name="sendNotificationRequest">
+    <wsdl:part name="parameters" element="tns:sendNotification" />
+  </wsdl:message>
+  <wsdl:message name="saveBlogRequest">
+    <wsdl:part name="parameters" element="tns:saveBlog" />
+  </wsdl:message>
+  <wsdl:message name="getBlogByDepartmentManagerResponse">
+    <wsdl:part name="parameters" element="tns:getBlogByDepartmentManagerResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateBlogResponse">
+    <wsdl:part name="parameters" element="tns:updateBlogResponse" />
+  </wsdl:message>
+  <wsdl:message name="getModifyTimeRequest">
+    <wsdl:part name="parameters" element="tns:getModifyTime" />
+  </wsdl:message>
+  <wsdl:message name="getUserLogsResponse">
+    <wsdl:part name="parameters" element="tns:getUserLogsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBlogByDepartmentManagerRequest">
+    <wsdl:part name="parameters" element="tns:getBlogByDepartmentManager" />
+  </wsdl:message>
+  <wsdl:message name="getAuthorizedDepartResponse">
+    <wsdl:part name="parameters" element="tns:getAuthorizedDepartResponse" />
+  </wsdl:message>
+  <wsdl:message name="queryBlogRequest">
+    <wsdl:part name="parameters" element="tns:queryBlog" />
+  </wsdl:message>
+  <wsdl:message name="getFollowListRequest">
+    <wsdl:part name="parameters" element="tns:getFollowList" />
+  </wsdl:message>
+  <wsdl:message name="isDepartmentManagerRequest">
+    <wsdl:part name="parameters" element="tns:isDepartmentManager" />
+  </wsdl:message>
+  <wsdl:message name="getAllDepartmentsResponse">
+    <wsdl:part name="parameters" element="tns:getAllDepartmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllBlogsRequest">
+    <wsdl:part name="parameters" element="tns:getAllBlogs" />
+  </wsdl:message>
+  <wsdl:message name="getAuthorizedUserResponse">
+    <wsdl:part name="parameters" element="tns:getAuthorizedUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="rejectBlogOfProjectRequest">
+    <wsdl:part name="parameters" element="tns:rejectBlogOfProject" />
+  </wsdl:message>
+  <wsdl:message name="getEncryptEmployeeRequest">
+    <wsdl:part name="parameters" element="tns:getEncryptEmployee" />
+  </wsdl:message>
+  <wsdl:message name="login2Response">
+    <wsdl:part name="parameters" element="tns:login2Response" />
+  </wsdl:message>
+  <wsdl:message name="confirmBlogOfProjectResponse">
+    <wsdl:part name="parameters" element="tns:confirmBlogOfProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllDepartmentsRequest">
+    <wsdl:part name="parameters" element="tns:getAllDepartments" />
+  </wsdl:message>
+  <wsdl:message name="getAuthorizedInfoRequest">
+    <wsdl:part name="parameters" element="tns:getAuthorizedInfo" />
+  </wsdl:message>
+  <wsdl:message name="getFollowListResponse">
+    <wsdl:part name="parameters" element="tns:getFollowListResponse" />
+  </wsdl:message>
+  <wsdl:message name="addLogResponse">
+    <wsdl:part name="parameters" element="tns:addLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAttendanceResponse">
+    <wsdl:part name="parameters" element="tns:getAttendanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteBlogResponse">
+    <wsdl:part name="parameters" element="tns:deleteBlogResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllContactsRequest">
+    <wsdl:part name="parameters" element="tns:getAllContacts" />
+  </wsdl:message>
+  <wsdl:message name="getAllEmployeesRequest">
+    <wsdl:part name="parameters" element="tns:getAllEmployees" />
+  </wsdl:message>
+  <wsdl:message name="loginResponse">
+    <wsdl:part name="parameters" element="tns:loginResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllProjectsRequest">
+    <wsdl:part name="parameters" element="tns:getAllProjects" />
+  </wsdl:message>
+  <wsdl:message name="getBlogsByEmployeeIDRequest">
+    <wsdl:part name="parameters" element="tns:getBlogsByEmployeeID" />
+  </wsdl:message>
+  <wsdl:message name="insertFollowIDRequest">
+    <wsdl:part name="parameters" element="tns:insertFollowID" />
+  </wsdl:message>
+  <wsdl:message name="getBlogsOfInterestResponse">
+    <wsdl:part name="parameters" element="tns:getBlogsOfInterestResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRelatedEmployeeByProjectResponse">
+    <wsdl:part name="parameters" element="tns:getRelatedEmployeeByProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProjectsOfManagerRequest">
+    <wsdl:part name="parameters" element="tns:getProjectsOfManager" />
+  </wsdl:message>
+  <wsdl:message name="getBlogsOfInterestRequest">
+    <wsdl:part name="parameters" element="tns:getBlogsOfInterest" />
+  </wsdl:message>
+  <wsdl:message name="sendNotificationResponse">
+    <wsdl:part name="parameters" element="tns:sendNotificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllEmployeesResponse">
+    <wsdl:part name="parameters" element="tns:getAllEmployeesResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteBlogRequest">
+    <wsdl:part name="parameters" element="tns:deleteBlog" />
+  </wsdl:message>
+  <wsdl:message name="getEncryptEmployeeResponse">
+    <wsdl:part name="parameters" element="tns:getEncryptEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserLogsRequest">
+    <wsdl:part name="parameters" element="tns:getUserLogs" />
+  </wsdl:message>
+  <wsdl:message name="confirmBlogOfProjectRequest">
+    <wsdl:part name="parameters" element="tns:confirmBlogOfProject" />
+  </wsdl:message>
+  <wsdl:message name="getBlogsToCheckResponse">
+    <wsdl:part name="parameters" element="tns:getBlogsToCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertBlogResponse">
+    <wsdl:part name="parameters" element="tns:insertBlogResponse" />
+  </wsdl:message>
+  <wsdl:message name="addLogRequest">
+    <wsdl:part name="parameters" element="tns:addLog" />
+  </wsdl:message>
+  <wsdl:message name="updateContactsRequest">
+    <wsdl:part name="parameters" element="tns:updateContacts" />
+  </wsdl:message>
+  <wsdl:message name="getAuthorizedInfoResponse">
+    <wsdl:part name="parameters" element="tns:getAuthorizedInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteFollowIDRequest">
+    <wsdl:part name="parameters" element="tns:deleteFollowID" />
+  </wsdl:message>
+  <wsdl:portType name="MyServicePortType">
+    <wsdl:operation name="getAllEmployees">
+      <wsdl:input name="getAllEmployeesRequest" message="tns:getAllEmployeesRequest" />
+      <wsdl:output name="getAllEmployeesResponse" message="tns:getAllEmployeesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getBlogsOfInterest">
+      <wsdl:input name="getBlogsOfInterestRequest" message="tns:getBlogsOfInterestRequest" />
+      <wsdl:output name="getBlogsOfInterestResponse" message="tns:getBlogsOfInterestResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteBlog">
+      <wsdl:input name="deleteBlogRequest" message="tns:deleteBlogRequest" />
+      <wsdl:output name="deleteBlogResponse" message="tns:deleteBlogResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendNotification">
+      <wsdl:input name="sendNotificationRequest" message="tns:sendNotificationRequest" />
+      <wsdl:output name="sendNotificationResponse" message="tns:sendNotificationResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProjectsOfManager">
+      <wsdl:input name="getProjectsOfManagerRequest" message="tns:getProjectsOfManagerRequest" />
+      <wsdl:output name="getProjectsOfManagerResponse" message="tns:getProjectsOfManagerResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addLog">
+      <wsdl:input name="addLogRequest" message="tns:addLogRequest" />
+      <wsdl:output name="addLogResponse" message="tns:addLogResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getRelatedEmployeeByProject">
+      <wsdl:input name="getRelatedEmployeeByProjectRequest" message="tns:getRelatedEmployeeByProjectRequest" />
+      <wsdl:output name="getRelatedEmployeeByProjectResponse" message="tns:getRelatedEmployeeByProjectResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="rejectBlogOfProject">
+      <wsdl:input name="rejectBlogOfProjectRequest" message="tns:rejectBlogOfProjectRequest" />
+      <wsdl:output name="rejectBlogOfProjectResponse" message="tns:rejectBlogOfProjectResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAuthorizedUser">
+      <wsdl:input name="getAuthorizedUserRequest" message="tns:getAuthorizedUserRequest" />
+      <wsdl:output name="getAuthorizedUserResponse" message="tns:getAuthorizedUserResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllContacts">
+      <wsdl:input name="getAllContactsRequest" message="tns:getAllContactsRequest" />
+      <wsdl:output name="getAllContactsResponse" message="tns:getAllContactsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDepartConcernedByWho">
+      <wsdl:input name="getDepartConcernedByWhoRequest" message="tns:getDepartConcernedByWhoRequest" />
+      <wsdl:output name="getDepartConcernedByWhoResponse" message="tns:getDepartConcernedByWhoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllProjects">
+      <wsdl:input name="getAllProjectsRequest" message="tns:getAllProjectsRequest" />
+      <wsdl:output name="getAllProjectsResponse" message="tns:getAllProjectsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteFollowID">
+      <wsdl:input name="deleteFollowIDRequest" message="tns:deleteFollowIDRequest" />
+      <wsdl:output name="deleteFollowIDResponse" message="tns:deleteFollowIDResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAuthorizedInfo">
+      <wsdl:input name="getAuthorizedInfoRequest" message="tns:getAuthorizedInfoRequest" />
+      <wsdl:output name="getAuthorizedInfoResponse" message="tns:getAuthorizedInfoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="insertBlog">
+      <wsdl:input name="insertBlogRequest" message="tns:insertBlogRequest" />
+      <wsdl:output name="insertBlogResponse" message="tns:insertBlogResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getBlogsByPage">
+      <wsdl:input name="getBlogsByPageRequest" message="tns:getBlogsByPageRequest" />
+      <wsdl:output name="getBlogsByPageResponse" message="tns:getBlogsByPageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserLogs">
+      <wsdl:input name="getUserLogsRequest" message="tns:getUserLogsRequest" />
+      <wsdl:output name="getUserLogsResponse" message="tns:getUserLogsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProjectStatistics">
+      <wsdl:input name="getProjectStatisticsRequest" message="tns:getProjectStatisticsRequest" />
+      <wsdl:output name="getProjectStatisticsResponse" message="tns:getProjectStatisticsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="login">
+      <wsdl:input name="loginRequest" message="tns:loginRequest" />
+      <wsdl:output name="loginResponse" message="tns:loginResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllDepartments">
+      <wsdl:input name="getAllDepartmentsRequest" message="tns:getAllDepartmentsRequest" />
+      <wsdl:output name="getAllDepartmentsResponse" message="tns:getAllDepartmentsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getNewBlogsOfProject">
+      <wsdl:input name="getNewBlogsOfProjectRequest" message="tns:getNewBlogsOfProjectRequest" />
+      <wsdl:output name="getNewBlogsOfProjectResponse" message="tns:getNewBlogsOfProjectResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAttendance">
+      <wsdl:input name="getAttendanceRequest" message="tns:getAttendanceRequest" />
+      <wsdl:output name="getAttendanceResponse" message="tns:getAttendanceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getModifyTime">
+      <wsdl:input name="getModifyTimeRequest" message="tns:getModifyTimeRequest" />
+      <wsdl:output name="getModifyTimeResponse" message="tns:getModifyTimeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDecryptEmployee">
+      <wsdl:input name="getDecryptEmployeeRequest" message="tns:getDecryptEmployeeRequest" />
+      <wsdl:output name="getDecryptEmployeeResponse" message="tns:getDecryptEmployeeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAuthorizedEmployee">
+      <wsdl:input name="getAuthorizedEmployeeRequest" message="tns:getAuthorizedEmployeeRequest" />
+      <wsdl:output name="getAuthorizedEmployeeResponse" message="tns:getAuthorizedEmployeeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllBlogs">
+      <wsdl:input name="getAllBlogsRequest" message="tns:getAllBlogsRequest" />
+      <wsdl:output name="getAllBlogsResponse" message="tns:getAllBlogsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getBlogByDepartmentManager">
+      <wsdl:input name="getBlogByDepartmentManagerRequest" message="tns:getBlogByDepartmentManagerRequest" />
+      <wsdl:output name="getBlogByDepartmentManagerResponse" message="tns:getBlogByDepartmentManagerResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateBlog">
+      <wsdl:input name="updateBlogRequest" message="tns:updateBlogRequest" />
+      <wsdl:output name="updateBlogResponse" message="tns:updateBlogResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getBlogsByEmployeeID">
+      <wsdl:input name="getBlogsByEmployeeIDRequest" message="tns:getBlogsByEmployeeIDRequest" />
+      <wsdl:output name="getBlogsByEmployeeIDResponse" message="tns:getBlogsByEmployeeIDResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="isDepartmentManager">
+      <wsdl:input name="isDepartmentManagerRequest" message="tns:isDepartmentManagerRequest" />
+      <wsdl:output name="isDepartmentManagerResponse" message="tns:isDepartmentManagerResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmplyeeConcernedByWho">
+      <wsdl:input name="getEmplyeeConcernedByWhoRequest" message="tns:getEmplyeeConcernedByWhoRequest" />
+      <wsdl:output name="getEmplyeeConcernedByWhoResponse" message="tns:getEmplyeeConcernedByWhoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="queryBlog">
+      <wsdl:input name="queryBlogRequest" message="tns:queryBlogRequest" />
+      <wsdl:output name="queryBlogResponse" message="tns:queryBlogResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="insertFollowID">
+      <wsdl:input name="insertFollowIDRequest" message="tns:insertFollowIDRequest" />
+      <wsdl:output name="insertFollowIDResponse" message="tns:insertFollowIDResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAttendanceOfLeaders">
+      <wsdl:input name="getAttendanceOfLeadersRequest" message="tns:getAttendanceOfLeadersRequest" />
+      <wsdl:output name="getAttendanceOfLeadersResponse" message="tns:getAttendanceOfLeadersResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getBlogsByProject">
+      <wsdl:input name="getBlogsByProjectRequest" message="tns:getBlogsByProjectRequest" />
+      <wsdl:output name="getBlogsByProjectResponse" message="tns:getBlogsByProjectResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getFollowList">
+      <wsdl:input name="getFollowListRequest" message="tns:getFollowListRequest" />
+      <wsdl:output name="getFollowListResponse" message="tns:getFollowListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="login2">
+      <wsdl:input name="login2Request" message="tns:login2Request" />
+      <wsdl:output name="login2Response" message="tns:login2Response" />
+    </wsdl:operation>
+    <wsdl:operation name="confirmBlogOfProject">
+      <wsdl:input name="confirmBlogOfProjectRequest" message="tns:confirmBlogOfProjectRequest" />
+      <wsdl:output name="confirmBlogOfProjectResponse" message="tns:confirmBlogOfProjectResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAuthorizedDepart">
+      <wsdl:input name="getAuthorizedDepartRequest" message="tns:getAuthorizedDepartRequest" />
+      <wsdl:output name="getAuthorizedDepartResponse" message="tns:getAuthorizedDepartResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getEncryptEmployee">
+      <wsdl:input name="getEncryptEmployeeRequest" message="tns:getEncryptEmployeeRequest" />
+      <wsdl:output name="getEncryptEmployeeResponse" message="tns:getEncryptEmployeeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="saveBlog">
+      <wsdl:input name="saveBlogRequest" message="tns:saveBlogRequest" />
+      <wsdl:output name="saveBlogResponse" message="tns:saveBlogResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getBlogsToCheck">
+      <wsdl:input name="getBlogsToCheckRequest" message="tns:getBlogsToCheckRequest" />
+      <wsdl:output name="getBlogsToCheckResponse" message="tns:getBlogsToCheckResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateContacts">
+      <wsdl:input name="updateContactsRequest" message="tns:updateContactsRequest" />
+      <wsdl:output name="updateContactsResponse" message="tns:updateContactsResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MyServiceHttpBinding" type="tns:MyServicePortType">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getAllEmployees">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getAllEmployeesRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAllEmployeesResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBlogsOfInterest">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getBlogsOfInterestRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getBlogsOfInterestResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteBlog">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="deleteBlogRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deleteBlogResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendNotification">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="sendNotificationRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="sendNotificationResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProjectsOfManager">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getProjectsOfManagerRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getProjectsOfManagerResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addLog">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="addLogRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="addLogResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRelatedEmployeeByProject">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getRelatedEmployeeByProjectRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getRelatedEmployeeByProjectResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rejectBlogOfProject">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="rejectBlogOfProjectRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="rejectBlogOfProjectResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAuthorizedUser">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getAuthorizedUserRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAuthorizedUserResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllContacts">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getAllContactsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAllContactsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDepartConcernedByWho">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDepartConcernedByWhoRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getDepartConcernedByWhoResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllProjects">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getAllProjectsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAllProjectsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteFollowID">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="deleteFollowIDRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deleteFollowIDResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAuthorizedInfo">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getAuthorizedInfoRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAuthorizedInfoResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertBlog">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="insertBlogRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="insertBlogResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBlogsByPage">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getBlogsByPageRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getBlogsByPageResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserLogs">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getUserLogsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getUserLogsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProjectStatistics">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getProjectStatisticsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getProjectStatisticsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="login">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="loginRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="loginResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllDepartments">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getAllDepartmentsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAllDepartmentsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNewBlogsOfProject">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getNewBlogsOfProjectRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getNewBlogsOfProjectResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAttendance">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getAttendanceRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAttendanceResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getModifyTime">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getModifyTimeRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getModifyTimeResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDecryptEmployee">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDecryptEmployeeRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getDecryptEmployeeResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAuthorizedEmployee">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getAuthorizedEmployeeRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAuthorizedEmployeeResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllBlogs">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getAllBlogsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAllBlogsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBlogByDepartmentManager">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getBlogByDepartmentManagerRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getBlogByDepartmentManagerResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateBlog">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="updateBlogRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateBlogResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBlogsByEmployeeID">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getBlogsByEmployeeIDRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getBlogsByEmployeeIDResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isDepartmentManager">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="isDepartmentManagerRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="isDepartmentManagerResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmplyeeConcernedByWho">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getEmplyeeConcernedByWhoRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getEmplyeeConcernedByWhoResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryBlog">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="queryBlogRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="queryBlogResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertFollowID">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="insertFollowIDRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="insertFollowIDResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAttendanceOfLeaders">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getAttendanceOfLeadersRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAttendanceOfLeadersResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBlogsByProject">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getBlogsByProjectRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getBlogsByProjectResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFollowList">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getFollowListRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getFollowListResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="login2">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="login2Request">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="login2Response">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirmBlogOfProject">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="confirmBlogOfProjectRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="confirmBlogOfProjectResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAuthorizedDepart">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getAuthorizedDepartRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAuthorizedDepartResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEncryptEmployee">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getEncryptEmployeeRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getEncryptEmployeeResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveBlog">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="saveBlogRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="saveBlogResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBlogsToCheck">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getBlogsToCheckRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getBlogsToCheckResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateContacts">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="updateContactsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateContactsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MyService">
+    <wsdl:port name="MyServiceHttpPort" binding="tns:MyServiceHttpBinding">
+      <wsdlsoap:address location="http://android.longruan.com/BServer/services/MyService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\MD5Encoder.cs" />
     <Compile Include="Common\UploadHelper.cs" />
     <Compile Include="Db\BLLBase.cs" />
     <Compile Include="Db\DBHelper.cs" />

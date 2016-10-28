@@ -1,0 +1,77 @@
+﻿<div id="wrap-baseInfo">
+    <form>
+        <input type="hidden" name="blogID" />
+        <table class="dialog-table">
+            <tr>
+                <td class="col-name">日志日期：
+                </td>
+                <td>
+                    <input id="blogDate" type="text" name="blogDate" class="easyui-datebox" editable="false" required="required" missingmessage="必须选择日志日期" />
+                    <!--       <input type="text" id="blogDate" name="blogDate" class="Wdate" />-->
+                </td>
+            </tr>
+            <tr>
+                <td class="col-name">开始时间：
+                </td>
+                <td>
+                    <select id="dateStart" class="easyui-combobox" name="beginTime" editable="false" style="width: 453px;">
+                        <option value="8">8</option>
+                        <option value="9" selected="selected">9:00</option>
+                        <option value="10">10:00</option>
+                        <option value="11">11:00</option>
+                        <option value="12">12:00</option>
+                        <option value="13">13:00</option>
+                        <option value="14">14:00</option>
+                        <option value="16">16:00</option>
+                        <option value="17">17:00</option>
+                        <option value="18">18:00</option>
+                        <option value="19">19:00</option>
+                        <option value="20">20:00</option>
+                        <option value="21">21:00</option>
+                        <option value="22">22:00</option>
+                        <option value="23">23:00</option>
+                        <option value="24">24:00</option>
+                    </select>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="col-name">结束时间：</td>
+                <td>
+                    <select id="dateEnd" class="easyui-combobox" editable="false" name="endTime" style="width: 453px;">
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10:00</option>
+                        <option value="11">11:00</option>
+                        <option value="12">12:00</option>
+                        <option value="13">13:00</option>
+                        <option value="14">14:00</option>
+                        <option value="16">16:00</option>
+                        <option value="17">17:00</option>
+                        <option value="18" selected="selected">18:00</option>
+                        <option value="19">19:00</option>
+                        <option value="20">20:00</option>
+                        <option value="21">21:00</option>
+                        <option value="22">22:00</option>
+                        <option value="23">23:00</option>
+                        <option value="24">24:00</option>
+                    </select>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="col-name"><a id="moreProjects" title="点击查看更多" style="cursor: pointer;" class="fa fa-search-plus">项目：</a></td>
+                <td>
+                    <input id="cbProject" class="easyui-combobox" name="projectID" editable="false" style="width: 453px;" />
+                </td>
+            </tr>
+            <tr>
+                <td class="col-name">日志内容：</td>
+                <td>
+                    <textarea cols="30" rows="4" name="blogContent" validtype='minLength[25]' class="easyui-validatebox i-t" required="true" /></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+
