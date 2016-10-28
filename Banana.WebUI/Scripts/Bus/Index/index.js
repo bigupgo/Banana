@@ -17,57 +17,76 @@ $(document).ready(function () {
 function initFirstMenu() {
     var $box = $('#ul_FirstMenu');
     $.ajax({
-        url: ActionURL.GetOtherMenu,
+        url: ActionURL.GetFirstMenu,
         type: "post",
         success: function (res) {
-
+            var topMentHtml = "";
             if (res != null) {
-
                 $.each(res, function (index, obj) {
-
-
+                    topMentHtml += "<li><a onclick=\"loadSonMenu('" + obj.ID + "','" + obj.ModelName + "'," + obj.Type + ",'" + obj.IconCls + "','" + obj.Url + "')\" href='javascript:void(0);'>" + obj.ModelName + "</a></li>";
                 });
             }
-            var topMentHtml = "<li><a onclick=\"loadSonMenu('page1','null','人员管理',1,'icon-blue-folder-close','null')\" href='javascript:void(0);'>人员管理</a></li>"
-                  + "<li><a onclick=\"loadSonMenu('page2','null','微信管理',1,'icon-blue-folder-close','null')\" href='javascript:void(0);'>微信管理</a></li>";
-            //var topMentHtml = "<li><a onclick=\"loadSonMenu('page1','null','人员管理',1,'icon-blue-folder-close','null')\" href='javascript:void(0);'>人员管理</a></li>"
-            //       + "<li><a onclick=\"loadSonMenu('page2','null','微信管理',1,'icon-blue-folder-close','null')\" href='javascript:void(0);'>微信管理</a></li>";
             $box.html(topMentHtml);
         }
     });
-
-   
 }
 
 var _moduleDefaultId;
 //加载子菜单
-function loadSonMenu(pid, defaultId, text, type, iconCls, url) {
+function loadSonMenu(pid, text, type, iconCls, url) {
     moduleID = pid;
     $('#wrap_west').panel('setTitle', text);
-
     $('body').layout('expand', 'west');
-
-    var sonMideoHtml = "";
-    if (pid == "page1") {
-        sonMideoHtml = "<li>"
-                      + "<a href='javascript:void(0);' style='text-decoration:none' class='dropdown-toggle'><i class='fa fa-list-alt'></i>人员管理<b class='fa fa-angle-down'></b></a>"
-                      + "<ul class='submenu'>"
-                      + "<li class='childmenu' text='会员管理' limit='5' url='User/User/Index' iconCls='fa fa-list-alt' pid='page11' >"
-                      + "<a href='javascript:void(0);' style='text-decoration:none'><i class='fa fa-list-alt'></i>会员管理</a></li>"
-                      + "<li class='childmenu' text='关注会员' limit='5' url='Weixin/Subscribe/Index' iconCls='fa fa-list-alt' pid='page12' >"
-                      + "<a href='javascript:void(0);' style='text-decoration:none'><i class='fa fa-list-alt'></i>关注会员</a></li>"
-                      + "</ul>"
-                     + "</li>";
-    }
-
-    if (pid == "page2") {
-
-        sonMideoHtml = "<li class='childmenu' text='饭菜管理' limit='5' url='Weixin/Food/Index' iconCls='fa fa-list-alt' pid='page21' ><a href='javascript:void(0);' style='text-decoration:none'><i class='fa fa-list-alt'></i>饭菜管理</a></li>"
-    }
-
-    $('#ul_menuTree').html(sonMideoHtml);
+    var memuHtml = GetMenueHtml(pid);
+    $('#ul_menuTree').html(memuHtml);
     bindMedioClick();//绑定菜单点击事件
+}
 
+//获取菜单HTML代码
+function GetMenueHtml(pid) {
+    var sonMenuHtml = "";
+    $.ajax({
+        url: ActionURL.GetOtherMenu,
+        async: false,
+        type: "post",
+        data: { pid: pid },
+        success: function (res) {
+            if (res != null) {
+               
+                $.each(res, function (index, obj) {
+                    if (obj.Type == 0) {
+                        sonMenuHtml += "<li>"
+                                             + "<a href='javascript:void(0);' style='text-decoration:none' class='dropdown-toggle'><i class='fa fa-list-alt'></i>人员管理<b class='fa fa-angle-down'></b></a>"
+                                             + "<ul class='submenu'>";
+                        $.ajax({
+                            url: ActionURL.GetOtherMenu,
+                            type: "post",
+                            async: false,
+                            data: { pid: obj.ID },
+                            success: function (childres) {
+                                if (childres != null) {
+                                    $.each(childres, function (i, childObj) {
+                                        if (childObj.Type == 1) {
+                                            sonMenuHtml += "<li class='childmenu' text='" + childObj.ModelName + "' limit='5' url='" + childObj.Url + "' iconCls='" + childObj.IconCls + "' pid='" + childObj.ID + "' ><a href='javascript:void(0);' style='text-decoration:none'><i class='" + childObj.IconCls + "'></i>" + childObj.ModelName + "</a></li>";
+                                        }
+                                        if (childObj.Type == 0) {
+                                            GetMenueHtml(childObj.ID);
+                                        }
+                                    })
+                                }
+                            }
+                        })
+                        sonMenuHtml += "</ul>"
+                                    + "</li>";
+                    }
+                    if (obj.Type == 1) {
+                        sonMenuHtml += "<li class='childmenu' text='" + obj.ModelName + "' limit='5' url='" + obj.Url + "' iconCls='" + obj.IconCls + "' pid='" + obj.ID + "' ><a href='javascript:void(0);' style='text-decoration:none'><i class='" + obj.IconCls + "'></i>" + obj.ModelName + "</a></li>";
+                    }
+                });            
+            }
+        }
+    });
+    return sonMenuHtml;
 }
 
 //绑定菜单点击事件
@@ -117,8 +136,6 @@ function fnMenuTreeSelected(node) {
                 }
             });
     }
-
-
 
     function paramEncode(user,pwd)
     {

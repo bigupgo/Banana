@@ -27,10 +27,9 @@ namespace Banana.Bll.Base
         /// 获取菜单
         /// </summary>
         /// <returns></returns>
-        public List<Ba_Model> GetMenu(int? level, string pid = null)
+        public IQueryable<Ba_Model> GetMenu(int? level, string pid = null)
         {
-            Expression<Func<Ba_Model, bool>> expr = x => x.IsDel.Equals("N");
-            List<Ba_Model> list = new List<Ba_Model>();
+            Expression<Func<Ba_Model, bool>> expr = x => x.IsDel.Equals("N");  
             if (level != null)
             {
                 expr = expr.And(x => x.ModelLevel == level);
@@ -40,7 +39,7 @@ namespace Banana.Bll.Base
                 expr = expr.And(x => x.Pid.Equals(pid));
             }
             var data = base.GetList(expr);
-            return list;
+            return data;
         }
     }
 }

@@ -188,8 +188,6 @@ function fnTabOnSelect(title) {
         url = $sel.find('iframe').attr('src');
        
     } else {
-      
-
         if (!isAddMainPage) {
             setCookie('lrsmes_selecttab_title_' + moduleID + '_' + sysUserID, name);
             setCookie('lrsmes_selecttab_id_' + moduleID + '_' + sysUserID, id);
@@ -197,7 +195,6 @@ function fnTabOnSelect(title) {
             setCookie('lrsmes_selecttab_url_' + moduleID + '_' + sysUserID, url);
         }
     }
-
     isAddMainPage = false;//是否为第一次添加首页选择
 }
 //Tabs右键
