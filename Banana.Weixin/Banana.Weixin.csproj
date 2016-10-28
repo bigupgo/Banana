@@ -141,6 +141,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BlogwxController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WxBaseController.cs" />
     <Compile Include="Global.asax.cs">
@@ -189,6 +190,28 @@
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jqueryStorage.js" />
+    <Content Include="Scripts\weixin\Blog\css\weui.css" />
+    <Content Include="Scripts\weixin\Blog\css\weui.min.css" />
+    <Content Include="Scripts\weixin\Blog\example.js" />
+    <Content Include="Scripts\weixin\Blog\images\icon_nav_actionSheet.png" />
+    <Content Include="Scripts\weixin\Blog\images\icon_nav_article.png" />
+    <Content Include="Scripts\weixin\Blog\images\icon_nav_button.png" />
+    <Content Include="Scripts\weixin\Blog\images\icon_nav_cell.png" />
+    <Content Include="Scripts\weixin\Blog\images\icon_nav_dialog.png" />
+    <Content Include="Scripts\weixin\Blog\images\icon_nav_icons.png" />
+    <Content Include="Scripts\weixin\Blog\images\icon_nav_msg.png" />
+    <Content Include="Scripts\weixin\Blog\images\icon_nav_panel.png" />
+    <Content Include="Scripts\weixin\Blog\images\icon_nav_progress.png" />
+    <Content Include="Scripts\weixin\Blog\images\icon_nav_search_bar.png" />
+    <Content Include="Scripts\weixin\Blog\images\icon_nav_tab.png" />
+    <Content Include="Scripts\weixin\Blog\images\icon_nav_toast.png" />
+    <Content Include="Scripts\weixin\Blog\images\pic_article.png" />
+    <Content Include="Scripts\weixin\Blog\images\pic_article_1.jpg" />
+    <Content Include="Scripts\weixin\Blog\images\pic_article_2.jpg" />
+    <Content Include="Scripts\weixin\Blog\images\vcode.jpg" />
+    <Content Include="Scripts\weixin\Blog\router.min.js" />
+    <Content Include="Scripts\weixin\Blog\zepto.min.js" />
+    <Content Include="Scripts\weixin\Blog\wxblog.js" />
     <Content Include="Scripts\weixin\weixinHttpUrl.js" />
     <Content Include="Scripts\weixin\weixinUtil.js" />
     <Content Include="Web.config" />
@@ -219,6 +242,7 @@
     <Content Include="WxRequest.ashx" />
     <Content Include="Views\Home\Food.cshtml" />
     <Content Include="Views\Home\Grid.cshtml" />
+    <Content Include="Views\Blogwx\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Banana.DBModel\Banana.DBModel.csproj">

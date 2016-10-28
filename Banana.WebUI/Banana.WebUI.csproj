@@ -1333,6 +1333,7 @@
     <Content Include="Areas\Blog\Views\Web.config" />
     <Content Include="Areas\Blog\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Blog\Views\Blog\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\bananaUi.pubxml" />
     <None Include="Properties\PublishProfiles\webManage.pubxml" />
   </ItemGroup>
   <PropertyGroup>
