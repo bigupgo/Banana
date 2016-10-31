@@ -98,6 +98,13 @@ namespace Banana.Bll.Weixin
                     News.Articles.Add(new ArticleEntity("欢迎关注【BigUpGo】", "今天吃什么？", WeixinCommon.FormatPath("/Content/wheel.png"), WeixinCommon.FormatPath("/Home/Grid")));
                     responseContent = News.ToXml();
                 }
+                else if (Content.Contains("日志"))
+                {
+                    ResponseNews News = new ResponseNews(FromUserName, ToUserName);
+                    News.Articles.Add(new ArticleEntity("欢迎关注【BigUpGo】", "工作日志", WeixinCommon.FormatPath("/Content/blog.png"), WeixinCommon.FormatPath("/Blogwx/Index")));
+                    responseContent = News.ToXml();
+                }
+
                 else
                 {
                     ResponseText text = new ResponseText(FromUserName, ToUserName, "回复“吃”、“吃什么”等包含“吃”文字,试试看。");

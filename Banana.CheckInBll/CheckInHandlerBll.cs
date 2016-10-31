@@ -22,14 +22,16 @@ namespace Banana.CheckInBll
         /// </summary>
         public CheckInHandlerBll()
         {
-
             server = new MyService();
         }
 
         public Blog[] GetBlogList()
         {
-           User loginUser = Login();
-           Blog[] projects = server.queryBlog(new BlogQuery() { employeeID = loginUser.employeeID, startNum = "0", endNum = "10" });
+            if (this.CurrentUser == null)
+            {
+                CurrentUser = Login();
+            }
+            Blog[] projects = server.queryBlog(new BlogQuery() { employeeID = CurrentUser.employeeID, startNum = "0", endNum = "10" });
             return projects;
         }
 
@@ -43,13 +45,14 @@ namespace Banana.CheckInBll
             AjaxReturn ar = new AjaxReturn() { success = false };
             try
             {
-                if (this.CurrentUser != null)
+                if (this.CurrentUser == null)
                 {
-                    blog.employeeID = this.CurrentUser.employeeID;
-                    blog.blogType = "0";
-                    //blog.blogDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                    ar.success = server.insertBlog(blog);
+                   CurrentUser = Login();
                 }
+                blog.employeeID = this.CurrentUser.employeeID;
+                blog.blogType = "0";
+                //blog.blogDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                ar.success = server.insertBlog(blog);
                 ar.SetMessage("添加日志成功！", "添加日志失败！");
                 return ar;
             }

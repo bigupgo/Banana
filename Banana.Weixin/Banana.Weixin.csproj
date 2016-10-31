@@ -154,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\config\wxconfig.xml" />
+    <Content Include="Content\blog.png" />
     <Content Include="Content\default.png" />
     <Content Include="Content\icons\tab.ico" />
     <Content Include="Content\qrcode.jpg" />
@@ -163,7 +164,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="mobile\grid\css\grid.css" />
-    <Content Include="mobile\grid\css\gridmobile.css" />
     <Content Include="mobile\grid\images\bg.jpg" />
     <Content Include="mobile\grid\js\app.js" />
     <Content Include="mobile\wheel\css\public\font-awesome.css" />
@@ -212,6 +212,7 @@
     <Content Include="Scripts\weixin\Blog\router.min.js" />
     <Content Include="Scripts\weixin\Blog\zepto.min.js" />
     <Content Include="Scripts\weixin\Blog\wxblog.js" />
+    <Content Include="Scripts\DateExtend.js" />
     <Content Include="Scripts\weixin\weixinHttpUrl.js" />
     <Content Include="Scripts\weixin\weixinUtil.js" />
     <Content Include="Web.config" />
@@ -243,8 +244,13 @@
     <Content Include="Views\Home\Food.cshtml" />
     <Content Include="Views\Home\Grid.cshtml" />
     <Content Include="Views\Blogwx\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\wxui.pubxml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Banana.CheckInBll\Banana.CheckInBll.csproj">
+      <Project>{f60add1d-0eb4-4746-b670-208d4bd64833}</Project>
+      <Name>Banana.CheckInBll</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Banana.DBModel\Banana.DBModel.csproj">
       <Project>{3afa17b6-df24-4e74-b762-dd37be8d211f}</Project>
       <Name>Banana.DBModel</Name>

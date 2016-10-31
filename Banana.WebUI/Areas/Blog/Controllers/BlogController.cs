@@ -43,5 +43,6 @@ namespace Banana.WebUI.Areas.Blog.Controllers
         {
             return JSONResult(server.GetProjects());
         }
+        
     }
 }
