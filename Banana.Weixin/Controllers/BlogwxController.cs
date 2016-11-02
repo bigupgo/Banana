@@ -47,5 +47,9 @@ namespace Banana.Weixin.Controllers
             return Content(JSON.Serialize(server.AddBlog(blog)));
         }
 
+        public ActionResult GetNewBlog()
+        {
+            return Content(JSON.Serialize(server.GetNewBlog()), "application/json");
+        }
     }
 }

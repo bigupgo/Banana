@@ -25,6 +25,10 @@ namespace Banana.CheckInBll
             server = new MyService();
         }
 
+        /// <summary>
+        /// 获取最新10条日志
+        /// </summary>
+        /// <returns></returns>
         public Blog[] GetBlogList()
         {
             if (this.CurrentUser == null)
@@ -33,6 +37,20 @@ namespace Banana.CheckInBll
             }
             Blog[] projects = server.queryBlog(new BlogQuery() { employeeID = CurrentUser.employeeID, startNum = "0", endNum = "10" });
             return projects;
+        }
+
+        /// <summary>
+        /// 获取最新日志
+        /// </summary>
+        /// <returns></returns>
+        public Blog GetNewBlog()
+        {
+            if (this.CurrentUser == null)
+            {
+                CurrentUser = Login();
+            }
+            Blog[] projects = server.queryBlog(new BlogQuery() { employeeID = CurrentUser.employeeID, startNum = "0", endNum = "1" });
+            return projects == null ? new Blog() : projects.FirstOrDefault();
         }
 
         /// <summary>

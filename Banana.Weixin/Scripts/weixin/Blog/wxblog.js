@@ -7,10 +7,11 @@ $(function () {
 
     //绑定确定事件
     $("#projectName").click(function () {
-        $('#dialog2').show();
+        CheckPro();
     });
-    $(".weui_btn_dialog").click(function () {
-        $('#dialog2').hide();
+
+    $("#backId").click(function () {
+        Back();
     });
 
     //搜索绑定
@@ -22,6 +23,7 @@ $(function () {
         $weuiSearchBar.removeClass('weui_search_focusing');
         var searchText = $("#search_input").val();
         selProject(searchText);
+
         if ($(this).val()) {
             $('#search_text').hide();
         } else {
@@ -51,13 +53,15 @@ function InitData() {
     $("input[name='blogDate']").val(nowDate.Format("yyyy-MM-dd"));
     $("input[name='beginTime']").val("08:30");
     $("input[name='endTime']").val("18:00");
-    BindProject();  
+    BindProject();
+    MyBLog();
 }
 
 //设置选择项目
 function selPro(projectId, name) {
-    $("#projectName").val(name);
+    $("#projectName").html(name);
     $("#projectId").val(projectId);
+    Back();
 }
 
 //预先加载
@@ -77,7 +81,7 @@ function selProject(search) {
     if (search == null) {
         return;
     }
-    $.ajax({
+      $.ajax({
         url: URL("/Blogwx/SearchProject"),
         type: "post",
         data:{search:search},
@@ -108,10 +112,9 @@ function countSize(obj) {
 //添加日志
 function AddLog() {
 
-    //$('.js_tooltips').show();
-    //setTimeout(function () {
-    //    $('.js_tooltips').hide();
-    //}, 3000);
+    if (!CheckValue()) {
+        return;
+    }
 
     $('#loadingToast').show();
 
@@ -124,8 +127,14 @@ function AddLog() {
         type: "post",
         data: sendData,
         success: function (res) {
+            MyBLog();
             res = JSON.parse(res);
             $('#loadingToast').hide();
+            if (res.success) {
+                $("#toastId").attr("class", "weui_icon_toast");
+            } else {
+                $("#toastId").attr("class", "weui_icon_msg weui_icon_warn");
+            }
             $("#submsgId").html(res.message);
             $('#toast').show();
             setTimeout(function () {
@@ -147,4 +156,49 @@ function convertArray(o) {
         }
     }
     return v;
+}
+
+function Back() {
+    $('#second').hide();
+    $('#first').show();
+}
+
+function CheckPro() {
+    $('#second').show();
+    $('#first').hide();
+}
+
+//绑定最新日志
+function MyBLog() {
+    $.ajax({
+        url: URL("/Blogwx/GetNewBlog"),
+        type: "post",
+        success: function (data) {
+            if (data != null) {
+                var d = data.blogDate;
+                var proName = data.projectName;
+                $("#dateShow").html(d);
+                $("#proNameShow").html(proName);
+            }
+        }
+    });
+}
+
+//表单验证
+function CheckValue() {
+    var proId = $("#projectId").val();
+    var blogContext = $("#blogcontext").html();
+    var msg = "";
+    if (proId == "") {
+        msg = "请先选择项目";
+    }
+    if (msg != "") {
+        $("#checkmsgId").html(msg);
+        $('.js_tooltips').show();
+        setTimeout(function () {
+            $('.js_tooltips').hide();
+        }, 3000);
+        return false;
+    }
+    return true;
 }
