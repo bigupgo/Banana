@@ -89,10 +89,10 @@ function selProject(search) {
             if (res != null) {
                 var items = "";
                 res = JSON.parse(res);
-                $.each(res, function (i, obj) {
+                $.each(res, function (i, obj) { 
                     items += "<div class='weui_cell'>"
                     + "<div class='weui_cell_bd weui_cell_primary'>"
-                    + " <p onclick=selPro('"+ obj.projectID + "','" + obj.projectName + "')>" + obj.projectID + '&nbsp;&nbsp;' + obj.projectName.substring(0, 5) + "</p>"
+                    + " <p onclick=\"selPro('" + obj.projectID + "','" + obj.projectName + "')\">" + obj.projectID + '&nbsp;&nbsp;' + obj.projectName.substring(0, 5) + "</p>"
                     + "</div>"
                     + "</div>";
                 });
