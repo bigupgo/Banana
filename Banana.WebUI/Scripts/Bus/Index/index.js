@@ -56,7 +56,7 @@ function GetMenueHtml(pid) {
                 $.each(res, function (index, obj) {
                     if (obj.Type == 0) {
                         sonMenuHtml += "<li>"
-                                             + "<a href='javascript:void(0);' style='text-decoration:none' class='dropdown-toggle'><i class='fa fa-list-alt'></i>人员管理<b class='fa fa-angle-down'></b></a>"
+                                             + "<a href='javascript:void(0);' style='text-decoration:none' class='dropdown-toggle'><i class='"+obj.IconCls+"'></i>" + obj.ModelName + "<b class='fa fa-angle-down'></b></a>"
                                              + "<ul class='submenu'>";
                         $.ajax({
                             url: ActionURL.GetOtherMenu,
@@ -97,7 +97,7 @@ function bindMedioClick(){
         $('#ul_menuTree .childmenu').removeClass('active');
         $this.addClass('active');
 
-        if ($this.attr('pid') == "cc2afc151c964f6f98e9957fcab2fae9") {
+        if ($this.attr('pid') == "cc2afc151c964f6f98e9957fcab2fae9") {//用于判断添加外部菜单
             window.open($this.attr('url'));
         } else {
             var attr = { url: $this.attr('url'), limit: $this.attr('limit') };

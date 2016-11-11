@@ -42,14 +42,14 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Banana.Bll, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Banana.Bll">
       <HintPath>..\Banana.Dll\Banana.Bll.dll</HintPath>
     </Reference>
     <Reference Include="Banana.Bll.Base">
       <HintPath>..\Banana.Base.Dll\Banana.Bll.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Banana.Core">
+    <Reference Include="Banana.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Banana.Dll\Banana.Core.dll</HintPath>
     </Reference>
     <Reference Include="Banana.Core.Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -440,6 +440,7 @@
     <Content Include="Scripts\bootstrap-ace\js\ace-extra.min.js" />
     <Content Include="Scripts\bootstrap-ace\js\ace.min.js" />
     <Content Include="Scripts\Bus\Base\html\upload.html" />
+    <Content Include="Scripts\Bus\Base\js\sysmenu.js" />
     <Content Include="Scripts\Bus\Blog\html\add.htm" />
     <Content Include="Scripts\Bus\Blog\html\edit.htm" />
     <Content Include="Scripts\Bus\Blog\html\projects.htm" />
@@ -1335,6 +1336,7 @@
     <Content Include="Areas\Blog\Views\Blog\Index.cshtml" />
     <None Include="Properties\PublishProfiles\bananaUi.pubxml" />
     <None Include="Properties\PublishProfiles\webManage.pubxml" />
+    <Content Include="Views\Home\SysMenu.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

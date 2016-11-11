@@ -162,11 +162,29 @@ namespace Banana.WebUI.Controllers
         /// <param name="level"></param>
         /// <param name="pid"></param>
         /// <returns></returns>
+
         public ActionResult GetOtherMenu(string pid)
         {
             var server = new MenuBase();
             var data = server.GetMenu(null, pid);
             return JSONResult(data);
+        }
+
+        /// <summary>
+        /// 菜单导航
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult SysMenu()
+        {
+            return View();
+        }
+
+
+        public ActionResult GetList()
+        {
+            var server = new MenuBase();
+            var result= server.GetList();
+            return JSONResult(result);
         }
     }
 }

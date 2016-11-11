@@ -52,6 +52,7 @@
     <Compile Include="AjaxReturn.cs" />
     <Compile Include="BaseConfig.cs" />
     <Compile Include="BaseRepository.cs" />
+    <Compile Include="BoolFlag.cs" />
     <Compile Include="CommonFields.cs" />
     <Compile Include="ContextHelper.cs" />
     <Compile Include="ContextManager.cs" />

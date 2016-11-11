@@ -22,6 +22,8 @@
           <Property Name="Pid" Type="nvarchar" MaxLength="50" />
           <Property Name="CreateTime" Type="datetime" />
           <Property Name="IsDel" Type="char" MaxLength="1" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="State" Type="bit" />
         </EntityType>
         <EntityType Name="Ba_UserInfo">
           <Key>
@@ -72,6 +74,8 @@
           <Property Type="String" Name="Pid" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="CreateTime" Precision="3" />
           <Property Type="String" Name="IsDel" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="Sort" />
+          <Property Type="Boolean" Name="State" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -97,6 +101,8 @@
           <EntitySetMapping Name="Ba_Model">
             <EntityTypeMapping TypeName="BananaModel.Ba_Model">
               <MappingFragment StoreEntitySet="Ba_Model">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
                 <ScalarProperty Name="IsDel" ColumnName="IsDel" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
                 <ScalarProperty Name="Pid" ColumnName="Pid" />
