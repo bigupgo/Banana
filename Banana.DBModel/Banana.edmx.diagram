@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="9b240a5d321f49e6a07fbc5b96bfbbb8" Name="关系图1">
         <EntityTypeShape EntityType="BananaModel.Ba_UserInfo" Width="1.5" PointX="0.66619775475291432" PointY="21.170659492337453" />
-        <EntityTypeShape EntityType="BananaModel.Ba_Model" Width="1.5" PointX="6.351328279055342" PointY="11.301570212143274" />
+        <EntityTypeShape EntityType="BananaModel.Ba_Model" Width="1.5" PointX="4.5726375917776663" PointY="10.072763835113852" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

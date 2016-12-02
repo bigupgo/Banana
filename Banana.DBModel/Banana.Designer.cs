@@ -398,24 +398,24 @@ namespace Banana.DBModel
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> State
+        public Nullable<global::System.Boolean> Enable
         {
             get
             {
-                return _State;
+                return _Enable;
             }
             set
             {
-                OnStateChanging(value);
-                ReportPropertyChanging("State");
-                _State = StructuralObject.SetValidValue(value, "State");
-                ReportPropertyChanged("State");
-                OnStateChanged();
+                OnEnableChanging(value);
+                ReportPropertyChanging("Enable");
+                _Enable = StructuralObject.SetValidValue(value, "Enable");
+                ReportPropertyChanged("Enable");
+                OnEnableChanged();
             }
         }
-        private Nullable<global::System.Boolean> _State;
-        partial void OnStateChanging(Nullable<global::System.Boolean> value);
-        partial void OnStateChanged();
+        private Nullable<global::System.Boolean> _Enable;
+        partial void OnEnableChanging(Nullable<global::System.Boolean> value);
+        partial void OnEnableChanged();
 
         #endregion
 

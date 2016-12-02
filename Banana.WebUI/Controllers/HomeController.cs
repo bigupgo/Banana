@@ -1,6 +1,7 @@
 ﻿using Banana.Bll;
 using Banana.Bll.Base;
 using Banana.Core.Base;
+using Banana.DBModel;
 using System;
 using System.Web;
 using System.Web.Mvc;
@@ -184,6 +185,50 @@ namespace Banana.WebUI.Controllers
         {
             var server = new MenuBase();
             var result= server.GetList();
+            return JSONResult(result);
+        }
+
+        public ActionResult GetTreeList()
+        {
+            var server = new MenuBase();
+            var result = server.GetMenuTree();
+            return JSONResult(result);
+        }
+
+        /// <summary>
+        /// 添加菜单
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public ActionResult Add(Ba_Model model)
+        {
+            var server = new MenuBase();
+            var result = server.Add(model);
+            return JSONResult(result);
+        }
+
+        /// <summary>
+        /// 编辑菜单
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public ActionResult Edit(Ba_Model model)
+        {
+            var server = new MenuBase();
+            var result = server.Edit(model);
+            return JSONResult(result);
+        }
+
+        /// <summary>
+        /// 删除菜单
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public ActionResult Delete(string Id, string type)
+        {
+            var server = new MenuBase();
+            var result = server.Delete(Id, type);
             return JSONResult(result);
         }
     }

@@ -217,6 +217,7 @@
     <Content Include="Content\Home\print.css" />
     <Content Include="Content\Home\sub.css" />
     <Content Include="Content\icon.css" />
+    <Content Include="Content\icon.htm" />
     <Content Include="Content\icons\add.png" />
     <Content Include="Content\icons\advancedsettings.png" />
     <Content Include="Content\icons\advancedsettings2.png" />
@@ -440,6 +441,8 @@
     <Content Include="Scripts\bootstrap-ace\js\ace-extra.min.js" />
     <Content Include="Scripts\bootstrap-ace\js\ace.min.js" />
     <Content Include="Scripts\Bus\Base\html\upload.html" />
+    <Content Include="Scripts\Bus\Base\html\menutype.html" />
+    <Content Include="Scripts\Bus\Base\html\addpage.html" />
     <Content Include="Scripts\Bus\Base\js\sysmenu.js" />
     <Content Include="Scripts\Bus\Blog\html\add.htm" />
     <Content Include="Scripts\Bus\Blog\html\edit.htm" />
