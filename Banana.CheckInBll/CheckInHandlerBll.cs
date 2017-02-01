@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Banana.CheckInBll
 {
@@ -48,6 +49,10 @@ namespace Banana.CheckInBll
             if (this.CurrentUser == null)
             {
                 CurrentUser = Login();
+            }
+            if (CurrentUser == null)
+            {
+                return null;
             }
             Blog[] projects = server.queryBlog(new BlogQuery() { employeeID = CurrentUser.employeeID, startNum = "0", endNum = "1" });
             return projects == null ? new Blog() : projects.FirstOrDefault();
@@ -94,10 +99,7 @@ namespace Banana.CheckInBll
 
             try
             {
-                if (blog.blogID != null)
-                {
-                    ar.success = server.updateBlog(blog);
-                }
+                ar.success = server.updateBlog(blog);
                 ar.SetMessage("更新日志成功！", "更新日志失败！");
                 return ar;
             }
@@ -121,10 +123,7 @@ namespace Banana.CheckInBll
 
             try
             {
-                if (blogID != null)
-                {
-                    ar.success = server.deleteBlog(blogID);
-                }
+                ar.success = server.deleteBlog(blogID);
                 ar.SetMessage("删除日志成功！", "删除日志失败！");
                 return ar;
             }
@@ -192,6 +191,8 @@ namespace Banana.CheckInBll
 
         public User Login()
         {
+            loginName = HttpContext.Current.Session["BlogName"] + "";
+            password = HttpContext.Current.Session["BlogPassword"] + "";
             if (string.IsNullOrEmpty(this.loginName) || string.IsNullOrEmpty(this.password))
             {
                 return null;
@@ -216,5 +217,7 @@ namespace Banana.CheckInBll
                 this.m_CurrentUser = value;
             }
         }
+
+       
     }
 }

@@ -10,12 +10,12 @@ namespace Banana.Core.Base.Weixin
     public static class WeixinCommon
     {
         //获得虚拟路径
-        public static string FormatPath(string path)
+        public static string FormatPath(string path, string param = null)
         {
             //获得主机+端口 
             string Authority = "http://" + HttpContext.Current.Request.Url.Authority;
             string ApplicationPath = HttpContext.Current.Request.ApplicationPath.Substring(HttpContext.Current.Request.ApplicationPath.Length - 1) == "/" ? HttpContext.Current.Request.ApplicationPath : HttpContext.Current.Request.ApplicationPath + "/";
-            string result = Authority + ApplicationPath + path;
+            string result = Authority + ApplicationPath + path + param;
             return result;
         }
 

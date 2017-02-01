@@ -1,6 +1,8 @@
-﻿using Banana.CheckInBll;
+﻿using Banana.Bll.Weixin;
+using Banana.CheckInBll;
 using Banana.CheckInBll.com.longruan.android;
 using Banana.Core.Base;
+using Banana.DBModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +15,45 @@ namespace Banana.Weixin.Controllers
     {
         //
         // GET: /Blogwx/
-        CheckInHandlerBll server = new CheckInHandlerBll();
+        CheckInHandlerBll server = null;
+        public BlogwxController()
+        {
+
+            server = new CheckInHandlerBll();
+        }
+
         List<Project> prolist = null;
         public ActionResult Index()
         {
+            string openId = Request.QueryString["openId"];
+            string blogName = Request.QueryString["blogName"];
+            string blogPassword = Request.QueryString["blogPassword"];
+            Session["OpenId"] = openId;
+            if (!string.IsNullOrEmpty(blogName) && !string.IsNullOrEmpty(blogPassword))
+            {
+             
+                Session["BlogName"] = blogName;
+                Session["BlogPassword"] = blogPassword;
+            }
+
+            if (Session["BlogName"] != null)
+            {
+                ViewBag.Login = "display:none;";
+            }
+            else
+            {
+                ViewBag.Login = "display:block;";
+            }
             return View();
+        }
+
+      
+
+        public ActionResult BlogUserAdd(Ba_BlogUser blogUser)
+        {
+            BlogBll blogBll = new BlogBll();
+            var res = blogBll.Add(blogUser);
+            return Content(JSON.Serialize(res), "application/json");
         }
 
         public void GetProjects()

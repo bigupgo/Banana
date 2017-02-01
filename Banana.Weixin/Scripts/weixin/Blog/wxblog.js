@@ -10,15 +10,12 @@ $(function () {
         CheckPro();
     });
 
-    $("#backId").click(function () {
-        Back();
-    });
-
-    //搜索绑定
-    $('form').on('focus', '#search_input', function () {
-        var $weuiSearchBar = $('#search_bar');
-        $weuiSearchBar.addClass('weui_search_focusing');
-    }).on('blur', '#search_input', function () {
+    //查询事件
+    $("#searchId").click(function () {
+        $('#loadingToast .weui_toast_content').html("查询中..");
+       $('#loadingToast').show();
+      
+      
         var $weuiSearchBar = $('#search_bar');
         $weuiSearchBar.removeClass('weui_search_focusing');
         var searchText = $("#search_input").val();
@@ -29,6 +26,12 @@ $(function () {
         } else {
             $('#search_text').show();
         }
+    });
+
+    //搜索绑定
+    $('form').on('focus', '#search_input', function () {
+        var $weuiSearchBar = $('#search_bar');
+        $weuiSearchBar.addClass('weui_search_focusing');
     }).on('input', '#search_input', function () {
         var $searchShow = $("#search_show");
         if ($(this).val()) {
@@ -44,8 +47,42 @@ $(function () {
         $('#search_input').val('');
     });
 
+    $('#loginDilog').on('click', '.weui_btn_dialog', function () {
+        var logName = $("#loginName").val();
+        var password = $("#password").val()
+        if (logName == "" || password == "") {
+            $("#checkmsgId").html("用户名密码不能为空!");
+            $('.js_tooltips').show();
+        } else {
+            saveUser(logName, password);
+        }       
+    });
+
     InitData();
 });
+
+function saveUser(loginName, password) {
+    $('#loadingToast .weui_toast_content').html("保存中..");
+    $('#loadingToast').show();
+    $.ajax({
+        url: URL("/Blogwx/BlogUserAdd"),
+        type: "post",
+        data: { BlogName: loginName, BlogPassword: password },
+        success: function (res) {
+            MyBLog();
+            $('#loginDilog').off('click').hide();
+            $('#loadingToast').hide();
+        }, error: function () {
+            $('#loadingToast').hide();
+            $("#toastId").attr("class", "weui_icon_msg weui_icon_warn");
+            $("#submsgId").html("服务器异常");
+            $('#toast').show();
+            setTimeout(function () {
+                $('#toast').hide();
+            }, 2000);
+        }
+    });
+}
 
 //初始化值
 function InitData() {
@@ -78,7 +115,8 @@ function BindProject() {
 
 //筛选项目
 function selProject(search) {
-    if (search == null) {
+    if (search == "") {
+        $('#loadingToast').hide();
         return;
     }
       $.ajax({
@@ -98,7 +136,7 @@ function selProject(search) {
                 });
                 $("#search_show").html(items);
             }
-           
+            $('#loadingToast').hide();
         }
     });  
 }

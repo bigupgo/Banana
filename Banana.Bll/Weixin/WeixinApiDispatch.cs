@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
+
 namespace Banana.Bll.Weixin
 {
     public class WeixinApiDispatch
@@ -98,10 +99,18 @@ namespace Banana.Bll.Weixin
                     News.Articles.Add(new ArticleEntity("欢迎关注【BigUpGo】", "今天吃什么？", WeixinCommon.FormatPath("/Content/wheel.png"), WeixinCommon.FormatPath("/Home/Grid")));
                     responseContent = News.ToXml();
                 }
-                else if (Content.Contains("日志") && ToUserName.Equals("oh1bet0cEtQpQY684RFzBdCHCuPw"))
+                else if (Content.Contains("日志"))
                 {
                     ResponseNews News = new ResponseNews(FromUserName, ToUserName);
-                    News.Articles.Add(new ArticleEntity("欢迎关注【BigUpGo】", "工作日志", WeixinCommon.FormatPath("/Content/blog.png"), WeixinCommon.FormatPath("/Blogwx/Index")));
+                    BlogBll blogBll = new BlogBll();
+                    var blogUser = blogBll.IsSaveUser(ToUserName);
+                    string param = "?openId=" + ToUserName;
+                    if (blogUser != null)
+                    {
+                        param += "&blogName=" + blogUser.BlogName + "&blogPassword=" + blogUser.BlogPassword;
+                    }
+
+                    News.Articles.Add(new ArticleEntity("欢迎关注【BigUpGo】", "工作日志", WeixinCommon.FormatPath("/Content/blog.png"), WeixinCommon.FormatPath("/Blogwx/Index", param)));
                     responseContent = News.ToXml();
                 }
 

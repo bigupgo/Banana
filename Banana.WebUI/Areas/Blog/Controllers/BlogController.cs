@@ -12,7 +12,11 @@ namespace Banana.WebUI.Areas.Blog.Controllers
     {
         //
         // GET: /Blog/Blog/
-        CheckInHandlerBll server = new CheckInHandlerBll();
+        CheckInHandlerBll server;
+        public BlogController()
+        {
+            server = new CheckInHandlerBll();
+        }
         public ActionResult Index()
         {
             return View();
