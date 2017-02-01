@@ -6,9 +6,21 @@
     <edmx:StorageModels>
     <Schema Namespace="BaWeixinModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="BaWeixinModelStoreContainer">
+          <EntitySet Name="Ba_BlogUser" EntityType="BaWeixinModel.Store.Ba_BlogUser" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Ba_Food" EntityType="BaWeixinModel.Store.Ba_Food" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Ba_Subscribe" EntityType="BaWeixinModel.Store.Ba_Subscribe" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
+        <EntityType Name="Ba_BlogUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" Nullable="false" MaxLength="40" />
+          <Property Name="OpenID" Type="nvarchar" MaxLength="50" />
+          <Property Name="BlogName" Type="nvarchar" MaxLength="30" />
+          <Property Name="BlogPassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDel" Type="char" MaxLength="1" />
+          <Property Name="CreateTime" Type="datetime" />
+        </EntityType>
         <EntityType Name="Ba_Food">
           <Key>
             <PropertyRef Name="ID" />
@@ -34,6 +46,7 @@
         <EntityContainer Name="BaWeixinEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="Ba_Subscribe" EntityType="BaWeixinModel.Ba_Subscribe" />
           <EntitySet Name="Ba_Food" EntityType="BaWeixinModel.Ba_Food" />
+          <EntitySet Name="Ba_BlogUser" EntityType="BaWeixinModel.Ba_BlogUser" />
         </EntityContainer>
         <EntityType Name="Ba_Subscribe">
           <Key>
@@ -52,6 +65,17 @@
           <Property Type="String" Name="FoodName" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Pic" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="CreateDate" Precision="3" />
+        </EntityType>
+        <EntityType Name="Ba_BlogUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="String" Name="ID" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OpenID" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BlogName" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BlogPassword" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IsDel" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="CreateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -75,6 +99,18 @@
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="Pic" ColumnName="Pic" />
                 <ScalarProperty Name="FoodName" ColumnName="FoodName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ba_BlogUser">
+            <EntityTypeMapping TypeName="BaWeixinModel.Ba_BlogUser">
+              <MappingFragment StoreEntitySet="Ba_BlogUser">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="BlogPassword" ColumnName="BlogPassword" />
+                <ScalarProperty Name="BlogName" ColumnName="BlogName" />
+                <ScalarProperty Name="OpenID" ColumnName="OpenID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

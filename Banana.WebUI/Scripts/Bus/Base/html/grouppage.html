@@ -1,0 +1,50 @@
+﻿<form>
+    <input type="hidden" name="ID" />
+    <input type="hidden" name="Type" value="0" />
+    <input type="hidden" name="ModelLevel" value="0" />
+    <table class="dialog-table">
+        <tbody>
+            <tr>
+                <td class="col-name">名称：
+                </td>
+                <td>
+                    <input type="text" name="ModelName" class="easyui-validatebox" required="true" />
+                </td>
+                <td class="col-name">图标：
+                </td>
+                <td>
+                    <input type="text" name="IconCls" style="width: 125px;" class="easyui-validatebox" />
+                    <a id="link-iconSelect" href="javascript:void(0);">选择</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-name">父级节点：
+                </td>
+                <td>
+                    <select id="parentId" name="Pid" class="easyui-combotree" data-options="width:180,required:true">
+                    </select>
+                </td>
+                <td class="col-name">排序：
+                </td>
+                <td>
+                    <input type="text" value="100" style="width: 125px;" name="Sort" class="easyui-validatebox" required="true" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-name">状态：
+                </td>
+                <td>
+                    <label style="cursor: pointer;">
+                        <input type="radio" value="true" checked="checked" name="Enable" />启用
+                    </label>
+                    &nbsp;&nbsp;&nbsp;
+                     <label style="cursor: pointer;">
+                         <input type="radio" value="false" name="Enable" />禁用
+                     </label>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>

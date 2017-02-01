@@ -7,6 +7,7 @@
       <Diagram DiagramId="54091f9b7c0c4c0dabfb50a9f8095b70" Name="关系图1">
         <EntityTypeShape EntityType="BaWeixinModel.Ba_Subscribe" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BaWeixinModel.Ba_Food" Width="1.5" PointX="0.55740596007434928" PointY="30.112788572028645" />
+        <EntityTypeShape EntityType="BaWeixinModel.Ba_BlogUser" Width="1.5" PointX="1.0177447930992325" PointY="16.892924763678071" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

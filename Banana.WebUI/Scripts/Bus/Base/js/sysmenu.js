@@ -22,8 +22,8 @@ var HtmlURL =
 {
     Icon: URL('/Content/icon.htm'),
     Add: baseTempPath + 'menutype.html',
-    AddPage: baseTempPath + "addpage.html"
-
+    AddPage: baseTempPath + "addpage.html",
+    AddGroupPage: baseTempPath + "addpage.html"
 };
 
 var column = [[

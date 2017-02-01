@@ -443,6 +443,7 @@
     <Content Include="Scripts\Bus\Base\html\upload.html" />
     <Content Include="Scripts\Bus\Base\html\menutype.html" />
     <Content Include="Scripts\Bus\Base\html\addpage.html" />
+    <Content Include="Scripts\Bus\Base\html\grouppage.html" />
     <Content Include="Scripts\Bus\Base\js\sysmenu.js" />
     <Content Include="Scripts\Bus\Blog\html\add.htm" />
     <Content Include="Scripts\Bus\Blog\html\edit.htm" />

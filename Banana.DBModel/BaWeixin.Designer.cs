@@ -96,6 +96,22 @@ namespace Banana.DBModel
             }
         }
         private ObjectSet<Ba_Food> _Ba_Food;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<Ba_BlogUser> Ba_BlogUser
+        {
+            get
+            {
+                if ((_Ba_BlogUser == null))
+                {
+                    _Ba_BlogUser = base.CreateObjectSet<Ba_BlogUser>("Ba_BlogUser");
+                }
+                return _Ba_BlogUser;
+            }
+        }
+        private ObjectSet<Ba_BlogUser> _Ba_BlogUser;
 
         #endregion
 
@@ -116,6 +132,14 @@ namespace Banana.DBModel
         {
             base.AddObject("Ba_Food", ba_Food);
         }
+    
+        /// <summary>
+        /// 用于向 Ba_BlogUser EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToBa_BlogUser(Ba_BlogUser ba_BlogUser)
+        {
+            base.AddObject("Ba_BlogUser", ba_BlogUser);
+        }
 
         #endregion
 
@@ -124,6 +148,182 @@ namespace Banana.DBModel
     #endregion
 
     #region 实体
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BaWeixinModel", Name="Ba_BlogUser")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Ba_BlogUser : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 Ba_BlogUser 对象。
+        /// </summary>
+        /// <param name="id">ID 属性的初始值。</param>
+        public static Ba_BlogUser CreateBa_BlogUser(global::System.String id)
+        {
+            Ba_BlogUser ba_BlogUser = new Ba_BlogUser();
+            ba_BlogUser.ID = id;
+            return ba_BlogUser;
+        }
+
+        #endregion
+
+        #region 简单属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value, false, "ID");
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.String _ID;
+        partial void OnIDChanging(global::System.String value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String OpenID
+        {
+            get
+            {
+                return _OpenID;
+            }
+            set
+            {
+                OnOpenIDChanging(value);
+                ReportPropertyChanging("OpenID");
+                _OpenID = StructuralObject.SetValidValue(value, true, "OpenID");
+                ReportPropertyChanged("OpenID");
+                OnOpenIDChanged();
+            }
+        }
+        private global::System.String _OpenID;
+        partial void OnOpenIDChanging(global::System.String value);
+        partial void OnOpenIDChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BlogName
+        {
+            get
+            {
+                return _BlogName;
+            }
+            set
+            {
+                OnBlogNameChanging(value);
+                ReportPropertyChanging("BlogName");
+                _BlogName = StructuralObject.SetValidValue(value, true, "BlogName");
+                ReportPropertyChanged("BlogName");
+                OnBlogNameChanged();
+            }
+        }
+        private global::System.String _BlogName;
+        partial void OnBlogNameChanging(global::System.String value);
+        partial void OnBlogNameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BlogPassword
+        {
+            get
+            {
+                return _BlogPassword;
+            }
+            set
+            {
+                OnBlogPasswordChanging(value);
+                ReportPropertyChanging("BlogPassword");
+                _BlogPassword = StructuralObject.SetValidValue(value, true, "BlogPassword");
+                ReportPropertyChanged("BlogPassword");
+                OnBlogPasswordChanged();
+            }
+        }
+        private global::System.String _BlogPassword;
+        partial void OnBlogPasswordChanging(global::System.String value);
+        partial void OnBlogPasswordChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IsDel
+        {
+            get
+            {
+                return _IsDel;
+            }
+            set
+            {
+                OnIsDelChanging(value);
+                ReportPropertyChanging("IsDel");
+                _IsDel = StructuralObject.SetValidValue(value, true, "IsDel");
+                ReportPropertyChanged("IsDel");
+                OnIsDelChanged();
+            }
+        }
+        private global::System.String _IsDel;
+        partial void OnIsDelChanging(global::System.String value);
+        partial void OnIsDelChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> CreateTime
+        {
+            get
+            {
+                return _CreateTime;
+            }
+            set
+            {
+                OnCreateTimeChanging(value);
+                ReportPropertyChanging("CreateTime");
+                _CreateTime = StructuralObject.SetValidValue(value, "CreateTime");
+                ReportPropertyChanged("CreateTime");
+                OnCreateTimeChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _CreateTime;
+        partial void OnCreateTimeChanging(Nullable<global::System.DateTime> value);
+        partial void OnCreateTimeChanged();
+
+        #endregion
+
+    }
     
     /// <summary>
     /// 没有元数据文档可用。
