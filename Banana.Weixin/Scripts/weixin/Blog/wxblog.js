@@ -68,10 +68,10 @@ function saveUser(loginName, password) {
         url: URL("/Blogwx/BlogUserAdd"),
         type: "post",
         data: { BlogName: loginName, BlogPassword: password },
-        success: function (res) {
-            MyBLog();
+        success: function (res) {    
             $('#loginDilog').off('click').hide();
             $('#loadingToast').hide();
+            MyBLog();
         }, error: function () {
             $('#loadingToast').hide();
             $("#toastId").attr("class", "weui_icon_msg weui_icon_warn");
