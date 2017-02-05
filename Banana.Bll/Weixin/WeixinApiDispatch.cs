@@ -101,15 +101,8 @@ namespace Banana.Bll.Weixin
                 }
                 else if (Content.Contains("日志"))
                 {
-                    ResponseNews News = new ResponseNews(FromUserName, ToUserName);
-                    BlogBll blogBll = new BlogBll();
-                    var blogUser = blogBll.IsSaveUser(ToUserName);
+                    ResponseNews News = new ResponseNews(FromUserName, ToUserName);  
                     string param = "?openId=" + ToUserName;
-                    if (blogUser != null)
-                    {
-                        param += "&blogName=" + blogUser.BlogName + "&blogPassword=" + blogUser.BlogPassword;
-                    }
-
                     News.Articles.Add(new ArticleEntity("欢迎关注【BigUpGo】", "工作日志", WeixinCommon.FormatPath("/Content/blog.png"), WeixinCommon.FormatPath("/Blogwx/Index", param)));
                     responseContent = News.ToXml();
                 }

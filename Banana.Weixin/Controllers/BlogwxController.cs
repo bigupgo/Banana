@@ -26,28 +26,38 @@ namespace Banana.Weixin.Controllers
         public ActionResult Index()
         {
             string openId = Request.QueryString["openId"];
-            string blogName = Request.QueryString["blogName"];
-            string blogPassword = Request.QueryString["blogPassword"];
-            Session["OpenId"] = openId;
-            if (!string.IsNullOrEmpty(blogName) && !string.IsNullOrEmpty(blogPassword))
-            {
-             
-                Session["BlogName"] = blogName;
-                Session["BlogPassword"] = blogPassword;
-            }
 
-            if (Session["BlogName"] != null)
+            if ((Session["BlogName"] + "") != "" && (Session["BlogPassword"] + "") != "")
             {
                 ViewBag.Login = "display:none;";
             }
             else
             {
-                ViewBag.Login = "display:block;";
+                BlogBll blogBll = new BlogBll();
+                var blogUser = blogBll.IsSaveUser(openId);
+
+                string blogName = "";
+                string blogPassword = "";
+                if (blogUser != null)
+                {
+                    blogName = blogUser.BlogName;
+                    blogPassword = blogUser.BlogPassword;
+                }
+                Session["OpenId"] = openId;
+                if (!string.IsNullOrEmpty(blogName) && !string.IsNullOrEmpty(blogPassword))
+                {
+                    Session["BlogName"] = blogName;
+                    Session["BlogPassword"] = blogPassword;
+                    ViewBag.Login = "display:none;";
+                }
+                else
+                {
+                    ViewBag.Login = "display:block;";
+                }
             }
+          
             return View();
         }
-
-      
 
         public ActionResult BlogUserAdd(Ba_BlogUser blogUser)
         {
