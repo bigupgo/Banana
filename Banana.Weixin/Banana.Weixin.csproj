@@ -51,6 +51,10 @@
     <Reference Include="Banana.Model.Base">
       <HintPath>..\Banana.Base.Dll\Banana.Model.Base.dll</HintPath>
     </Reference>
+    <Reference Include="FluentScheduler, Version=5.1.4.0, Culture=neutral, PublicKeyToken=b76503528a14ebd1, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentScheduler.5.1.4\lib\net40\FluentScheduler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\Banana.Dll\log4net.dll</HintPath>
     </Reference>

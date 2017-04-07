@@ -1,8 +1,6 @@
-﻿using Banana.Core.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Banana.CheckInBll;
+using Banana.Core.Base;
+using FluentScheduler;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -25,6 +23,21 @@ namespace Banana.Weixin
 
             #region 初始化BaseConfig
             BaseConfig.Init();
+            #endregion
+
+            #region 每天 8:30 检测工作日志
+            try
+            {
+                CheckInHandlerBll server = new CheckInHandlerBll();
+                Registry task = new Registry();
+                task.Schedule(() => server.AutoWriteBlog()).ToRunNow().AndEvery(1).Days().At(8, 30);//任务每天定时执行  
+                JobManager.Initialize(task);  
+            }
+            catch
+            {
+            }
+ 
+
             #endregion
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);

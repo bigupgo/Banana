@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -68,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -117,6 +119,16 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Banana_CheckInBll_com_longruan_android_MyService</CachedSettingsPropName>
     </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Banana.Bll.Base\Banana.Bll.Base.csproj">
+      <Project>{37bbfbb8-3e9b-4493-8de1-f87cf794b2c9}</Project>
+      <Name>Banana.Bll.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Banana.Bll\Banana.Bll.csproj">
+      <Project>{4e84d883-0195-4674-ac58-5c588dbbf3f7}</Project>
+      <Name>Banana.Bll</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

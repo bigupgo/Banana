@@ -214,9 +214,15 @@ function MyBLog() {
         success: function (data) {
             if (data != null) {
                 var d = data.blogDate;
+                var projectId = data.projectID;
                 var proName = data.projectName;
                 $("#dateShow").html(d);
                 $("#proNameShow").html(proName);
+     
+                //绑定上次填写日志
+                $("#projectName").html(proName.split(",")[1]);
+                $("#projectId").val(projectId);
+
             }
         }
     });

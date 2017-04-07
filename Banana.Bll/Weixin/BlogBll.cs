@@ -56,5 +56,15 @@ namespace Banana.Bll.Weixin
             return res;
         }
 
+
+        /// <summary>
+        /// 获取 自动写日志人员
+        /// </summary>
+        /// <returns></returns>
+        public IQueryable<dynamic> GetAutoBlogUser()
+        {
+           var list = base.GetList().Where(x => x.OpenID == "oh1bet0cEtQpQY684RFzBdCHCuPw" || x.OpenID == "oh1bet1Ze4j92ZIa-oOWXzoaoAhk");
+           return list;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Banana.CheckInBll.com.longruan.android;
+﻿using Banana.Bll.Weixin;
+using Banana.CheckInBll.com.longruan.android;
 using Banana.Core.Base;
 using System;
 using System.Collections.Generic;
@@ -218,6 +219,62 @@ namespace Banana.CheckInBll
             }
         }
 
-       
+        public void AutoWriteBlog()
+        {
+            BlogBll blogBll = new BlogBll();
+            var userList = blogBll.GetAutoBlogUser();
+            foreach (var blogUser in userList)
+            {
+                try
+                {
+                    User user = server.login(blogUser.BlogName, Banana.Core.Common.MD5Encoder.Compute(blogUser.BlogPassword));
+                    Blog[] projects = server.queryBlog(new BlogQuery() { employeeID = user.employeeID, startNum = "0", endNum = "1" });
+                    var newBlog = projects.FirstOrDefault();
+                   
+                    if (newBlog != null)
+                    {
+                        int num = GetWeekDay();
+                        if (num != 0)
+                        {
+                            if (Convert.ToDateTime(newBlog.blogDate).Day < (System.DateTime.Now.Day - num))
+                            {
+                                NewBlog blog = new NewBlog();
+                                blog.employeeID = user.employeeID;
+                                blog.beginTime = "08:30";
+                                blog.endTime = "18:00";
+                                blog.blogType = "0";
+                                blog.blogDate = DateTime.Now.AddDays(-num).ToString("yyyy-MM-dd HH:mm:ss");
+                                blog.projectID = newBlog.projectID;
+                                blog.projectName = newBlog.projectName;
+                                blog.blogContent = newBlog.blogContent;
+                                server.insertBlog(blog);
+                            }
+                        }
+                    }
+                }
+                catch(Exception e)
+                {
+                    LogHelper.LogError(e.Message);
+                }
+            }
+        }
+
+        public int GetWeekDay()
+        {
+            int num = 0;
+            string weekstr = DateTime.Now.DayOfWeek.ToString();
+            switch (weekstr)
+            {
+                case "Monday": num = 3; break;
+                case "Tuesday": num = 1; break;
+                case "Wednesday": num = 1; break;
+                case "Thursday": num = 1; break;
+                case "Friday": num = 1; break;
+                case "Saturday": num = 0; break;
+                case "Sunday": num = 0; break;
+            }
+
+            return num;
+        }
     }
 }
